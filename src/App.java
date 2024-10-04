@@ -23,7 +23,7 @@ public class App extends Application{
         user.setEmail("samuel@gmail.com");
         user.setPassword("1234");
         user.setName("Samuel");
-        user.setPhotoProfile("./samuelphoto.jpeg");
+        user.setPhotoProfile("/home/samuel/Desktop/Project_Java/Project_social_media/src/Screens/samuelphoto.jpeg");
         List_User.getPoint(5).add(user);
 
         {
@@ -34,7 +34,7 @@ public class App extends Application{
             user.setEmail("jose@gmail.com");
             user.setPassword("1234");
             user.setName("José");
-            user.setPhotoProfile("./airplane.jpg");
+            user.setPhotoProfile("/home/samuel/Desktop/Project_Java/Project_social_media/src/Screens/airplane.jpg");
             List_User.getPoint(5).add(user);
             List_User.getPoint(0).user[0].AddFriends(1);
             List_User.getPoint(0).user[1].AddFriends(0);
@@ -62,8 +62,10 @@ public class App extends Application{
             user.setEmail("kleber@gmail.com");
             user.setPassword("1234");
             user.setName("Kleber");
-            //user.setPhotoProfile("./airplane.jpg");
+            user.setPhotoProfile("/home/samuel/Desktop/Project_Java/Project_social_media/src/Screens/samuelphoto.jpeg");
             List_User.getPoint(5).add(user);
+            List_User.getPoint(0).user[0].getSolicit().add(3);
+            List_User.getPoint(0).user[0].getSolicit().add(1);
         }
 
         {
@@ -82,9 +84,9 @@ public class App extends Application{
         post.setId((short)0);
         post.setIduser((short)0);
         
-        post.setImagem("./airplane.jpg");
+        post.setImagem("/home/samuel/Desktop/Project_Java/Project_social_media/src/Screens/airplane.jpg");
         post.setTitle("Titulo para Testes");
-        post.setPostTxt("Texto para testes do Posts");
+        post.setPostTxt("Texto para testes do Posts Texto para testes do PostsTexto para testes do PostsTexto para testes do PostsTexto para testes do PostsTexto para testes do PostsTexto para testes do PostsTexto para testes do PostsTexto para testes do PostsTexto para testes do PostsTexto para testes do PostsTexto para testes do PostsTexto para testes do PostsTexto para testes do PostsTexto para testes do PostsTexto para testes do PostsTexto para testes do PostsTexto para testes do PostsTexto para testes do PostsTexto para testes do PostsTexto para testes do PostsTexto para testes do Posts");
 
         {
         Comments comment = new Comments();

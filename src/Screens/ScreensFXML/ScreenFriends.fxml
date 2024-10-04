@@ -248,7 +248,7 @@
          <children>
             <ScrollPane layoutY="6.0" prefHeight="318.0" prefWidth="273.0" stylesheets="@CSS/ScrollPane.css">
                <content>
-                  <VBox fx:id="vboxNoticeFriends" prefHeight="318.0" prefWidth="255.0" spacing="10.0" style="-fx-background-color: white;" />
+                  <VBox fx:id="vboxNoticeFriends" prefHeight="317.0" prefWidth="255.0" spacing="10.0" style="-fx-background-color: white;" />
                </content>
             </ScrollPane>
          </children>

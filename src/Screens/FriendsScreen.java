@@ -1,5 +1,6 @@
 package Screens;
 
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -84,9 +85,9 @@ public class FriendsScreen {
 
             for(int i =0;i<sort.size();++i){
                 HBox hBox = new HBox(4);
-                ImageView img = (user[sort.get(i)].getPhotoProfile()==null)?new ImageView(new Image(getClass().getResourceAsStream("./ScreensFXML/Imagens/PERFIL.png")))
+                ImageView img = (user[sort.get(i)].getPhotoProfile()==null)?new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.png")))
                 :
-                new ImageView(new Image(getClass().getResourceAsStream(user[sort.get(i)].getPhotoProfile())));
+                new ImageView(new Image(new FileInputStream(user[sort.get(i)].getPhotoProfile())));
                 img.setFitHeight(50);
                 img.setFitWidth(50);
 
@@ -98,8 +99,8 @@ public class FriendsScreen {
                 userName.setPadding(new Insets(5,0,0,20));
                 userName.setPrefWidth(700);
 
-                ImageView img1 = new ImageView(new Image(getClass().getResourceAsStream("./ScreensFXML/Imagens/ion_person.png")));
-                ImageView img2 = new ImageView(new Image(getClass().getResourceAsStream("./ScreensFXML/Imagens/octicon_x.png")));
+                ImageView img1 = new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/ion_person.png")));
+                ImageView img2 = new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/octicon_x.png")));
                 img1.setCursor(Cursor.HAND);
                 img2.setCursor(Cursor.HAND);
                 
@@ -126,16 +127,22 @@ public class FriendsScreen {
                     segs.add(i);
                 }
             }
-
+            
             label:
-            while(true){
+            while(true){ //!segs.isEmpty()
                 HBox hBox = new HBox(3);
                 hBox.setSpacing(130);
                 for(int j =0;j<3;++j){
                     HBox hbox1 = new HBox(3);
                     hbox1.setPadding(new Insets(10,0,0,10));
                     hbox1.setSpacing(5);
-                    ImageView img = new ImageView(new Image(getClass().getResourceAsStream("./ScreensFXML/Imagens/PERFIL.png")));
+                    
+                    ImageView img = (user[segs.get(0)].getPhotoProfile()==null)?new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.png")))
+                    :
+                    new ImageView(new Image(new FileInputStream(user[segs.get(0)].getPhotoProfile()))) ;
+                    img.setFitHeight(50);
+                    img.setFitWidth(50);
+
                     Label userName = new Label(user[segs.get(0)].getName());
                     userName.setStyle(
                         "-fx-font-family: Poppins;"+
@@ -169,21 +176,24 @@ public class FriendsScreen {
         
             ArrayList<Integer>solicit = List_User.getPoint(id).user[id].getSolicit();
             
-                {
-                    solicit.add(1);
-                    solicit.add(2);
-                    solicit.add(3);
-                }
-            
             for(int i = solicit.size()-1;i>=0;--i){
                 HBox hBoxSolict = new HBox(4);
                 hBoxSolict.setPadding(new Insets(10,0,0,3));
-                ImageView imageView = new ImageView(new Image(getClass().getResourceAsStream("./ScreensFXML/Imagens/PERFIL.png")));
-                Label label = new Label("NameUser");
-                label.setPadding(new Insets(15,0,0,2));
                 
-                ImageView accept = new ImageView(new Image(getClass().getResourceAsStream("./ScreensFXML/Imagens/check_accept.png")));
-                ImageView deni = new ImageView(new Image(getClass().getResourceAsStream("./ScreensFXML/Imagens/x_deni.png"))); 
+                ImageView imageView = (user[solicit.get(i)].getPhotoProfile()==null)?new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.png")))
+                :
+                new ImageView(new Image(new FileInputStream(user[solicit.get(i)].getPhotoProfile())))
+                ;
+                
+                imageView.setFitHeight(50);
+                imageView.setFitWidth(50);
+
+                Label label = new Label(user[solicit.get(i)].getName());
+                label.setPadding(new Insets(15,0,0,2));
+                label.setPrefWidth(50);
+
+                ImageView accept = new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/check_accept.png")));
+                ImageView deni = new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/x_deni.png"))); 
                 
                 accept.setCursor(Cursor.HAND);
                 deni.setCursor(Cursor.HAND);
@@ -202,7 +212,7 @@ public class FriendsScreen {
                 vBoxAuxToAccept.setPadding(new Insets(1,0,0,0));
 
                 HBox hBoxToAux = new HBox(2);
-                hBoxToAux.setPadding(new Insets(10,0,0,60));
+                hBoxToAux.setPadding(new Insets(10,0,0,80));
                 hBoxToAux.setSpacing(3);
                 hBoxToAux.getChildren().addAll(vBoxAuxToAccept,deni);
                 hBoxSolict.getChildren().addAll(imageView,label,hBoxToAux);
@@ -225,6 +235,5 @@ public class FriendsScreen {
         new SettingsScreen(id).getStage().show();
         this.stage.close();
     }
-
     
 }

@@ -18,7 +18,7 @@
    <children>
       <Pane prefHeight="600.0" prefWidth="440.0" style="-fx-background-color: black;">
          <children>
-            <ImageView fitHeight="468.0" fitWidth="406.0" layoutX="16.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="ImageImgPost" fitHeight="468.0" fitWidth="406.0" layoutX="16.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Imagens/loginLog.png" />
                </image>

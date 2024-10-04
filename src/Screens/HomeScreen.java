@@ -1,5 +1,6 @@
 package Screens;
 
+import java.io.FileInputStream;
 import java.util.Optional;
 
 import Body.ManagerPosts;
@@ -24,6 +25,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 public class HomeScreen{
@@ -86,8 +89,15 @@ public class HomeScreen{
                 VBox vBox = new VBox(5);
                 HBox hBox = new HBox(2);
                 hBox.setSpacing(3);
-                Image PosterProfile = new Image(getClass().getResourceAsStream(List_User.getPoint(i).user[post.getIduser()].getPhotoProfile()));
-                ImageView imageView = new ImageView(PosterProfile);
+
+                String photo = ((List_User.getPoint(i).user[post.getIduser()].getPhotoProfile())!=null)? List_User.getPoint(i).user[post.getIduser()].getPhotoProfile(): "ScreensFXML/Imagens/PERFIL.PNG";
+                
+                ImageView imageView = ((List_User.getPoint(i).user[post.getIduser()].getPhotoProfile())!=null)? 
+                new ImageView(new Image(new FileInputStream(photo)))
+                :
+                new ImageView(new Image(getClass().getResourceAsStream(photo)))
+                ;
+
                 imageView.setFitHeight(100);
                 imageView.setFitWidth(100);
                 imageView.setPreserveRatio(true);
@@ -98,32 +108,39 @@ public class HomeScreen{
                 hBox.getChildren().addAll(imageView,nameUser);
 
                 vBox.setStyle("-fx-padding: 10; -fx-border-color: lightgray; -fx-border-width: 1; -fx-background-color: white;");
-                Label titlePost = new Label("\t"+post.getTitle());
+                Label titlePost = new Label(post.getTitle());
                 titlePost.setStyle("-fx-font-weight: bold");
-                titlePost.setPadding(new Insets(30,0,30,100));
+                titlePost.setPadding(new Insets(10,0,5,100));
                 titlePost.setWrapText(true);
 
-                TextArea txtPost = new TextArea("\t"+post.getPostTxt());
-                txtPost.setWrapText(true);
+                Text text = new Text(post.getPostTxt());
+                TextFlow txtPost = new TextFlow();
+                txtPost.getChildren().add(text);
                 txtPost.setCache(false);
                 txtPost.setCacheShape(false);
                 txtPost.setCenterShape(false);
-                txtPost.setEditable(false);
                 txtPost.setFocusTraversable(false);
-                
-                //Ajuste necessário caso não houver imagem
-                ImageView image = new ImageView(new Image(getClass().getResourceAsStream(post.getImagem())));
-                image.setFitHeight(image.getFitHeight());
-                image.setFitWidth(image.getFitWidth());
-                //image.setPreserveRatio(true);
-                
+                txtPost.getStylesheets().add(this.getClass().getResource("ScreensFXML/CSS/TxtAreaToPosts.css").toString());
+                txtPost.setOnMouseClicked(event->{
+                    this.pane.requestFocus();
+                });
+
                 HBox box = new HBox(1);
-                box.getChildren().add(image);
-                box.setPadding(new Insets(0,0,0,100));
+                box.setPadding(new Insets(10,0,0,100));
 
+                if(post.getImagem()!=null){
+                    ImageView image = new ImageView(new Image(new FileInputStream(post.getImagem())));
+                    image.setFitHeight(image.getFitHeight());
+                    image.setFitWidth(image.getFitWidth());
+                    box.getChildren().add(image);
+                    image.setPreserveRatio(true);
+                }
+                
                 int likesQnt = post.getLikes();
-
-                Button like = new Button(" "+String.valueOf(likesQnt)+" ");
+                Label lblQntLikes = new Label(String.valueOf(likesQnt));
+                lblQntLikes.setPadding(new Insets(3,0,0,2));
+                
+                Button like = new Button("   ");
                 if(post.checkLike(id)==0){
                     like.setStyle(
                         "-fx-shape: \"M11.8,0c-1.7,0-3.2,1.4-3.8,2.8C7.4,1.4,5.9,0,4.2,0C1.9,0,0,1.9,0,4.2c0,4.7,4.8,5.9,8,10.63.0-4.65,8-6.05,8-10.6C16,1.9,14.1,0,11.8,0z\"; -fx-background-color: red; -fx-text-fill:white;"
@@ -141,21 +158,21 @@ public class HomeScreen{
                 comment.setBorder(null);
                 comment.setFocusTraversable(false);
 
-                like.setOnMouseClicked(event->generateLikes(post,like,likesQnt));
+                like.setOnMouseClicked(event->generateLikes(post,like,lblQntLikes,likesQnt));
 
                 comment.setOnMouseClicked(event ->{
                         try {
-                            new CommentScreen(id, post, pane, comment,like).getStage().show();
+                            new CommentScreen(id, post, pane, comment,like,lblQntLikes).getStage().show();
                             pane.effectProperty().set(new MotionBlur(3.0,15.0));
-                            //pane.setDisable(true);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                 });
 
                 comment.setUnderline(true);
+                
                 HBox box1 = new HBox(2);
-                box1.getChildren().addAll(like,comment);
+                box1.getChildren().addAll(new HBox((double)5,like,lblQntLikes),comment);
                 box1.setPadding(new Insets(10,10,10,100));
                 box1.setSpacing(650);
 
@@ -164,7 +181,7 @@ public class HomeScreen{
                 box2.setPadding(new Insets(0,0,0,100));
                 txtPost.setPrefWidth(800);
                 
-                vBox.getChildren().addAll(hBox,titlePost,box,box2,box1);
+                vBox.getChildren().addAll(hBox,titlePost,box2,box,box1);
                 this.vboxPost.getChildren().add(vBox);   
             }
         }catch(Exception ie){
@@ -188,7 +205,7 @@ public class HomeScreen{
         }.start();
     }
 
-    private void generateLikes(Post post, Button like, int likesQnt) {
+    private void generateLikes(Post post, Button like,Label lblLike, int likesQnt) {
         if(post.checkLike(id)!=0){
             like.setStyle(
                 "-fx-shape: \"M11.8,0c-1.7,0-3.2,1.4-3.8,2.8C7.4,1.4,5.9,0,4.2,0C1.9,0,0,1.9,0,4.2c0,4.7,4.8,5.9,8,10.63.0-4.65,8-6.05,8-10.6C16,1.9,14.1,0,11.8,0z\"; -fx-background-color: red; -fx-text-fill:white;"
@@ -201,7 +218,7 @@ public class HomeScreen{
             post.removeLike(id);
           }
           likesQnt=post.getLikes();
-          like.setText(" "+String.valueOf(likesQnt)+" ");
+          lblLike.setText(String.valueOf(likesQnt));
     }
     
     @FXML

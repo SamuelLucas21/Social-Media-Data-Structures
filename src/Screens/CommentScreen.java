@@ -1,5 +1,7 @@
 package Screens;
 
+import java.io.FileInputStream;
+
 import Body.Comments;
 import Body.Post;
 import Body.User;
@@ -13,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -30,6 +33,7 @@ public class CommentScreen {
     private Pane otherPane;
     private Hyperlink hyperPost;
     private Button otherButton;
+    private Label qntLike;
 
     @FXML
     private ImageView ImageUser;
@@ -55,13 +59,17 @@ public class CommentScreen {
     @FXML
     private VBox vBoxComments;
 
-        public CommentScreen(int idUser, Post postI, Pane otherScreen, Hyperlink hyper, Button principal)throws Exception{
+    @FXML
+    private ImageView ImageImgPost;
+
+        public CommentScreen(int idUser, Post postI, Pane otherScreen, Hyperlink hyper, Button principal,Label lblQntLike)throws Exception{
             id=idUser;
             post=postI;
             this.otherPane=otherScreen;
             hyperPost=hyper;
             this.otherButton=principal;
             this.hyperPost=hyper;
+            this.qntLike=lblQntLike;
 
             idComment=postI.getComments().size()-1;
 
@@ -73,6 +81,10 @@ public class CommentScreen {
             this.stage.setTitle("Comentários"); 
             this.stage.setResizable(false);  
             this.stage.initStyle(StageStyle.UNDECORATED);
+            this.stage.setOnCloseRequest(event->{
+                this.backScreen(null);
+            });
+
             pane.requestFocus();
 
             scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
@@ -97,6 +109,10 @@ public class CommentScreen {
 
     @FXML
     private void initialize(){
+        this.lblUsername.setText(List_User.getPoint(id).user[this.post.getIduser()].getName());
+        this.txtTitlePost.setText(this.post.getTitle());
+        this.txtPublicArgs.setText(this.post.getPostTxt());
+
         if(this.post.checkLike(id)==0){
             this.btnLike.setStyle(
             "-fx-shape: \"M11.8,0c-1.7,0-3.2,1.4-3.8,2.8C7.4,1.4,5.9,0,4.2,0C1.9,0,0,1.9,0,4.2c0,4.7,4.8,5.9,8,10.63.0-4.65,8-6.05,8-10.6C16,1.9,14.1,0,11.8,0z\"; -fx-text-fill: white; -fx-background-color:red;"
@@ -106,8 +122,12 @@ public class CommentScreen {
             "-fx-shape: \"M11.8,0c-1.7,0-3.2,1.4-3.8,2.8C7.4,1.4,5.9,0,4.2,0C1.9,0,0,1.9,0,4.2c0,4.7,4.8,5.9,8,10.63.0-4.65,8-6.05,8-10.6C16,1.9,14.1,0,11.8,0z\"; -fx-text-fill: black;"
             );
         }
-        btnLike.setText(String.valueOf(this.post.getLikes()));
         try{
+            if(this.post.getImagem()!=null){
+                this.ImageImgPost.setImage(new Image(new FileInputStream(this.post.getImagem())));
+            }
+            String photo = List_User.getPoint(0).user[this.post.getIduser()].getPhotoProfile(); 
+            if(photo!=null)this.ImageUser.setImage(new Image(getClass().getResourceAsStream(photo)));
             organize();
         }catch(Exception ie){
             ie.printStackTrace();
@@ -143,14 +163,12 @@ public class CommentScreen {
             this.otherButton.setStyle(btnLike.getStyle());
             post.removeLike(id);
           }
-        this.otherButton.setText(" "+String.valueOf(this.post.getLikes())+" ");
-        this.btnLike.setText(String.valueOf(this.post.getLikes()));
+        qntLike.setText(String.valueOf(this.post.getLikes()));
     }
 
     @FXML
     private void backScreen(MouseEvent event) {
         this.otherPane.effectProperty().set(null);
-       // this.otherPane.setDisable(false);
         this.stage.close();
     }
 

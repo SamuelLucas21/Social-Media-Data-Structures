@@ -1,5 +1,7 @@
 package Screens;
 
+import java.io.FileInputStream;
+
 import Body.Post;
 import Body.User;
 import Structs.List_User;
@@ -65,9 +67,18 @@ public class ProfileScreen {
     
     @FXML    
     private void initialize(){
+        User user = List_User.getPoint(id).user[id];
+        this.nameUser.setText(user.getName());
+        this.cityUser.setText(user.getCity());
+        this.relationShipUser.setText(user.getCivil());
+
         try{
+            if(user.getPhotoProfile()!=null){
+                this.imageSetProfile.setImage(new Image(new FileInputStream(user.getPhotoProfile())));
+                this.imageSetProfile.setFitHeight(159);
+                this.imageSetProfile.setFitWidth(159);
+            }
             this.vBoxPrincipal.setSpacing((double)10);
-            User user = List_User.getPoint(id).user[id];
             for(int i = user.getPosts().size()-1;i>=0;--i){
                 Post post = user.getPosts().get(i);   
                 VBox vBox = new VBox(5);
