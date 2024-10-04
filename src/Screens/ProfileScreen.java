@@ -13,13 +13,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 public class ProfileScreen {
@@ -84,44 +85,51 @@ public class ProfileScreen {
                 VBox vBox = new VBox(5);
                 HBox hBox = new HBox(2);
                 hBox.setSpacing(3);
-                Image PosterProfile = new Image(getClass().getResourceAsStream(List_User.getPoint(i).user[post.getIduser()].getPhotoProfile()));
-                ImageView imageView = new ImageView(PosterProfile);
+                
+                ImageView imageView = (user.getPhotoProfile()!=null)? new ImageView(new Image(new FileInputStream(user.getPhotoProfile()))) 
+                :
+                new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.PNG")))
+                ;
+
                 imageView.setFitHeight(100);
                 imageView.setFitWidth(100);
                 imageView.setPreserveRatio(true);
 
-                Label nameUser = new Label(List_User.getPoint(0).user[post.getIduser()].getName());
+                Label nameUser = new Label(List_User.getPoint(0).user[id].getName());
                 nameUser.setStyle("-fx-font-weight: bold");
                 nameUser.setPadding(new Insets(40,0,0,10));
                 hBox.getChildren().addAll(imageView,nameUser);
 
                 vBox.setStyle("-fx-padding: 10; -fx-border-color: lightgray; -fx-border-width: 1; -fx-background-color: white;");
-                Label titlePost = new Label("\t"+post.getTitle());
+                Label titlePost = new Label(post.getTitle());
                 titlePost.setStyle("-fx-font-weight: bold");
-                titlePost.setPadding(new Insets(30,0,30,100));
+                titlePost.setPadding(new Insets(10,0,5,100));
                 titlePost.setWrapText(true);
 
-                TextArea txtPost = new TextArea("\t"+post.getPostTxt());
-                txtPost.setWrapText(true);
+                Text text = new Text(post.getPostTxt());
+                TextFlow txtPost = new TextFlow();
                 txtPost.setCache(false);
                 txtPost.setCacheShape(false);
                 txtPost.setCenterShape(false);
-                txtPost.setEditable(false);
                 txtPost.setFocusTraversable(false);
-                
-                //Ajuste necessário caso não houver imagem
-                ImageView image = new ImageView(new Image(getClass().getResourceAsStream(post.getImagem())));
-                image.setFitHeight(image.getFitHeight());
-                image.setFitWidth(image.getFitWidth());
-                //image.setPreserveRatio(true);
+                txtPost.getChildren().add(text);
                 
                 HBox box = new HBox(1);
-                box.getChildren().add(image);
-                box.setPadding(new Insets(0,0,0,100));
-
+                ImageView image;
+                if(post.getImagem()!=null){
+                    image = new ImageView(new Image(new FileInputStream(post.getImagem())));
+                    image.setFitHeight(image.getFitHeight());
+                    image.setFitWidth(image.getFitWidth());
+                    image.setPreserveRatio(true);
+                    box.getChildren().add(image);
+                    box.setPadding(new Insets(10,0,0,100));
+                }
+                
                 int likesQnt = post.getLikes();
+                Label lblQntLikes = new Label(String.valueOf(likesQnt));
+                lblQntLikes.setPadding(new Insets(3,0,0,2));
 
-                Button like = new Button(" "+String.valueOf(likesQnt)+" ");
+                Button like = new Button("   ");
                 like.setCursor(Cursor.HAND);
                 like.setStyle(
                 "-fx-shape: \"M11.8,0c-1.7,0-3.2,1.4-3.8,2.8C7.4,1.4,5.9,0,4.2,0C1.9,0,0,1.9,0,4.2c0,4.7,4.8,5.9,8,10.63.0-4.65,8-6.05,8-10.6C16,1.9,14.1,0,11.8,0z\";"
@@ -143,15 +151,16 @@ public class ProfileScreen {
                 comment.setBorder(null);
                 comment.setFocusTraversable(false);
 
-                like.setOnMouseClicked(event->generateLikes(post, like,likesQnt));
+                like.setOnMouseClicked(event->generateLikes(post, like,lblQntLikes,likesQnt));
 
                 comment.setOnMouseClicked(event ->{
 
                 });
 
                 comment.setUnderline(true);
+
                 HBox box1 = new HBox(2);
-                box1.getChildren().addAll(like,comment);
+                box1.getChildren().addAll(new HBox((double)5,like,lblQntLikes),comment);
                 box1.setPadding(new Insets(10,10,10,100));
                 box1.setSpacing(650);
 
@@ -159,8 +168,8 @@ public class ProfileScreen {
                 box2.getChildren().addAll(txtPost);
                 box2.setPadding(new Insets(0,0,0,100));
                 txtPost.setPrefWidth(800);
-                
-                vBox.getChildren().addAll(hBox,titlePost,box,box2,box1); 
+
+                vBox.getChildren().addAll(hBox,titlePost,box2,box,box1); 
                 this.vBoxPrincipal.getChildren().add(vBox);
             }
         }catch(Exception ie){
@@ -168,7 +177,7 @@ public class ProfileScreen {
         }
     }
 
-    private void generateLikes(Post post, Button like, int likesQnt) {
+    private void generateLikes(Post post, Button like, Label showLike, int likesQnt) {
         if(post.checkLike(id)!=0){
             like.setStyle(
                 "-fx-shape: \"M11.8,0c-1.7,0-3.2,1.4-3.8,2.8C7.4,1.4,5.9,0,4.2,0C1.9,0,0,1.9,0,4.2c0,4.7,4.8,5.9,8,10.63.0-4.65,8-6.05,8-10.6C16,1.9,14.1,0,11.8,0z\"; -fx-background-color: red; -fx-text-fill:white;"
@@ -181,7 +190,7 @@ public class ProfileScreen {
             post.removeLike(id);
           }
           likesQnt=post.getLikes();
-          like.setText(" "+String.valueOf(likesQnt)+" ");
+          showLike.setText(String.valueOf(likesQnt));
     }
 
 
