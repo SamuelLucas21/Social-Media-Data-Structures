@@ -38,7 +38,7 @@
                </font>
             </Label>
             <Line endX="333.0" layoutX="107.0" layoutY="202.0" startX="-107.0" stroke="#7b38ff" strokeWidth="3.0" />
-            <TextArea fx:id="txtPublicArgs" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="16.0" layoutY="95.0" prefHeight="98.0" prefWidth="406.0" scaleShape="false" style="-fx-border-style: none;" text="dskd&#10;dskd&#10;dskd&#10;dskd&#10;dskd&#10;dskd&#10;dskd&#10;" wrapText="true">
+            <TextArea fx:id="txtPublicArgs" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="16.0" layoutY="95.0" prefHeight="98.0" prefWidth="406.0" scaleShape="false" style="-fx-border-style: none;" wrapText="true">
                <stylesheets>
                   <URL value="@CSS/ScrollPane.css" />
                   <URL value="@CSS/TxtAreaToPosts.css" />

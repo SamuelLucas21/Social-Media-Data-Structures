@@ -12,6 +12,8 @@
     -fx-font-family: MyCustomFont;
     -fx-font-weight: Poppins-Regular;
     -fx-font-size: 16;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
 }
 
 .text-area:focused {

@@ -14,7 +14,7 @@
 
 .specialJFXTabPane .tab .tab-label { 
     -fx-alignment: CENTER;
-    -fx-text-fill: rgb(6, 6, 6);
+    -fx-text-fill: white;
     -fx-font-size: 13.5px; /* before it was 12px */
     -fx-font-weight: bold;
     -fx-wrap-text: true;
@@ -23,22 +23,28 @@
 
 .specialJFXTabPane .tab:hover .tab-label{
 	-fx-text-fill:white;
-	-fx-background-color:red !important;	
+	-fx-background-color:rgb(9, 215, 242) !important;	
 	-fx-background-radius: 0.0;
 }
 
 .specialJFXTabPane .tab:selected .tab-label{
 	-fx-background-color:#FFFFFF27;
+    -fx-text-fill: black;
 }
 .tab-pane .tab:selected
 {
-    -fx-background-color: gray;
+    -fx-background-color: white;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    /*-fx-border-weight: none;
+    -fx-border-radius:8px;
+    */
 }
 
 .tab-pane .tab
 {
     -fx-background-color:rgb(123,56,255);
+    -fx-backgroud-radius: 8px;
     -fx-border-color: black;
     -fx-border-radius: 8px;
-
 }

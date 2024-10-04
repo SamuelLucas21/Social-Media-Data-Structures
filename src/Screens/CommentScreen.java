@@ -127,7 +127,11 @@ public class CommentScreen {
                 this.ImageImgPost.setImage(new Image(new FileInputStream(this.post.getImagem())));
             }
             String photo = List_User.getPoint(0).user[this.post.getIduser()].getPhotoProfile(); 
-            if(photo!=null)this.ImageUser.setImage(new Image(getClass().getResourceAsStream(photo)));
+            if(photo!=null){
+                this.ImageUser.setImage(new Image(new FileInputStream(photo)));
+                this.ImageUser.setFitHeight(50);
+                this.ImageUser.setFitWidth(50);
+            }
             organize();
         }catch(Exception ie){
             ie.printStackTrace();

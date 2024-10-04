@@ -62,6 +62,9 @@ public class ProfileScreen {
             this.stage.setScene(new Scene(pane));
             this.stage.setTitle("Perfil");
             this.stage.setResizable(false);
+
+            pane.requestFocus();
+            
         }
 
     public Stage getStage(){return this.stage;}

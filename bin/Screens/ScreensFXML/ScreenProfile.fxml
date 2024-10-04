@@ -240,7 +240,7 @@
       </Pane>
       <TabPane layoutX="283.0" layoutY="78.0" prefHeight="639.0" prefWidth="1009.0" style="-fx-background-color: white;" styleClass="specialJFXTabPane" stylesheets="@CSS/Tab2.css" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Publicações">
+          <Tab style="-fx-border-radius: 20px; -fx-background-radius: 20px;" text="Publicações">
                <content>
                   <Pane>
                      <children>
@@ -252,7 +252,7 @@
                      </children>
                   </Pane>
                </content></Tab>
-          <Tab text="Depoimentos" />
+          <Tab style="-fx-border-radius: 20px; -fx-background-radius: 20px;" text="Depoimentos" />
         </tabs>
       </TabPane>
    </children>

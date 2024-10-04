@@ -1,22 +1,28 @@
 .text-area {
-    -fx-background-color: white, white, white;
+    -fx-background-color: transparent, transparent, transparent;
     -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1;
     -fx-font-family: Poppins-Regular;
     -fx-font-weight: normal; /* Corrigido para 'normal' */
     -fx-font-size: 13;
     -fx-cursor: default; /* Cursor de mão quando não está em hover ou focus */
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
 }
 
 .text-area:focused {
     -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1; 
     -fx-border-style: transparent;  
     /* Remover o cursor para o estado focused */
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
 }
 
 .text-area:hover {
     -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1; 
     -fx-border-style: transparent;  
     -fx-cursor: default; /* Alterar para cursor padrão ao passar o mouse */
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
 }
 
 /* Estilo para o ScrollPane */
@@ -26,13 +32,19 @@
     -fx-border-width: 2;
     -fx-border-color: transparent;
     -fx-border-radius: 3px;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
 }
 
 .scroll-pane:focused {
     -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1; 
     -fx-border-style: transparent; 
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
 }
 
 .scroll-pane > .viewport {
-    -fx-background-color: white, white, white; /* Fundo da área de visualização */
+    -fx-background-color: transparent, transparent, transparent; /* Fundo da área de visualização */
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
 }
