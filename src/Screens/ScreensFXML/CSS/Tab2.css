@@ -1,0 +1,44 @@
+.specialJFXTabPane .tab-header-area .tab-header-background {
+    /*-fx-opacity: 0.0;*/
+    -fx-background-color: rgb(123,56,255) !important;  	    
+}
+
+.specialJFXTabPane .tab-header-area .jfx-rippler{
+    -fx-rippler-fill:firebrick !important;
+    -fx-cursor:hand;
+}
+
+.specialJFXTabPane .tab-header-area  .tab-selected-line{
+     -fx-stroke: firebrick !important;
+}
+
+.specialJFXTabPane .tab .tab-label { 
+    -fx-alignment: CENTER;
+    -fx-text-fill: rgb(6, 6, 6);
+    -fx-font-size: 13.5px; /* before it was 12px */
+    -fx-font-weight: bold;
+    -fx-wrap-text: true;
+    -fx-cursor:hand;
+}
+
+.specialJFXTabPane .tab:hover .tab-label{
+	-fx-text-fill:white;
+	-fx-background-color:red !important;	
+	-fx-background-radius: 0.0;
+}
+
+.specialJFXTabPane .tab:selected .tab-label{
+	-fx-background-color:#FFFFFF27;
+}
+.tab-pane .tab:selected
+{
+    -fx-background-color: gray;
+}
+
+.tab-pane .tab
+{
+    -fx-background-color:rgb(123,56,255);
+    -fx-border-color: black;
+    -fx-border-radius: 8px;
+
+}

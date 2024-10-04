@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)https://code.makery.ch/blog/javafx-dialogs-official/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JavaFX Dialogs (official) | code.makery.ch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    
+    
+    
+    <link rel="stylesheet" href="./JavaFX Dialogs (official) _ code.makery.ch_files/style.css">
+
+    
+
+    
+    
+
+    
+    <meta name="description" content="Examples of how to create simple popup Dialogs and Alerts in JavaFX. Official Dialogs were included in JDK 8u40.">
+    <meta name="author" content="Marco Jakob">
+
+    
+    <meta name="twitter:card" value="summary">
+
+    
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="JavaFX Dialogs (official) | code.makery.ch">
+    <meta property="og:description" content="Examples of how to create simple popup Dialogs and Alerts in JavaFX. Official Dialogs were included in JDK 8u40.">
+    <meta property="og:url" content="https://code.makery.ch/blog/javafx-dialogs-official/">
+    
+      <meta property="og:image" content="https://code.makery.ch/blog/javafx-dialogs-official/login-dialog.png">
+      
+    
+
+    <script type="text/javascript" async="" src="./JavaFX Dialogs (official) _ code.makery.ch_files/js"></script><script async="" src="./JavaFX Dialogs (official) _ code.makery.ch_files/analytics.js"></script><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+    
+  <link rel="stylesheet" type="text/css" href="./JavaFX Dialogs (official) _ code.makery.ch_files/prettify.css"><meta id="bbafmabaelnnkondpfpjmdklbmfnbmol"></head>
+
+
+  <body>
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="https://code.makery.ch/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+
+  
+</header>
+
+    
+<div class="container post-container">
+  <nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="https://code.makery.ch/">Home</a></li>
+    <li><a class="black-link" href="https://code.makery.ch/library/">Library</a></li>
+    <li><a class="black-link" href="https://code.makery.ch/paths/">Paths</a></li>
+    <li><a class="main-link" href="https://code.makery.ch/blog/">Blog</a></li>
+    <li><a class="black-link" href="https://code.makery.ch/about/">About</a></li>
+  </ul>
+</nav>
+
+  <article>
+    <header class="post-header">
+      <h1 class="post-title">JavaFX Dialogs (official)</h1>
+      <div class="post-date text-center">
+  <span>
+    
+  
+
+
+<time class="article-date" itemprop="dateModified" datetime="2014-10-28">
+  Oct 28, 2014
+  
+</time>
+  </span>
+  
+    • 
+    <span>
+    
+    
+      <a href="https://code.makery.ch/blog/tag/java/">Java</a>,
+    
+      <a href="https://code.makery.ch/blog/tag/javafx/">JavaFX</a>
+    
+    </span>
+  
+</div>
+    </header>
+
+    <div class="post-content">
+      <p>JavaFX 8u40 finally includes simple Dialogs and Alerts! I’ve been waiting for this since 2012! In the meantime I wrote about how to use Dialogs <a href="https://code.makery.ch/blog/javafx-2-dialogs/">in JavaFX 2</a> and later <a href="https://code.makery.ch/blog/javafx-8-dialogs/">in JavaFX 8 with ControlsFX</a>.</p>
+<p>Now that they are available in the official JDK, let’s learn how to use them.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>To use the official JavaFX Dialogs you need JDK 8u40 or later.</p>
+<p>→ <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK 8u40</a> or newer.</p>
+<h2 id="standard-dialogs">Standard Dialogs</h2>
+<h3 id="information-dialog">Information Dialog</h3>
+<p><img src="./JavaFX Dialogs (official) _ code.makery.ch_files/information-dialog.png" alt="JavaFX Information Dialog"></p>
+<pre class="prettyprint lang-java prettyprinted" style=""><span class="typ">Alert</span><span class="pln"> alert </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Alert</span><span class="pun">(</span><span class="typ">AlertType</span><span class="pun">.</span><span class="pln">INFORMATION</span><span class="pun">);</span><span class="pln">
+alert</span><span class="pun">.</span><span class="pln">setTitle</span><span class="pun">(</span><span class="str">"Information Dialog"</span><span class="pun">);</span><span class="pln">
+alert</span><span class="pun">.</span><span class="pln">setHeaderText</span><span class="pun">(</span><span class="str">"Look, an Information Dialog"</span><span class="pun">);</span><span class="pln">
+alert</span><span class="pun">.</span><span class="pln">setContentText</span><span class="pun">(</span><span class="str">"I have a great message for you!"</span><span class="pun">);</span><span class="pln">
+
+alert</span><span class="pun">.</span><span class="pln">showAndWait</span><span class="pun">();</span></pre>
+<h4 id="without-header-text">Without Header Text</h4>
+<p><img src="./JavaFX Dialogs (official) _ code.makery.ch_files/information-dialog-no-header.png" alt="JavaFX Information Dialog without Header Text"></p>
+<pre class="prettyprint lang-java prettyprinted" style=""><span class="typ">Alert</span><span class="pln"> alert </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Alert</span><span class="pun">(</span><span class="typ">AlertType</span><span class="pun">.</span><span class="pln">INFORMATION</span><span class="pun">);</span><span class="pln">
+alert</span><span class="pun">.</span><span class="pln">setTitle</span><span class="pun">(</span><span class="str">"Information Dialog"</span><span class="pun">);</span><span class="pln">
+alert</span><span class="pun">.</span><span class="pln">setHeaderText</span><span class="pun">(</span><span class="kwd">null</span><span class="pun">);</span><span class="pln">
+alert</span><span class="pun">.</span><span class="pln">setContentText</span><span class="pun">(</span><span class="str">"I have a great message for you!"</span><span class="pun">);</span><span class="pln">
+
+alert</span><span class="pun">.</span><span class="pln">showAndWait</span><span class="pun">();</span></pre>
+<h3 id="warning-dialog">Warning Dialog</h3>
+<p><img src="./JavaFX Dialogs (official) _ code.makery.ch_files/warning-dialog.png" alt="JavaFX Warning Dialog"></p>
+<pre class="prettyprint lang-java prettyprinted" style=""><span class="typ">Alert</span><span class="pln"> alert </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Alert</span><span class="pun">(</span><span class="typ">AlertType</span><span class="pun">.</span><span class="pln">WARNING</span><span class="pun">);</span><span class="pln">
+alert</span><span class="pun">.</span><span class="pln">setTitle</span><span class="pun">(</span><span class="str">"Warning Dialog"</span><span class="pun">);</span><span class="pln">
+alert</span><span class="pun">.</span><span class="pln">setHeaderText</span><span class="pun">(</span><span class="str">"Look, a Warning Dialog"</span><span class="pun">);</span><span class="pln">
+alert</span><span class="pun">.</span><span class="pln">setContentText</span><span class="pun">(</span><span class="str">"Careful with the next step!"</span><span class="pun">);</span><span class="pln">
+
+alert</span><span class="pun">.</span><span class="pln">showAndWait</span><span class="pun">();</span></pre>
+<h3 id="error-dialog">Error Dialog</h3>
+<p><img src="./JavaFX Dialogs (official) _ code.makery.ch_files/error-dialog.png" alt="JavaFX Error Dialog"></p>
+<pre class="prettyprint lang-java prettyprinted" style=""><span class="typ">Alert</span><span class="pln"> alert </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Alert</span><span class="pun">(</span><span class="typ">AlertType</span><span class="pun">.</span><span class="pln">ERROR</span><span class="pun">);</span><span class="pln">
+alert</span><span class="pun">.</span><span class="pln">setTitle</span><span class="pun">(</span><span class="str">"Error Dialog"</span><span class="pun">);</span><span class="pln">
+alert</span><span class="pun">.</span><span class="pln">setHeaderText</span><span class="pun">(</span><span class="str">"Look, an Error Dialog"</span><span class="pun">);</span><span class="pln">
+alert</span><span class="pun">.</span><span class="pln">setContentText</span><span class="pun">(</span><span class="str">"Ooops, there was an error!"</span><span class="pun">);</span><span class="pln">
+
+alert</span><span class="pun">.</span><span class="pln">showAndWait</span><span class="pun">();</span></pre>
+<h3 id="exception-dialog">Exception Dialog</h3>
+<p><img src="./JavaFX Dialogs (official) _ code.makery.ch_files/exception-dialog.png" alt="JavaFX Exception Dialog"></p>
+<p>There is not a complete Exception Dialog out of the box. But we can easily provide <code>TextArea</code> as expandable content.</p>
+<pre class="prettyprint lang-java prettyprinted" style=""><span class="typ">Alert</span><span class="pln"> alert </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Alert</span><span class="pun">(</span><span class="typ">AlertType</span><span class="pun">.</span><span class="pln">ERROR</span><span class="pun">);</span><span class="pln">
+alert</span><span class="pun">.</span><span class="pln">setTitle</span><span class="pun">(</span><span class="str">"Exception Dialog"</span><span class="pun">);</span><span class="pln">
+alert</span><span class="pun">.</span><span class="pln">setHeaderText</span><span class="pun">(</span><span class="str">"Look, an Exception Dialog"</span><span class="pun">);</span><span class="pln">
+alert</span><span class="pun">.</span><span class="pln">setContentText</span><span class="pun">(</span><span class="str">"Could not find file blabla.txt!"</span><span class="pun">);</span><span class="pln">
+
+</span><span class="typ">Exception</span><span class="pln"> ex </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">FileNotFoundException</span><span class="pun">(</span><span class="str">"Could not find file blabla.txt"</span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// Create expandable Exception.</span><span class="pln">
+</span><span class="typ">StringWriter</span><span class="pln"> sw </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">StringWriter</span><span class="pun">();</span><span class="pln">
+</span><span class="typ">PrintWriter</span><span class="pln"> pw </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">PrintWriter</span><span class="pun">(</span><span class="pln">sw</span><span class="pun">);</span><span class="pln">
+ex</span><span class="pun">.</span><span class="pln">printStackTrace</span><span class="pun">(</span><span class="pln">pw</span><span class="pun">);</span><span class="pln">
+</span><span class="typ">String</span><span class="pln"> exceptionText </span><span class="pun">=</span><span class="pln"> sw</span><span class="pun">.</span><span class="pln">toString</span><span class="pun">();</span><span class="pln">
+
+</span><span class="typ">Label</span><span class="pln"> label </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Label</span><span class="pun">(</span><span class="str">"The exception stacktrace was:"</span><span class="pun">);</span><span class="pln">
+
+</span><span class="typ">TextArea</span><span class="pln"> textArea </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">TextArea</span><span class="pun">(</span><span class="pln">exceptionText</span><span class="pun">);</span><span class="pln">
+textArea</span><span class="pun">.</span><span class="pln">setEditable</span><span class="pun">(</span><span class="kwd">false</span><span class="pun">);</span><span class="pln">
+textArea</span><span class="pun">.</span><span class="pln">setWrapText</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">);</span><span class="pln">
+
+textArea</span><span class="pun">.</span><span class="pln">setMaxWidth</span><span class="pun">(</span><span class="typ">Double</span><span class="pun">.</span><span class="pln">MAX_VALUE</span><span class="pun">);</span><span class="pln">
+textArea</span><span class="pun">.</span><span class="pln">setMaxHeight</span><span class="pun">(</span><span class="typ">Double</span><span class="pun">.</span><span class="pln">MAX_VALUE</span><span class="pun">);</span><span class="pln">
+</span><span class="typ">GridPane</span><span class="pun">.</span><span class="pln">setVgrow</span><span class="pun">(</span><span class="pln">textArea</span><span class="pun">,</span><span class="pln"> </span><span class="typ">Priority</span><span class="pun">.</span><span class="pln">ALWAYS</span><span class="pun">);</span><span class="pln">
+</span><span class="typ">GridPane</span><span class="pun">.</span><span class="pln">setHgrow</span><span class="pun">(</span><span class="pln">textArea</span><span class="pun">,</span><span class="pln"> </span><span class="typ">Priority</span><span class="pun">.</span><span class="pln">ALWAYS</span><span class="pun">);</span><span class="pln">
+
+</span><span class="typ">GridPane</span><span class="pln"> expContent </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">GridPane</span><span class="pun">();</span><span class="pln">
+expContent</span><span class="pun">.</span><span class="pln">setMaxWidth</span><span class="pun">(</span><span class="typ">Double</span><span class="pun">.</span><span class="pln">MAX_VALUE</span><span class="pun">);</span><span class="pln">
+expContent</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">label</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">);</span><span class="pln">
+expContent</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">textArea</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// Set expandable Exception into the dialog pane.</span><span class="pln">
+alert</span><span class="pun">.</span><span class="pln">getDialogPane</span><span class="pun">().</span><span class="pln">setExpandableContent</span><span class="pun">(</span><span class="pln">expContent</span><span class="pun">);</span><span class="pln">
+
+alert</span><span class="pun">.</span><span class="pln">showAndWait</span><span class="pun">();</span></pre>
+<h3 id="confirmation-dialog">Confirmation Dialog</h3>
+<p><img src="./JavaFX Dialogs (official) _ code.makery.ch_files/confirmation-dialog.png" alt="JavaFX Confirmation Dialog"></p>
+<pre class="prettyprint lang-java prettyprinted" style=""><span class="typ">Alert</span><span class="pln"> alert </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Alert</span><span class="pun">(</span><span class="typ">AlertType</span><span class="pun">.</span><span class="pln">CONFIRMATION</span><span class="pun">);</span><span class="pln">
+alert</span><span class="pun">.</span><span class="pln">setTitle</span><span class="pun">(</span><span class="str">"Confirmation Dialog"</span><span class="pun">);</span><span class="pln">
+alert</span><span class="pun">.</span><span class="pln">setHeaderText</span><span class="pun">(</span><span class="str">"Look, a Confirmation Dialog"</span><span class="pun">);</span><span class="pln">
+alert</span><span class="pun">.</span><span class="pln">setContentText</span><span class="pun">(</span><span class="str">"Are you ok with this?"</span><span class="pun">);</span><span class="pln">
+
+</span><span class="typ">Optional</span><span class="pun">&lt;</span><span class="typ">ButtonType</span><span class="pun">&gt;</span><span class="pln"> result </span><span class="pun">=</span><span class="pln"> alert</span><span class="pun">.</span><span class="pln">showAndWait</span><span class="pun">();</span><span class="pln">
+</span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">result</span><span class="pun">.</span><span class="pln">get</span><span class="pun">()</span><span class="pln"> </span><span class="pun">==</span><span class="pln"> </span><span class="typ">ButtonType</span><span class="pun">.</span><span class="pln">OK</span><span class="pun">){</span><span class="pln">
+    </span><span class="com">// ... user chose OK</span><span class="pln">
+</span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// ... user chose CANCEL or closed the dialog</span><span class="pln">
+</span><span class="pun">}</span></pre>
+<h3 id="confirmation-dialog-with-custom-actions">Confirmation Dialog with Custom Actions</h3>
+<p><img src="./JavaFX Dialogs (official) _ code.makery.ch_files/confirmation-dialog-custom-actions.png" alt="JavaFX Confirmation Dialog with Custom Actions"></p>
+<pre class="prettyprint lang-java prettyprinted" style=""><span class="typ">Alert</span><span class="pln"> alert </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Alert</span><span class="pun">(</span><span class="typ">AlertType</span><span class="pun">.</span><span class="pln">CONFIRMATION</span><span class="pun">);</span><span class="pln">
+alert</span><span class="pun">.</span><span class="pln">setTitle</span><span class="pun">(</span><span class="str">"Confirmation Dialog with Custom Actions"</span><span class="pun">);</span><span class="pln">
+alert</span><span class="pun">.</span><span class="pln">setHeaderText</span><span class="pun">(</span><span class="str">"Look, a Confirmation Dialog with Custom Actions"</span><span class="pun">);</span><span class="pln">
+alert</span><span class="pun">.</span><span class="pln">setContentText</span><span class="pun">(</span><span class="str">"Choose your option."</span><span class="pun">);</span><span class="pln">
+
+</span><span class="typ">ButtonType</span><span class="pln"> buttonTypeOne </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ButtonType</span><span class="pun">(</span><span class="str">"One"</span><span class="pun">);</span><span class="pln">
+</span><span class="typ">ButtonType</span><span class="pln"> buttonTypeTwo </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ButtonType</span><span class="pun">(</span><span class="str">"Two"</span><span class="pun">);</span><span class="pln">
+</span><span class="typ">ButtonType</span><span class="pln"> buttonTypeThree </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ButtonType</span><span class="pun">(</span><span class="str">"Three"</span><span class="pun">);</span><span class="pln">
+</span><span class="typ">ButtonType</span><span class="pln"> buttonTypeCancel </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ButtonType</span><span class="pun">(</span><span class="str">"Cancel"</span><span class="pun">,</span><span class="pln"> </span><span class="typ">ButtonData</span><span class="pun">.</span><span class="pln">CANCEL_CLOSE</span><span class="pun">);</span><span class="pln">
+
+alert</span><span class="pun">.</span><span class="pln">getButtonTypes</span><span class="pun">().</span><span class="pln">setAll</span><span class="pun">(</span><span class="pln">buttonTypeOne</span><span class="pun">,</span><span class="pln"> buttonTypeTwo</span><span class="pun">,</span><span class="pln"> buttonTypeThree</span><span class="pun">,</span><span class="pln"> buttonTypeCancel</span><span class="pun">);</span><span class="pln">
+
+</span><span class="typ">Optional</span><span class="pun">&lt;</span><span class="typ">ButtonType</span><span class="pun">&gt;</span><span class="pln"> result </span><span class="pun">=</span><span class="pln"> alert</span><span class="pun">.</span><span class="pln">showAndWait</span><span class="pun">();</span><span class="pln">
+</span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">result</span><span class="pun">.</span><span class="pln">get</span><span class="pun">()</span><span class="pln"> </span><span class="pun">==</span><span class="pln"> buttonTypeOne</span><span class="pun">){</span><span class="pln">
+    </span><span class="com">// ... user chose "One"</span><span class="pln">
+</span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">result</span><span class="pun">.</span><span class="pln">get</span><span class="pun">()</span><span class="pln"> </span><span class="pun">==</span><span class="pln"> buttonTypeTwo</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// ... user chose "Two"</span><span class="pln">
+</span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">result</span><span class="pun">.</span><span class="pln">get</span><span class="pun">()</span><span class="pln"> </span><span class="pun">==</span><span class="pln"> buttonTypeThree</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// ... user chose "Three"</span><span class="pln">
+</span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// ... user chose CANCEL or closed the dialog</span><span class="pln">
+</span><span class="pun">}</span></pre>
+<h2 id="text-input-dialog">Text Input Dialog</h2>
+<p><img src="./JavaFX Dialogs (official) _ code.makery.ch_files/text-input-dialog.png" alt="JavaFX Text Input Dialog"></p>
+<pre class="prettyprint lang-java prettyprinted" style=""><span class="typ">TextInputDialog</span><span class="pln"> dialog </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">TextInputDialog</span><span class="pun">(</span><span class="str">"walter"</span><span class="pun">);</span><span class="pln">
+dialog</span><span class="pun">.</span><span class="pln">setTitle</span><span class="pun">(</span><span class="str">"Text Input Dialog"</span><span class="pun">);</span><span class="pln">
+dialog</span><span class="pun">.</span><span class="pln">setHeaderText</span><span class="pun">(</span><span class="str">"Look, a Text Input Dialog"</span><span class="pun">);</span><span class="pln">
+dialog</span><span class="pun">.</span><span class="pln">setContentText</span><span class="pun">(</span><span class="str">"Please enter your name:"</span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// Traditional way to get the response value.</span><span class="pln">
+</span><span class="typ">Optional</span><span class="pun">&lt;</span><span class="typ">String</span><span class="pun">&gt;</span><span class="pln"> result </span><span class="pun">=</span><span class="pln"> dialog</span><span class="pun">.</span><span class="pln">showAndWait</span><span class="pun">();</span><span class="pln">
+</span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">result</span><span class="pun">.</span><span class="pln">isPresent</span><span class="pun">()){</span><span class="pln">
+    </span><span class="typ">System</span><span class="pun">.</span><span class="pln">out</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="str">"Your name: "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> result</span><span class="pun">.</span><span class="pln">get</span><span class="pun">());</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">// The Java 8 way to get the response value (with lambda expression).</span><span class="pln">
+result</span><span class="pun">.</span><span class="pln">ifPresent</span><span class="pun">(</span><span class="pln">name </span><span class="pun">-&gt;</span><span class="pln"> </span><span class="typ">System</span><span class="pun">.</span><span class="pln">out</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="str">"Your name: "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> name</span><span class="pun">));</span></pre>
+<p><strong>Note:</strong> The <code>result.isPresent()</code> will return <code>false</code> if the user cancelled the dialog.</p>
+<h2 id="choice-dialog">Choice Dialog</h2>
+<p><img src="./JavaFX Dialogs (official) _ code.makery.ch_files/choice-dialog.png" alt="JavaFX Choice Dialog"></p>
+<pre class="prettyprint lang-java prettyprinted" style=""><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">String</span><span class="pun">&gt;</span><span class="pln"> choices </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ArrayList</span><span class="pun">&lt;&gt;();</span><span class="pln">
+choices</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="str">"a"</span><span class="pun">);</span><span class="pln">
+choices</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="str">"b"</span><span class="pun">);</span><span class="pln">
+choices</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="str">"c"</span><span class="pun">);</span><span class="pln">
+
+</span><span class="typ">ChoiceDialog</span><span class="pun">&lt;</span><span class="typ">String</span><span class="pun">&gt;</span><span class="pln"> dialog </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ChoiceDialog</span><span class="pun">&lt;&gt;(</span><span class="str">"b"</span><span class="pun">,</span><span class="pln"> choices</span><span class="pun">);</span><span class="pln">
+dialog</span><span class="pun">.</span><span class="pln">setTitle</span><span class="pun">(</span><span class="str">"Choice Dialog"</span><span class="pun">);</span><span class="pln">
+dialog</span><span class="pun">.</span><span class="pln">setHeaderText</span><span class="pun">(</span><span class="str">"Look, a Choice Dialog"</span><span class="pun">);</span><span class="pln">
+dialog</span><span class="pun">.</span><span class="pln">setContentText</span><span class="pun">(</span><span class="str">"Choose your letter:"</span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// Traditional way to get the response value.</span><span class="pln">
+</span><span class="typ">Optional</span><span class="pun">&lt;</span><span class="typ">String</span><span class="pun">&gt;</span><span class="pln"> result </span><span class="pun">=</span><span class="pln"> dialog</span><span class="pun">.</span><span class="pln">showAndWait</span><span class="pun">();</span><span class="pln">
+</span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">result</span><span class="pun">.</span><span class="pln">isPresent</span><span class="pun">()){</span><span class="pln">
+    </span><span class="typ">System</span><span class="pun">.</span><span class="pln">out</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="str">"Your choice: "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> result</span><span class="pun">.</span><span class="pln">get</span><span class="pun">());</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">// The Java 8 way to get the response value (with lambda expression).</span><span class="pln">
+result</span><span class="pun">.</span><span class="pln">ifPresent</span><span class="pun">(</span><span class="pln">letter </span><span class="pun">-&gt;</span><span class="pln"> </span><span class="typ">System</span><span class="pun">.</span><span class="pln">out</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="str">"Your choice: "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> letter</span><span class="pun">));</span></pre>
+<p><strong>Note:</strong> The <code>result.isPresent()</code> will return <code>false</code> if the user didn’t choose anything or cancelled the dialog.</p>
+<h2 id="custom-login-dialog">Custom Login Dialog</h2>
+<p>Here is an example of how to create a custom dialog with a login form:</p>
+<p><img src="./JavaFX Dialogs (official) _ code.makery.ch_files/login-dialog.png" alt="JavaFX Custom Login Dialog"></p>
+<pre class="prettyprint lang-java prettyprinted" style=""><span class="com">// Create the custom dialog.</span><span class="pln">
+</span><span class="typ">Dialog</span><span class="pun">&lt;</span><span class="typ">Pair</span><span class="pun">&lt;</span><span class="typ">String</span><span class="pun">,</span><span class="pln"> </span><span class="typ">String</span><span class="pun">&gt;&gt;</span><span class="pln"> dialog </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Dialog</span><span class="pun">&lt;&gt;();</span><span class="pln">
+dialog</span><span class="pun">.</span><span class="pln">setTitle</span><span class="pun">(</span><span class="str">"Login Dialog"</span><span class="pun">);</span><span class="pln">
+dialog</span><span class="pun">.</span><span class="pln">setHeaderText</span><span class="pun">(</span><span class="str">"Look, a Custom Login Dialog"</span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// Set the icon (must be included in the project).</span><span class="pln">
+dialog</span><span class="pun">.</span><span class="pln">setGraphic</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ImageView</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">.</span><span class="pln">getClass</span><span class="pun">().</span><span class="pln">getResource</span><span class="pun">(</span><span class="str">"login.png"</span><span class="pun">).</span><span class="pln">toString</span><span class="pun">()));</span><span class="pln">
+
+</span><span class="com">// Set the button types.</span><span class="pln">
+</span><span class="typ">ButtonType</span><span class="pln"> loginButtonType </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">ButtonType</span><span class="pun">(</span><span class="str">"Login"</span><span class="pun">,</span><span class="pln"> </span><span class="typ">ButtonData</span><span class="pun">.</span><span class="pln">OK_DONE</span><span class="pun">);</span><span class="pln">
+dialog</span><span class="pun">.</span><span class="pln">getDialogPane</span><span class="pun">().</span><span class="pln">getButtonTypes</span><span class="pun">().</span><span class="pln">addAll</span><span class="pun">(</span><span class="pln">loginButtonType</span><span class="pun">,</span><span class="pln"> </span><span class="typ">ButtonType</span><span class="pun">.</span><span class="pln">CANCEL</span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// Create the username and password labels and fields.</span><span class="pln">
+</span><span class="typ">GridPane</span><span class="pln"> grid </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">GridPane</span><span class="pun">();</span><span class="pln">
+grid</span><span class="pun">.</span><span class="pln">setHgap</span><span class="pun">(</span><span class="lit">10</span><span class="pun">);</span><span class="pln">
+grid</span><span class="pun">.</span><span class="pln">setVgap</span><span class="pun">(</span><span class="lit">10</span><span class="pun">);</span><span class="pln">
+grid</span><span class="pun">.</span><span class="pln">setPadding</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Insets</span><span class="pun">(</span><span class="lit">20</span><span class="pun">,</span><span class="pln"> </span><span class="lit">150</span><span class="pun">,</span><span class="pln"> </span><span class="lit">10</span><span class="pun">,</span><span class="pln"> </span><span class="lit">10</span><span class="pun">));</span><span class="pln">
+
+</span><span class="typ">TextField</span><span class="pln"> username </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">TextField</span><span class="pun">();</span><span class="pln">
+username</span><span class="pun">.</span><span class="pln">setPromptText</span><span class="pun">(</span><span class="str">"Username"</span><span class="pun">);</span><span class="pln">
+</span><span class="typ">PasswordField</span><span class="pln"> password </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">PasswordField</span><span class="pun">();</span><span class="pln">
+password</span><span class="pun">.</span><span class="pln">setPromptText</span><span class="pun">(</span><span class="str">"Password"</span><span class="pun">);</span><span class="pln">
+
+grid</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Label</span><span class="pun">(</span><span class="str">"Username:"</span><span class="pun">),</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">);</span><span class="pln">
+grid</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">username</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">);</span><span class="pln">
+grid</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Label</span><span class="pun">(</span><span class="str">"Password:"</span><span class="pun">),</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">);</span><span class="pln">
+grid</span><span class="pun">.</span><span class="pln">add</span><span class="pun">(</span><span class="pln">password</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// Enable/Disable login button depending on whether a username was entered.</span><span class="pln">
+</span><span class="typ">Node</span><span class="pln"> loginButton </span><span class="pun">=</span><span class="pln"> dialog</span><span class="pun">.</span><span class="pln">getDialogPane</span><span class="pun">().</span><span class="pln">lookupButton</span><span class="pun">(</span><span class="pln">loginButtonType</span><span class="pun">);</span><span class="pln">
+loginButton</span><span class="pun">.</span><span class="pln">setDisable</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// Do some validation (using the Java 8 lambda syntax).</span><span class="pln">
+username</span><span class="pun">.</span><span class="pln">textProperty</span><span class="pun">().</span><span class="pln">addListener</span><span class="pun">((</span><span class="pln">observable</span><span class="pun">,</span><span class="pln"> oldValue</span><span class="pun">,</span><span class="pln"> newValue</span><span class="pun">)</span><span class="pln"> </span><span class="pun">-&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    loginButton</span><span class="pun">.</span><span class="pln">setDisable</span><span class="pun">(</span><span class="pln">newValue</span><span class="pun">.</span><span class="pln">trim</span><span class="pun">().</span><span class="pln">isEmpty</span><span class="pun">());</span><span class="pln">
+</span><span class="pun">});</span><span class="pln">
+
+dialog</span><span class="pun">.</span><span class="pln">getDialogPane</span><span class="pun">().</span><span class="pln">setContent</span><span class="pun">(</span><span class="pln">grid</span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">// Request focus on the username field by default.</span><span class="pln">
+</span><span class="typ">Platform</span><span class="pun">.</span><span class="pln">runLater</span><span class="pun">(()</span><span class="pln"> </span><span class="pun">-&gt;</span><span class="pln"> username</span><span class="pun">.</span><span class="pln">requestFocus</span><span class="pun">());</span><span class="pln">
+
+</span><span class="com">// Convert the result to a username-password-pair when the login button is clicked.</span><span class="pln">
+dialog</span><span class="pun">.</span><span class="pln">setResultConverter</span><span class="pun">(</span><span class="pln">dialogButton </span><span class="pun">-&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">dialogButton </span><span class="pun">==</span><span class="pln"> loginButtonType</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Pair</span><span class="pun">&lt;&gt;(</span><span class="pln">username</span><span class="pun">.</span><span class="pln">getText</span><span class="pun">(),</span><span class="pln"> password</span><span class="pun">.</span><span class="pln">getText</span><span class="pun">());</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="kwd">null</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">});</span><span class="pln">
+
+</span><span class="typ">Optional</span><span class="pun">&lt;</span><span class="typ">Pair</span><span class="pun">&lt;</span><span class="typ">String</span><span class="pun">,</span><span class="pln"> </span><span class="typ">String</span><span class="pun">&gt;&gt;</span><span class="pln"> result </span><span class="pun">=</span><span class="pln"> dialog</span><span class="pun">.</span><span class="pln">showAndWait</span><span class="pun">();</span><span class="pln">
+
+result</span><span class="pun">.</span><span class="pln">ifPresent</span><span class="pun">(</span><span class="pln">usernamePassword </span><span class="pun">-&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="typ">System</span><span class="pun">.</span><span class="pln">out</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="str">"Username="</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> usernamePassword</span><span class="pun">.</span><span class="pln">getKey</span><span class="pun">()</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">", Password="</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> usernamePassword</span><span class="pun">.</span><span class="pln">getValue</span><span class="pun">());</span><span class="pln">
+</span><span class="pun">});</span></pre>
+<h2 id="styling-the-dialogs">Styling the Dialogs</h2>
+<h3 id="custom-icon">Custom Icon</h3>
+<p><img src="./JavaFX Dialogs (official) _ code.makery.ch_files/custom-icon.png" alt="Custom Dialog Icon"></p>
+<p>In the current version it’s a bit cumbersome to get to the Dialog’s <code>Stage</code> to be able to set its icon. Here is how:</p>
+<pre class="prettyprint lang-java prettyprinted" style=""><span class="com">// Get the Stage.</span><span class="pln">
+</span><span class="typ">Stage</span><span class="pln"> stage </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="typ">Stage</span><span class="pun">)</span><span class="pln"> dialog</span><span class="pun">.</span><span class="pln">getDialogPane</span><span class="pun">().</span><span class="pln">getScene</span><span class="pun">().</span><span class="pln">getWindow</span><span class="pun">();</span><span class="pln">
+
+</span><span class="com">// Add a custom icon.</span><span class="pln">
+stage</span><span class="pun">.</span><span class="pln">getIcons</span><span class="pun">().</span><span class="pln">add</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Image</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">.</span><span class="pln">getClass</span><span class="pun">().</span><span class="pln">getResource</span><span class="pun">(</span><span class="str">"login.png"</span><span class="pun">).</span><span class="pln">toString</span><span class="pun">()));</span></pre>
+<p>According to <a href="https://javafx-jira.kenai.com/browse/RT-38895">this bug report</a> the final version of the JavaFX 8u40 Dialogs should use the same icon as the application that it is running from. In that case you would need to set its owner and the Dialog would get the owner’s icon:</p>
+<pre class="prettyprint lang-java prettyprinted" style=""><span class="pln">dialog</span><span class="pun">.</span><span class="pln">initOwner</span><span class="pun">(</span><span class="pln">otherStage</span><span class="pun">);</span></pre>
+<h3 id="minimal-decorations">Minimal Decorations</h3>
+<p>Another option is to remove the icon and use only minimal window decorations.</p>
+<p><img src="./JavaFX Dialogs (official) _ code.makery.ch_files/minimal-decorations.png" alt="Minimal Decorations"></p>
+<pre class="prettyprint lang-java prettyprinted" style=""><span class="pln">dialog</span><span class="pun">.</span><span class="pln">initStyle</span><span class="pun">(</span><span class="typ">StageStyle</span><span class="pun">.</span><span class="pln">UTILITY</span><span class="pun">);</span></pre>
+<h2 id="other-options">Other Options</h2>
+<h3 id="setting-the-owner">Setting the Owner</h3>
+<p>You can specify the owner <code>Window</code> for a dialog. If no owner or null is specified for the owner, it is a top-level, unowned dialog.</p>
+<pre class="prettyprint lang-java prettyprinted" style=""><span class="pln">dialog</span><span class="pun">.</span><span class="pln">initOwner</span><span class="pun">(</span><span class="pln">parentWindow</span><span class="pun">);</span></pre>
+<h3 id="setting-the-modality">Setting the Modality</h3>
+<p>You can specify the modality for a dialog. The modality must be one of <code>Modality.NONE</code>, <code>Modality.WINDOW_MODAL</code>, or <code>Modality.APPLICATION_MODAL</code>.</p>
+<pre class="prettyprint lang-java prettyprinted" style=""><span class="pln">dialog</span><span class="pun">.</span><span class="pln">initModality</span><span class="pun">(</span><span class="typ">Modality</span><span class="pun">.</span><span class="pln">NONE</span><span class="pun">);</span></pre>
+<h2 id="api-documentation">API Documentation</h2>
+<p>For more information on the Dialogs have a look at the JavaFX API docs:</p>
+<ul>
+<li><a href="http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Alert.html">Alert</a></li>
+<li><a href="http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Dialog.html">Dialog</a></li>
+<li><a href="http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TextInputDialog.html">TextInputDialog</a></li>
+<li><a href="http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ChoiceDialog.html">ChoiceDialog</a></li>
+<li><a href="http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/DialogPane.html">DialogPane</a></li>
+</ul>
+
+    </div>
+  </article>
+  
+  
+</div>
+
+
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="https://code.makery.ch/blog/index.xml" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="mailto:info@makery.ch" data-toggle="tooltip" data-placement="top" title="info@makery.ch">
+          <i class="fa fa-envelope" style="margin-top: -1px; margin-left: -1px;"></i>
+        </a>
+      </p>
+
+      
+
+      <p>
+        <small>
+          Created by <a href="https://code.makery.ch/about">Marco Jakob</a> • Licensed under <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="./JavaFX Dialogs (official) _ code.makery.ch_files/jquery.min.js"></script>
+    <script type="text/javascript" src="./JavaFX Dialogs (official) _ code.makery.ch_files/bootstrap.min.js"></script>
+    
+    
+  
+    
+  
+
+  
+  
+
+  
+
+</body></html>

@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'MyCustomFont'; /* Give your font a unique name */
+    src: url('./FontPoppins/Poppins/Poppins-Regular.ttf') format('ttf');
+   /* Path to font files */
+    font-weight: normal;  /* Specify the font's weight */
+    font-style: normal;  /* Specify the font's style */
+  }
+
+
+.button{
+    -fx-background-color: rgb(204,95,95);
+    -fx-font-family: MyCustomFont;
+    -fx-font-weight: bold;
+    -fx-font-size: 20;
+}
+.button:hover {
+    -fx-background-color: rgb(9, 215, 242);
+}

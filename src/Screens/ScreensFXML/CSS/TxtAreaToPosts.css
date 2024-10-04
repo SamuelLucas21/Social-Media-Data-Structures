@@ -1,0 +1,38 @@
+.text-area {
+    -fx-background-color: white, white, white;
+    -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1;
+    -fx-font-family: Poppins-Regular;
+    -fx-font-weight: normal; /* Corrigido para 'normal' */
+    -fx-font-size: 13;
+    -fx-cursor: default; /* Cursor de mão quando não está em hover ou focus */
+}
+
+.text-area:focused {
+    -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1; 
+    -fx-border-style: transparent;  
+    /* Remover o cursor para o estado focused */
+}
+
+.text-area:hover {
+    -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1; 
+    -fx-border-style: transparent;  
+    -fx-cursor: default; /* Alterar para cursor padrão ao passar o mouse */
+}
+
+/* Estilo para o ScrollPane */
+.scroll-pane {
+    -fx-background-color: white, white, white; /* Fundo do ScrollPane */
+    -fx-border-style: transparent;
+    -fx-border-width: 2;
+    -fx-border-color: transparent;
+    -fx-border-radius: 3px;
+}
+
+.scroll-pane:focused {
+    -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1; 
+    -fx-border-style: transparent; 
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: white, white, white; /* Fundo da área de visualização */
+}

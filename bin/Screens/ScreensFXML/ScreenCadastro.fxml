@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1270.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField fx:id="txtName" layoutX="161.0" layoutY="101.0" prefHeight="40.0" prefWidth="335.0" promptText="Digite seu nome" stylesheets="@CSS/txtEmailLogin.css" />
+      <TextField fx:id="txtEmail" layoutX="161.0" layoutY="167.0" prefHeight="40.0" prefWidth="335.0" promptText="Digite seu e-mail" stylesheets="@CSS/txtEmailLogin.css" />
+      <TextField fx:id="txtIdade" layoutX="161.0" layoutY="234.0" prefHeight="40.0" prefWidth="335.0" promptText="Digite sua idade" stylesheets="@CSS/txtEmailLogin.css" />
+      <TextField fx:id="txtLocal" layoutX="161.0" layoutY="295.0" prefHeight="40.0" prefWidth="335.0" promptText="Digite seu local de Nascimento" stylesheets="@CSS/txtEmailLogin.css" />
+      <TextField fx:id="txtPass" layoutX="161.0" layoutY="424.0" prefHeight="40.0" prefWidth="335.0" stylesheets="@CSS/txtEmailLogin.css" />
+      <TextField fx:id="txtPassConfirm" layoutX="161.0" layoutY="492.0" prefHeight="40.0" prefWidth="335.0" stylesheets="@CSS/txtEmailLogin.css" />
+      <Button fx:id="btnCadastrar" layoutX="122.0" layoutY="562.0" mnemonicParsing="false" onMouseClicked="#actionSignUser" prefHeight="42.0" prefWidth="407.0" style="-fx-font-style: 20;" stylesheets="@CSS/ButtonsLogin.css" text="Cadastrar-se" textFill="WHITE" />
+      <PasswordField fx:id="txtOcultPass" layoutX="161.0" layoutY="424.0" prefHeight="40.0" prefWidth="335.0" promptText="Digite uma senha" stylesheets="@CSS/txtEmailLogin.css" />
+      <PasswordField fx:id="txtOcultPass1" layoutX="161.0" layoutY="492.0" prefHeight="40.0" prefWidth="335.0" promptText="Confirme sua senha" stylesheets="@CSS/txtEmailLogin.css" />
+      <Label layoutX="184.0" layoutY="23.0" style="-fx-font-size: 52; -fx-font-weight: bold;" text="Cadastrar" />
+      <ImageView fitHeight="749.0" fitWidth="802.0" layoutX="474.0" layoutY="-16.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Imagens/Ellipse_2.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="510.0" fitWidth="501.0" layoutX="728.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Imagens/loginLog.png" />
+         </image>
+      </ImageView>
+      <CheckBox fx:id="check1" layoutX="509.0" layoutY="431.0" mnemonicParsing="false" onMouseClicked="#checkPass" prefHeight="25.0" prefWidth="20.0" stylesheets="@CSS/CheckBox.css" />
+      <CheckBox fx:id="check2" layoutX="509.0" layoutY="496.0" mnemonicParsing="false" onMouseClicked="#checkPassConfirm" prefHeight="25.0" prefWidth="20.0" stylesheets="@CSS/CheckBox.css" />
+      <Label layoutX="145.0" layoutY="656.0" prefHeight="25.0" prefWidth="220.0" text="Já possui uma conta?">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Hyperlink fx:id="hyperlinkBack" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="369.0" layoutY="652.0" onMouseClicked="#BackToLogin" prefHeight="33.0" prefWidth="140.0" scaleShape="false" text="Faça o Login" underline="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Hyperlink>
+      <Line endX="43.0" layoutX="246.0" layoutY="635.0" startX="-100.0" />
+      <Line endX="43.0" layoutX="458.0" layoutY="635.0" startX="-100.0" />
+      <Label layoutX="310.0" layoutY="624.0" text="OU">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="42.0" fitWidth="40.0" layoutX="120.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Imagens/userIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="40.0" layoutX="119.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Imagens/at-sign.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="40.0" layoutX="119.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Imagens/iconAge.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="41.0" layoutX="118.0" layoutY="299.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Imagens/iconLocal.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="40.0" layoutX="120.0" layoutY="363.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Imagens/relationship.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="40.0" layoutX="119.0" layoutY="422.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Imagens/icon%20_lock_.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="40.0" layoutX="119.0" layoutY="491.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Imagens/icon%20_lock_.png" />
+         </image>
+      </ImageView>
+      <ComboBox fx:id="comboBoxCivil" layoutX="161.0" layoutY="366.0" prefHeight="33.0" prefWidth="335.0" promptText="Selecione seu estado civil" stylesheets="@CSS/ComboBox.css" />
+   </children>
+</Pane>

@@ -1,0 +1,9 @@
+.hbox {
+    -fx-border-color: white;
+    -fx-border-radius: 7px;
+    -fx-border-width: 3;
+}
+
+.hbox:hover {
+    -fx-border-color:  rgb(123,56,255)
+}

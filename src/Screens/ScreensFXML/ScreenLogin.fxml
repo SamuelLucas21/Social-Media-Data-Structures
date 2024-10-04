@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1270.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField fx:id="txtEmail" layoutX="818.0" layoutY="217.0" prefHeight="30.0" prefWidth="370.0" promptText="Digite seu e-mail" stylesheets="@CSS/txtEmailLogin.css" />
+      <TextField fx:id="txtPass" layoutX="818.0" layoutY="300.0" prefHeight="30.0" prefWidth="370.0" promptText="Digite sua senha" stylesheets="@CSS/txtEmailLogin.css" />
+      <Button fx:id="btnEntrar" layoutX="786.0" layoutY="374.0" mnemonicParsing="false" onMouseClicked="#enterToHome" prefHeight="42.0" prefWidth="403.0" stylesheets="@CSS/ButtonsLogin.css" text="Acessar" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="btnCadastrar" layoutX="786.0" layoutY="471.0" mnemonicParsing="false" onMouseClicked="#enterToSign" prefHeight="42.0" prefWidth="403.0" stylesheets="@CSS/ButtonsLogin.css" text="Cadastrar-se" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <ImageView fitHeight="712.0" fitWidth="804.0" layoutX="-28.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Imagens/Ellipse%201.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="575.0" fitWidth="553.0" layoutX="56.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Imagens/loginLog.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="895.0" layoutY="70.0" prefHeight="78.0" prefWidth="200.0" style="-fx-font-size: 52; -fx-font-weight: bold;" text="Entrar">
+         <font>
+            <Font name="Open Sans Bold" size="13.0" />
+         </font></Label>
+      <Hyperlink fx:id="linkEmail" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="1072.0" layoutY="338.0" onMouseClicked="#getNewPassword" prefHeight="22.0" prefWidth="117.0" scaleShape="false" text="Esqueceu a senha?" textAlignment="CENTER" underline="true">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Hyperlink>
+      <Line endX="53.0" layoutX="905.0" layoutY="443.0" startX="-100.0" />
+      <Line endX="53.0" layoutX="1117.0" layoutY="443.0" startX="-100.0" />
+      <Label layoutX="975.0" layoutY="432.0" text="OU">
+         <font>
+            <Font name="Open Sans Bold" size="14.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="36.0" fitWidth="47.0" layoutX="779.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Imagens/at-sign.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="36.0" layoutX="785.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Imagens/icon%20_lock_.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="eyePass" fitHeight="30.0" fitWidth="22.0" layoutX="1200.0" layoutY="305.0" onMouseClicked="#showPassword" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Imagens/eye-off.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <PasswordField fx:id="passOcult" layoutX="818.0" layoutY="300.0" prefHeight="30.0" prefWidth="370.0" promptText="Digite sua senha" stylesheets="@CSS/txtEmailLogin.css" />
+   </children>
+</Pane>
