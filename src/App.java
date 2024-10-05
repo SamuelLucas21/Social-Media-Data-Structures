@@ -1,5 +1,9 @@
+import java.util.List;
+
+import Body.Chat;
 import Body.Comments;
 import Body.ManagerPosts;
+import Body.Message;
 import Body.Post;
 import Body.User;
 import Screens.LoginScreen;
@@ -39,6 +43,43 @@ public class App extends Application{
             List_User.getPoint(0).user[0].AddFriends(1);
             List_User.getPoint(0).user[1].AddFriends(0);
         }
+            {
+                Chat chat = new Chat();
+                Message message =  new Message();
+                message.setId((short)0);
+                message.setSender((short)0);
+                message.setReceptor((short)1);
+                message.setTxtMessage("User 0 A amizade consegue ser tão complexa. Deixa uns desanimados, outros bem felizes. É a alimentação dos fracos É o reino dos fortes.");
+                chat.add(message);
+                chat.add(message);
+                chat.add(message);
+                chat.add(message);
+                chat.add(message);
+                chat.add(message);
+                chat.add(message);
+                chat.add(message);
+                chat.add(message);
+                List_User.getPoint(0).user[0].getChats().put(1, chat);
+                List_User.getPoint(0).user[1].getChats().put(0, chat);
+                List_User.getPoint(0).user[0].getDequeChat().add(1);
+                List_User.getPoint(0).user[1].getDequeChat().add(0);
+
+                message =  new Message();
+                message.setId((short)0);
+                message.setSender((short)1);
+                message.setReceptor((short)0);
+                message.setTxtMessage("user 1 A amizade consegue ser tão complexa. Deixa uns desanimados, outros bem felizes. É a alimentação dos fracos É o reino dos fortes.");
+                chat.add(message);
+                chat.add(message);
+                chat.add(message);
+                chat.add(message);
+                chat.add(message);
+                chat.add(message);
+                chat.add(message);
+                chat.add(message);
+                //List_User.getPoint(0).user[1].getChats().put(0, chat);
+                //List_User.getPoint(0).user[0].getChats().put(1, chat);                
+            }
 
         {
             user = new User();

@@ -65,6 +65,9 @@ public class HomeScreen{
     @FXML
     private ImageView viewSettings;
 
+    @FXML
+    private HBox Hbox_to_ScreenChat;
+
         public HomeScreen(int i)throws Exception{
             id=i;
             
@@ -265,6 +268,12 @@ public class HomeScreen{
     @FXML
     private void goToProfile(MouseEvent event) throws Exception {
         new ProfileScreen(id).getStage().show();
+        this.stage.close();
+    }
+
+    @FXML
+    private void goToChat(MouseEvent event) throws Exception{
+        new ChatScreen(id).getStage().show();
         this.stage.close();
     }
             

@@ -1,6 +1,9 @@
 package Body;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class User {
 
@@ -9,6 +12,12 @@ public class User {
     private ArrayList<Post> postUser = new ArrayList<>();
     private ArrayList<Integer> friends = new ArrayList<>();
     private ArrayList<Integer> solicit = new ArrayList<>();
+    private ArrayDeque<Integer> dequeChat = new ArrayDeque<>();
+    private Map<Integer,Chat> chat = new HashMap<>();
+    
+    public ArrayDeque<Integer> getDequeChat(){return this.dequeChat;}
+
+    public Map<Integer,Chat> getChats(){return this.chat;}
 
     public void AddFriends(int idFriend){
         this.friends.add(idFriend);
