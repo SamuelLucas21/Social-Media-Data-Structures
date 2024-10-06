@@ -6,8 +6,6 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 import com.jgoodies.common.collect.LinkedListModel;
 
 import Body.Chat;
