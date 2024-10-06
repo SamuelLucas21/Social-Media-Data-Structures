@@ -62,7 +62,6 @@ public class LoginScreen {
                     this.txtEmail.setText("samuel@gmail.com");
                     this.passOcult.setText("1234");
                 }
-
         }
 
         public Stage getStage(){

@@ -50,13 +50,7 @@ public class App extends Application{
                 message.setTxtMessage("User 0 A amizade consegue ser tão complexa. Deixa uns desanimados, outros bem felizes. É a alimentação dos fracos É o reino dos fortes.");
                 chat.add(message);
                 chat.add(message);
-                chat.add(message);
-                chat.add(message);
-                chat.add(message);
-                chat.add(message);
-                chat.add(message);
-                chat.add(message);
-                chat.add(message);
+                
                 List_User.getPoint(0).user[0].getChats().put(1, chat);
                 List_User.getPoint(0).user[1].getChats().put(0, chat);
                 List_User.getPoint(0).user[0].getDequeChat().add(1);
@@ -70,16 +64,8 @@ public class App extends Application{
                 message.setTxtMessage("user 1 A amizade consegue ser tão complexa. Deixa uns desanimados, outros bem felizes. É a alimentação dos fracos É o reino dos fortes.");
                 chat.add(message);
                 chat.add(message);
-                chat.add(message);
-                chat.add(message);
-                chat.add(message);
-                chat.add(message);
-                chat.add(message);
-                chat.add(message);
                 
-
                 System.out.println(List_User.getPoint(0).user[0].getChats().get(1).getLastMessage().getTxtMessage());
-
 
                 //List_User.getPoint(0).user[1].getChats().put(0, chat);
                 //List_User.getPoint(0).user[0].getChats().put(1, chat);                

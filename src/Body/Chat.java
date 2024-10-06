@@ -88,6 +88,7 @@ public class Chat {
                 return;
             }else if(this.tail.getMessage().getId()==idMessage){
                 this.tail=this.tail.getAnt();
+                this.tail.setProx(null);
                 --size;
                 return;
             }else{

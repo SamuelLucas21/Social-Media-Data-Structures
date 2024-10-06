@@ -17,7 +17,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -117,8 +119,23 @@ public class ChatScreen {
                 ArrayList<Message> chat = user.getChats().get(friendUserId).getMessages();
                 for(int i=0;i<chat.size();++i){
                     VBox vBox = new VBox(2);
+                    ContextMenu contecContextMenu = new ContextMenu();
+                    MenuItem menu = new MenuItem("Delete");
+                    contecContextMenu.getItems().add(menu);
                     
+                    int index =i;
+                    menu.setOnAction(event->{
+                        user.getChats().get(friendUserId).remove(chat.get(index).getId());
+                        this.genareteViewChat(friendUserId);
+                    });
+
                     if(chat.get(i).getSender()==id){
+                        vBox.setOnMouseClicked(event->{
+                            if(event.getButton().name().compareTo("SECONDARY")==0){
+                                contecContextMenu.show(vBox, event.getScreenX(), event.getScreenY());
+                            }    
+                        });
+
                         vBox.setPadding(new Insets(10,10,10,this.vboxViewChat.getPrefWidth()/2));    
                         Text text=new Text(chat.get(i).getTxtMessage());
                         text.setStyle("-fx-font-size: 17;");
@@ -130,7 +147,7 @@ public class ChatScreen {
                             "-fx-border-color: transparent;"+
                             "-fx-border-radius: 20px;"
                         );
-
+                        textFlow.setCursor(Cursor.HAND);
                         textFlow.setPadding(new Insets(5,20,5,20));
                     
                         vBox.getChildren().add(textFlow);
@@ -158,7 +175,7 @@ public class ChatScreen {
                     public void run(){
                         try{
                             while(true){
-                                Thread.sleep(50);
+                                Thread.sleep(100);
                                 if((int)ScrollViewChat.getVvalue()!=1){
                                     ScrollViewChat.setVvalue(1);
                                     if((int)ScrollViewChat.getVvalue()!=0)stop();
