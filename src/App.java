@@ -1,5 +1,3 @@
-import java.util.List;
-
 import Body.Chat;
 import Body.Comments;
 import Body.ManagerPosts;
@@ -64,6 +62,7 @@ public class App extends Application{
                 List_User.getPoint(0).user[0].getDequeChat().add(1);
                 List_User.getPoint(0).user[1].getDequeChat().add(0);
 
+
                 message =  new Message();
                 message.setId((short)0);
                 message.setSender((short)1);
@@ -77,6 +76,11 @@ public class App extends Application{
                 chat.add(message);
                 chat.add(message);
                 chat.add(message);
+                
+
+                System.out.println(List_User.getPoint(0).user[0].getChats().get(1).getLastMessage().getTxtMessage());
+
+
                 //List_User.getPoint(0).user[1].getChats().put(0, chat);
                 //List_User.getPoint(0).user[0].getChats().put(1, chat);                
             }
@@ -154,7 +158,6 @@ public class App extends Application{
         
         List_User.getPoint(0).user[0].getPosts().add(post);
         ManagerPosts.geralPosts.add(post);
-        
         //new Examples();
         new LoginScreen().getStage().show();
     }

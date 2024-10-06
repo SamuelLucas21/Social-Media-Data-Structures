@@ -59,18 +59,21 @@ public class Chat {
         }
 
     private Element head, tail;
-    private static short size =0;
+    private static short size =0, idMessage=-1;
     
     public Message getFirstMessage(){return this.head.getMessage();}
     public Message getLastMessage(){return this.tail.getMessage();}
 
     public void add(Message newChat){
+        ++idMessage;
         if(this.head!=null){
             this.tail.setProx(new Element(newChat));
             this.tail.getProx().setAnt(tail);
             this.tail=this.tail.getProx();
+            newChat.setId(idMessage);
             ++size;
         }else{
+            newChat.setId(idMessage);
             this.head=new Element(newChat);
             this.tail=head;
             ++size;
