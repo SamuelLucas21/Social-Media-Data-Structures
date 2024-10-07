@@ -17,7 +17,6 @@ public class App extends Application{
 
     @Override
     public void start(Stage arg0) throws Exception {
-        
         User user = new User();
         user.setAge(21);
         user.setCity("Taubaté-SP");

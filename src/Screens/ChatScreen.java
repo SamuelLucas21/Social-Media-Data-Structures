@@ -22,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.MotionBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -109,8 +110,9 @@ public class ChatScreen {
     }
     
     public Stage getStage(){return this.stage;}
+    public Pane getPane(){return this.pane;}
 
-    private void genareteViewChat(int friendUserId){
+    public void genareteViewChat(int friendUserId){
         idFriend=friendUserId;
         this.vboxViewChat.getChildren().clear();
         User user = List_User.getPoint(id).user[id];
@@ -118,12 +120,22 @@ public class ChatScreen {
             if(user.getChats().size()!=0){
                 ArrayList<Message> chat = user.getChats().get(friendUserId).getMessages();
                 for(int i=0;i<chat.size();++i){
+                    int index =i;
                     VBox vBox = new VBox(2);
                     ContextMenu contecContextMenu = new ContextMenu();
                     MenuItem menu = new MenuItem("Delete");
-                    contecContextMenu.getItems().add(menu);
-                    
-                    int index =i;
+                    MenuItem menu1 = new MenuItem("Edit");
+                    contecContextMenu.getItems().addAll(menu1,menu);
+
+                    menu1.setOnAction(event->{
+                        try{
+                            new EditMessage(idFriend, user.getChats().get(idFriend), chat.get(index), this).getStage().show();
+                            this.pane.effectProperty().set(new MotionBlur(3.0,15.0));
+                        }catch(Exception ie){
+                            ie.printStackTrace();   
+                        }
+                    });
+
                     menu.setOnAction(event->{
                         user.getChats().get(friendUserId).remove(chat.get(index).getId());
                         this.genareteViewChat(friendUserId);
@@ -305,7 +317,7 @@ public class ChatScreen {
         User user = List_User.getPoint(idFriend).user[id];
         User userFriend = List_User.getPoint(idFriend).user[idFriend];
         Chat chat;    
-            if(!user.getChats().containsKey(id)&&!userFriend.getChats().containsKey(id)){
+            if(!user.getChats().containsKey(idFriend)&&!userFriend.getChats().containsKey(id)){
                 chat = new Chat();
                 user.getChats().put(idFriend, chat);
                 user.getDequeChat().add(idFriend);

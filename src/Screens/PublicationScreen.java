@@ -80,6 +80,16 @@ public class PublicationScreen {
             });
 
             id=i;
+            this.userName.setText(List_User.getPoint(i).user[id].getName());
+    
+            this.photoPublic.setOnDragOver(event -> {
+                System.out.println(event.getDragboard().getString());
+                if (event.getGestureSource() != this.photoPublic && event.getDragboard().hasImage()) {
+                    event.acceptTransferModes(javafx.scene.input.TransferMode.COPY);
+                }
+                event.consume();
+                
+            });
 
             {
                 txtPublic.setText("teste Publicação");
