@@ -210,10 +210,11 @@ public class FriendsScreen {
                 imageView.setFitHeight(50);
                 imageView.setFitWidth(50);
 
-                int string_Name =user[solicit.get(i)].getName().indexOf(" ");
+                int string_Name =(user[solicit.get(i)].getName().indexOf(" ")==-1)? user[solicit.get(i)].getName().length():user[solicit.get(i)].getName().indexOf(" ");
+
                 Label label = new Label(user[solicit.get(i)].getName().substring(0, string_Name));
                 label.setPadding(new Insets(15,0,0,0));
-                label.setPrefWidth(50);
+                label.setPrefWidth(80);
 
                 ImageView accept = new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/check_accept.png")));
                 ImageView deni = new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/x_deni.png"))); 
