@@ -58,10 +58,11 @@ public class LoginScreen {
             this.txtPass.setVisible(false);
             this.passOcult.setLayoutX(this.txtPass.getLayoutX());
             this.passOcult.setLayoutY(this.txtPass.getLayoutY());
-                {
+            /*    {
                     this.txtEmail.setText("samuel@gmail.com");
                     this.passOcult.setText("1234");
                 }
+            */
         }
 
         public Stage getStage(){

@@ -4,6 +4,8 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import com.jgoodies.common.collect.LinkedListModel;
+import java.util.List;
 
 public class User {
 
@@ -12,9 +14,11 @@ public class User {
     private ArrayList<Post> postUser = new ArrayList<>();
     private ArrayList<Integer> friends = new ArrayList<>();
     private ArrayList<Integer> solicit = new ArrayList<>();
+    private LinkedListModel<Integer> list_solicit = new LinkedListModel<>();
     private ArrayDeque<Integer> dequeChat = new ArrayDeque<>();
     private Map<Integer,Chat> chat = new HashMap<>();
     
+    public List<Integer> getList_Solicit(){return this.list_solicit;}
     public ArrayDeque<Integer> getDequeChat(){return this.dequeChat;}
 
     public Map<Integer,Chat> getChats(){return this.chat;}

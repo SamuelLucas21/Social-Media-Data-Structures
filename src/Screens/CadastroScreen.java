@@ -72,6 +72,8 @@ public class CadastroScreen {
             pane.setOnMouseClicked(event ->{
                 pane.requestFocus();
             });
+            this.txtPass.setVisible(false);
+            this.txtPassConfirm.setVisible(false);
 
             {
                 this.comboBoxCivil.getItems().addAll(new String[]{
@@ -88,17 +90,16 @@ public class CadastroScreen {
         this.stage.close();
     }
 
-    private boolean i=false,o=false;
     @FXML
     private void checkPass(MouseEvent event) {
             if(this.check1.isSelected()){
                 this.txtOcultPass.setVisible(false);
+                this.txtPass.setVisible(true);
                 this.txtPass.setText(this.txtOcultPass.getText());
-                i=true;
             }else{
+                this.txtPass.setVisible(true);
                 this.txtOcultPass.setVisible(true);
-                this.txtPass.setText(this.txtOcultPass1.getText());
-                i=false;
+                this.txtOcultPass.setText(this.txtOcultPass1.getText());
             }
     }
 
@@ -106,12 +107,12 @@ public class CadastroScreen {
     private void checkPassConfirm(MouseEvent event) {
             if(this.check2.isSelected()){
                 this.txtOcultPass1.setVisible(false);
+                this.txtPassConfirm.setVisible(true);
                 this.txtPassConfirm.setText(txtOcultPass1.getText());
-                o=true;
             }else{
+                this.txtPassConfirm.setVisible(false);
                 this.txtOcultPass1.setVisible(true);
                 this.txtOcultPass1.setText(this.txtPassConfirm.getText());
-                o=false;
             }
     }
 
@@ -157,18 +158,8 @@ public class CadastroScreen {
             alert.showAndWait();
             return;
         }
-        String pass,pass2;
-            if(i){
-                pass=this.txtPass.getText();
-            }else{
-                pass=this.txtOcultPass.getText();
-            }
-            if(o){
-                pass2=this.txtPassConfirm.getText();
-            }else{
-                pass2=this.txtOcultPass1.getText();
-            }
-        
+        String pass = (this.txtPass.isVisible())? this.txtPass.getText(): this.txtOcultPass.getText();
+        String pass2 = (this.txtPassConfirm.isVisible())?this.txtPassConfirm.getText(): this.txtOcultPass1.getText(); 
         if(!pass.equals(pass2)){
             Alert alert = new Alert(AlertType.WARNING);
             alert.setTitle("Aviso!");
@@ -191,12 +182,12 @@ public class CadastroScreen {
 
         User user = new User();
         user.setName(txtName.getText());
-        user.setPassword(txtPass.getText());
+        user.setPassword(pass);
         user.setAge(Integer.parseInt(txtIdade.getText()));
         user.setCity(txtLocal.getText());
         user.setCivil(comboBoxCivil.getValue());
         user.setEmail(txtEmail.getText());
-        List_User.getPoint(5).add(user);
+        List_User.getPoint(7).add(user);
         new LoginScreen().getStage().show();
         this.stage.close();
     }

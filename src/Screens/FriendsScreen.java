@@ -11,6 +11,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextArea;
@@ -71,6 +73,10 @@ public class FriendsScreen {
     @FXML
     private void initialize(){
         try{
+            this.vboxFrinds.getChildren().clear();
+            this.vboxNoticeFriends.getChildren().clear();
+            this.vboxOtherFriends.getChildren().clear();
+
             ArrayList<Integer> sort = new ArrayList<>();
             sort.addAll(List_User.getPoint(id).user[id].getFriends());
             User[] user = List_User.getPoint(id).user;
@@ -122,14 +128,21 @@ public class FriendsScreen {
             }
             
             ArrayList<Integer> segs = new ArrayList<>();
-            for(int i =0;i<user.length;++i){
-                if(List_User.getPoint(i).user[id].checkFriend(i)!=0&&i!=id){
+            for(int i =0;i<=List_User.getPoint(i).getSizeUsers();++i){
+                if(List_User.getPoint(i).user[id].checkFriend(i)!=0
+                &&
+                !List_User.getPoint(i).user[id].getSolicit().contains((Integer)i)
+                &&
+                i!=id
+                &&
+                List_User.getPoint(i).checkExistUser(i)==0
+                &&
+                !List_User.getPoint(i).user[id].getList_Solicit().contains((Integer)i)){
                     segs.add(i);
                 }
             }
-            
             label:
-            while(true){ //!segs.isEmpty()
+            while(!segs.isEmpty()){ 
                 HBox hBox = new HBox(3);
                 hBox.setSpacing(130);
                 for(int j =0;j<3;++j){
@@ -153,8 +166,18 @@ public class FriendsScreen {
                     ImageView img1 = new ImageView(new Image(getClass().getResourceAsStream("./ScreensFXML/Imagens/add-friend.png")));
                     img1.setCursor(Cursor.HAND);
 
+                    int index = segs.get(0);
                     img1.setOnMouseClicked(event->{
-
+                        User _user = List_User.getPoint(0).user[index];
+                        _user.sendSolict(id);
+                        Alert alert = new Alert(AlertType.INFORMATION);
+                        alert.setHeaderText(null);
+                        alert.setTitle("Aviso!");
+                        alert.setContentText("Solicitação enviada com sucesso para: \n\t"+_user.getName());
+                        alert.showAndWait();
+                        _user=List_User.getPoint(index).user[id];
+                        _user.getList_Solicit().add(index);
+                        this.initialize();
                     });
                     VBox auxToImage = new VBox();
                     auxToImage.getChildren().add(img1);
@@ -175,7 +198,6 @@ public class FriendsScreen {
             }
         
             ArrayList<Integer>solicit = List_User.getPoint(id).user[id].getSolicit();
-            
             for(int i = solicit.size()-1;i>=0;--i){
                 HBox hBoxSolict = new HBox(4);
                 hBoxSolict.setPadding(new Insets(10,0,0,3));
@@ -188,8 +210,9 @@ public class FriendsScreen {
                 imageView.setFitHeight(50);
                 imageView.setFitWidth(50);
 
-                Label label = new Label(user[solicit.get(i)].getName());
-                label.setPadding(new Insets(15,0,0,2));
+                int string_Name =user[solicit.get(i)].getName().indexOf(" ");
+                Label label = new Label(user[solicit.get(i)].getName().substring(0, string_Name));
+                label.setPadding(new Insets(15,0,0,0));
                 label.setPrefWidth(50);
 
                 ImageView accept = new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/check_accept.png")));
@@ -200,11 +223,21 @@ public class FriendsScreen {
 
                 int h =i;
                 accept.setOnMouseClicked(event->{    
-                    System.out.println("Add: "+ h);
+                    User _user = List_User.getPoint(h).user[id];
+                    User __user=List_User.getPoint(h).user[_user.getSolicit().get(h)];
+                    _user.AddFriends(_user.getSolicit().get(h));
+                    __user.AddFriends(id);
+                    __user.getList_Solicit().remove((Integer)id);
+                    _user.getSolicit().remove(h);
+                    initialize();
                 });
 
                 deni.setOnMouseClicked(event->{
-                    System.out.println("Recuse");
+                    User _user = List_User.getPoint(h).user[id];
+                    User __user=List_User.getPoint(h).user[_user.getSolicit().get(h)];
+                    __user.getList_Solicit().remove((Integer)id);
+                    _user.getSolicit().remove(h);
+                    initialize();
                 });
 
                 VBox vBoxAuxToAccept = new VBox();

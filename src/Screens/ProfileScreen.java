@@ -1,7 +1,6 @@
 package Screens;
 
 import java.io.FileInputStream;
-
 import Body.Post;
 import Body.User;
 import Structs.List_User;
@@ -204,17 +203,20 @@ public class ProfileScreen {
     }
 
     @FXML
-    private void goToFriends(MouseEvent event) {
-
+    private void goToFriends(MouseEvent event)throws Exception {
+        new FriendsScreen(id).getStage().show();
+        this.stage.close();
     }
 
     @FXML
-    private void goToPublic(MouseEvent event) {
-
+    private void goToPublic(MouseEvent event)throws Exception {
+        new PublicationScreen(id).getStage().show();
+        this.stage.close();
     }
 
     @FXML
-    private void goToSettings(MouseEvent event) {
-
+    private void goToSettings(MouseEvent event)throws Exception {
+        new SettingsScreen(id).getStage().show();
+        this.stage.close();
     }
 }

@@ -1,11 +1,4 @@
-import Body.Chat;
-import Body.Comments;
-import Body.ManagerPosts;
-import Body.Message;
-import Body.Post;
-import Body.User;
 import Screens.LoginScreen;
-import Structs.List_User;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -17,6 +10,7 @@ public class App extends Application{
 
     @Override
     public void start(Stage arg0) throws Exception {
+        /*
         User user = new User();
         user.setAge(21);
         user.setCity("Taubaté-SP");
@@ -26,7 +20,7 @@ public class App extends Application{
         user.setName("Samuel");
         user.setPhotoProfile("/home/samuel/Desktop/Project_Java/Project_social_media/src/Screens/samuelphoto.jpeg");
         List_User.getPoint(5).add(user);
-
+        
         {
             user = new User();
             user.setAge(21);
@@ -34,11 +28,13 @@ public class App extends Application{
             user.setCivil("Solteiro");
             user.setEmail("jose@gmail.com");
             user.setPassword("1234");
-            user.setName("José");
-            user.setPhotoProfile("/home/samuel/Desktop/Project_Java/Project_social_media/src/Screens/airplane.jpg");
+            user.setName("Samuel Lucas");
+           // user.setPhotoProfile("/home/samuel/Desktop/Project_Java/Project_social_media/src/Screens/airplane.jpg");
             List_User.getPoint(5).add(user);
-            List_User.getPoint(0).user[0].AddFriends(1);
-            List_User.getPoint(0).user[1].AddFriends(0);
+            List_User.getPoint(0).user[0].getSolicit().add(1);
+            user.getList_Solicit().add(0);
+            //List_User.getPoint(0).user[0].AddFriends(1);
+            //List_User.getPoint(0).user[1].AddFriends(0);
         }
             {
                 Chat chat = new Chat();
@@ -144,6 +140,7 @@ public class App extends Application{
         List_User.getPoint(0).user[0].getPosts().add(post);
         ManagerPosts.geralPosts.add(post);
         //new Examples();
+        */
         new LoginScreen().getStage().show();
     }
 }

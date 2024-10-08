@@ -98,7 +98,7 @@ public class HomeScreen{
                 ImageView imageView = ((List_User.getPoint(i).user[post.getIduser()].getPhotoProfile())!=null)? 
                 new ImageView(new Image(new FileInputStream(photo)))
                 :
-                new ImageView(new Image(getClass().getResourceAsStream(photo)))
+                new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.png")))
                 ;
 
                 imageView.setFitHeight(100);
@@ -195,11 +195,12 @@ public class HomeScreen{
             public void run(){
                 try{
                     while(true){
+                        Thread.sleep(100);
                         if(scrollPosts.getVvalue()!=0.0){
                             scrollPosts.setVvalue(0.0);
                             stop();
                         }
-                        Thread.sleep(10);         
+                        if(!stage.isShowing())stop();         
                     }
                 }catch(Exception ie){
                     ie.printStackTrace();

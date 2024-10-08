@@ -84,17 +84,13 @@ public class PublicationScreen {
     
             this.photoPublic.setOnDragOver(event -> {
                 System.out.println(event.getDragboard().getString());
-                if (event.getGestureSource() != this.photoPublic && event.getDragboard().hasImage()) {
+                if(event.getGestureSource() != this.photoPublic && event.getDragboard().hasImage()) {
                     event.acceptTransferModes(javafx.scene.input.TransferMode.COPY);
                 }
                 event.consume();
                 
             });
 
-            {
-                txtPublic.setText("teste Publicação");
-                txtTitlePost.setText("Titulo");
-            }
         }
 
     public Stage getStage(){return this.stage;}

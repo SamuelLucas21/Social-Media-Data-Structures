@@ -37,7 +37,7 @@ public class List_User {
     }
     public void show(){
         for(int i =0;i<=this.lastUser;++i){
-            System.out.println(user[i].getName());
+            System.out.println(user[i].getEmail()+"\n"+user[i].getPassword());
         }
     }
     public boolean checkExistUser(String email){
@@ -73,5 +73,12 @@ public class List_User {
             }
         }
         return -1;
+    }
+    public byte checkExistUser(int id){
+        if(this.lastUser>=id)return 0;
+        return -1;
+    }
+    public int getSizeUsers(){
+        return(this.lastUser);
     }
 }
