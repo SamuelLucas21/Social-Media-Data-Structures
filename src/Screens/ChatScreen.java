@@ -5,9 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.jgoodies.common.collect.LinkedListModel;
-
 import Body.Chat;
 import Body.Message;
 import Body.User;
@@ -350,22 +348,26 @@ public class ChatScreen {
     }
 
     @FXML
-    private void goToFriends(MouseEvent event) {
-
+    private void goToFriends(MouseEvent event)throws Exception {
+        new FriendsScreen(id).getStage().show();
+        this.stage.close();
     }
 
     @FXML
-    private void goToProfile(MouseEvent event) {
-
+    private void goToProfile(MouseEvent event)throws Exception {
+        new ProfileScreen(id).getStage().show();
+        this.stage.close();
     }
 
     @FXML
-    private void goToPublic(MouseEvent event) {
-
+    private void goToPublic(MouseEvent event)throws Exception {
+        new PublicationScreen(id).getStage().show();
+        this.stage.close();
     }
 
     @FXML
-    private void goToSettings(MouseEvent event) {
-
+    private void goToSettings(MouseEvent event)throws Exception {
+        new SettingsScreen(id).getStage().show();
+        this.stage.close();
     }
 }
