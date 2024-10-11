@@ -16,6 +16,19 @@
         "/home/samuel/Java_Lib/sendEmail/javax.mail.jar",
         "/home/samuel/Java_Lib/sendEmail/activation-1.1.1.jar",
         "/home/samuel/Java_Lib/openjfx-21.0.2_linux-x64_bin-sdk/javafx-sdk-21.0.2/lib/javafx.base.jar",
-        "/home/samuel/Java_Lib/sendEmail/jgoodies-forms-1.8.0.jar"
+        "/home/samuel/Java_Lib/sendEmail/jgoodies-forms-1.8.0.jar",
+        "c:\\java-lib\\Connectores Email java\\New_Email\\activation-1.1.1.jar",
+        "c:\\java-lib\\Connectores Email java\\New_Email\\commons-email-1.5.jar",
+        "c:\\java-lib\\Connectores Email java\\New_Email\\javax.mail.jar",
+        "c:\\java-lib\\Connectores Email java\\New_Email\\jgoodies-common-1.8.0.jar",
+        "c:\\java-lib\\Connectores Email java\\New_Email\\jgoodies-forms-1.8.0.jar",
+        "c:\\java-lib\\openjfx-17.0.12_windows-x64_bin-sdk\\javafx-sdk-17.0.12\\lib\\javafx.base.jar",
+        "c:\\java-lib\\openjfx-17.0.12_windows-x64_bin-sdk\\javafx-sdk-17.0.12\\lib\\javafx.controls.jar",
+        "c:\\java-lib\\openjfx-17.0.12_windows-x64_bin-sdk\\javafx-sdk-17.0.12\\lib\\javafx.fxml.jar",
+        "c:\\java-lib\\openjfx-17.0.12_windows-x64_bin-sdk\\javafx-sdk-17.0.12\\lib\\javafx.graphics.jar",
+        "c:\\java-lib\\openjfx-17.0.12_windows-x64_bin-sdk\\javafx-sdk-17.0.12\\lib\\javafx.media.jar",
+        "c:\\java-lib\\openjfx-17.0.12_windows-x64_bin-sdk\\javafx-sdk-17.0.12\\lib\\javafx.swing.jar",
+        "c:\\java-lib\\openjfx-17.0.12_windows-x64_bin-sdk\\javafx-sdk-17.0.12\\lib\\javafx.web.jar",
+        "c:\\java-lib\\openjfx-17.0.12_windows-x64_bin-sdk\\javafx-sdk-17.0.12\\lib\\javafx-swt.jar"
     ]
 }
