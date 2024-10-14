@@ -77,7 +77,7 @@ public class CadastroScreen {
 
             {
                 this.comboBoxCivil.getItems().addAll(new String[]{
-                    "Solteiro","Casado","Divorciado"
+                    "Solteiro", "Namorando","Casado","Divorciado", "Viúvo"
                 });
             }
 
@@ -134,6 +134,15 @@ public class CadastroScreen {
             alert.showAndWait();
             return;
         }
+        if(Integer.parseInt(txtIdade.getText()) < 16){
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Aviso!");
+            alert.setHeaderText(null);
+            alert.setContentText("Ops! Parece que você ainda não tem a idade mínima \n necessária para usar o Star Stream. É preciso ter \n pelo menos 16 anos para acessar a nossa rede.");
+            alert.showAndWait();
+            return;
+        }
+
         if(this.txtEmail.getText().length()==0){
             Alert alert = new Alert(AlertType.WARNING);
             alert.setTitle("Aviso!");

@@ -14,7 +14,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1287.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1287.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane layoutX="-8.0" layoutY="-4.0" prefHeight="82.0" prefWidth="1302.0" style="-fx-background-color: white; -fx-border-color: rgb(123,56,255); -fx-border-width: 3;">
          <children>
@@ -41,9 +41,9 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fitHeight="67.0" fitWidth="200.0" layoutX="535.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="66.0" fitWidth="248.0" layoutX="527.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Imagens/template_home.png" />
+                  <Image url="@Imagens/home%20logoStar2.png" />
                </image>
             </ImageView>
             <ImageView fx:id="exitToHome" fitHeight="50.0" fitWidth="50.0" layoutX="21.0" layoutY="15.0" onMouseClicked="#backToLogin" pickOnBounds="true" preserveRatio="true">
@@ -60,7 +60,7 @@
          <children>
             <VBox layoutX="11.0" layoutY="4.0" prefHeight="639.0" prefWidth="265.0">
                <children>
-                  <VBox prefHeight="100.0" prefWidth="242.0">
+                  <VBox prefHeight="75.0" prefWidth="266.0">
                      <children>
                         <HBox fx:id="hBoxUserProfile" onMouseClicked="#goToProfile" styleClass="hbox" stylesheets="@CSS/Hbox.css">
                            <children>
@@ -229,7 +229,7 @@
             </VBox>
          </children>
       </Pane>
-      <ScrollPane fx:id="scrollPosts" layoutX="286.0" layoutY="78.0" prefHeight="639.0" prefWidth="1001.0" scaleShape="false" stylesheets="@CSS/ScrollPane.css">
+      <ScrollPane fx:id="scrollPosts" layoutX="286.0" layoutY="78.0" prefHeight="659.0" prefWidth="680.0" scaleShape="false" stylesheets="@CSS/ScrollPane.css">
          <content>
             <VBox fx:id="vboxPost" prefHeight="636.0" prefWidth="978.0" style="-fx-background-color: white;" />
          </content>

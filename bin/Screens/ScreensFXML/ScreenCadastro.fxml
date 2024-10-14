@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1270.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1270.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TextField fx:id="txtName" layoutX="161.0" layoutY="101.0" prefHeight="40.0" prefWidth="335.0" promptText="Digite seu nome" stylesheets="@CSS/txtEmailLogin.css" />
       <TextField fx:id="txtEmail" layoutX="161.0" layoutY="167.0" prefHeight="40.0" prefWidth="335.0" promptText="Digite seu e-mail" stylesheets="@CSS/txtEmailLogin.css" />
@@ -34,26 +34,26 @@
             <Image url="@Imagens/Ellipse_2.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="510.0" fitWidth="501.0" layoutX="728.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="478.0" fitWidth="478.0" layoutX="715.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Imagens/loginLog.png" />
+            <Image url="@Imagens/logoStar%201.png" />
          </image>
       </ImageView>
       <CheckBox fx:id="check1" layoutX="509.0" layoutY="431.0" mnemonicParsing="false" onMouseClicked="#checkPass" prefHeight="25.0" prefWidth="20.0" stylesheets="@CSS/CheckBox.css" />
       <CheckBox fx:id="check2" layoutX="509.0" layoutY="496.0" mnemonicParsing="false" onMouseClicked="#checkPassConfirm" prefHeight="25.0" prefWidth="20.0" stylesheets="@CSS/CheckBox.css" />
-      <Label layoutX="145.0" layoutY="656.0" prefHeight="25.0" prefWidth="220.0" text="Já possui uma conta?">
+      <Label layoutX="151.0" layoutY="646.0" prefHeight="28.0" prefWidth="226.0" text="Já possui uma conta?" textFill="#3f3c3c">
          <font>
-            <Font size="20.0" />
+            <Font name="Poppins Regular" size="20.0" />
          </font>
       </Label>
-      <Hyperlink fx:id="hyperlinkBack" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="369.0" layoutY="652.0" onMouseClicked="#BackToLogin" prefHeight="33.0" prefWidth="140.0" scaleShape="false" text="Faça o Login" underline="true">
+      <Hyperlink fx:id="hyperlinkBack" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="369.0" layoutY="641.0" onMouseClicked="#BackToLogin" prefHeight="38.0" prefWidth="125.0" scaleShape="false" text="Faça o Login" textFill="#333f7f" underline="true">
          <font>
             <Font size="20.0" />
          </font>
       </Hyperlink>
-      <Line endX="43.0" layoutX="246.0" layoutY="635.0" startX="-100.0" />
-      <Line endX="43.0" layoutX="458.0" layoutY="635.0" startX="-100.0" />
-      <Label layoutX="310.0" layoutY="624.0" text="OU">
+      <Line endX="43.0" layoutX="248.0" layoutY="626.0" startX="-100.0" />
+      <Line endX="43.0" layoutX="460.0" layoutY="626.0" startX="-100.0" />
+      <Label layoutX="312.0" layoutY="615.0" text="OU">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>

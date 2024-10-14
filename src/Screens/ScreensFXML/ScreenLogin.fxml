@@ -12,15 +12,15 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1270.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1270.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TextField fx:id="txtEmail" layoutX="818.0" layoutY="217.0" prefHeight="30.0" prefWidth="370.0" promptText="Digite seu e-mail" stylesheets="@CSS/txtEmailLogin.css" />
       <TextField fx:id="txtPass" layoutX="818.0" layoutY="300.0" prefHeight="30.0" prefWidth="370.0" promptText="Digite sua senha" stylesheets="@CSS/txtEmailLogin.css" />
-      <Button fx:id="btnEntrar" layoutX="786.0" layoutY="374.0" mnemonicParsing="false" onMouseClicked="#enterToHome" prefHeight="42.0" prefWidth="403.0" stylesheets="@CSS/ButtonsLogin.css" text="Acessar" textFill="WHITE">
+      <Button fx:id="btnEntrar" layoutX="786.0" layoutY="405.0" mnemonicParsing="false" onMouseClicked="#enterToHome" prefHeight="42.0" prefWidth="403.0" stylesheets="@CSS/ButtonsLogin.css" text="Acessar" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="btnCadastrar" layoutX="786.0" layoutY="471.0" mnemonicParsing="false" onMouseClicked="#enterToSign" prefHeight="42.0" prefWidth="403.0" stylesheets="@CSS/ButtonsLogin.css" text="Cadastrar-se" textFill="WHITE">
+      <Button fx:id="btnCadastrar" layoutX="786.0" layoutY="547.0" mnemonicParsing="false" onMouseClicked="#enterToSign" prefHeight="42.0" prefWidth="403.0" stylesheets="@CSS/ButtonsLogin.css" text="Cadastrar-se" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
@@ -29,23 +29,23 @@
             <Image url="@Imagens/Ellipse%201.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="575.0" fitWidth="553.0" layoutX="56.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="463.0" fitWidth="487.0" layoutX="88.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Imagens/loginLog.png" />
+            <Image url="@Imagens/logoStar%201.png" />
          </image>
       </ImageView>
       <Label layoutX="895.0" layoutY="70.0" prefHeight="78.0" prefWidth="200.0" style="-fx-font-size: 52; -fx-font-weight: bold;" text="Entrar">
          <font>
             <Font name="Open Sans Bold" size="13.0" />
          </font></Label>
-      <Hyperlink fx:id="linkEmail" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="1072.0" layoutY="338.0" onMouseClicked="#getNewPassword" prefHeight="22.0" prefWidth="117.0" scaleShape="false" text="Esqueceu a senha?" textAlignment="CENTER" underline="true">
+      <Hyperlink fx:id="linkEmail" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="1062.0" layoutY="352.0" onMouseClicked="#getNewPassword" prefHeight="26.0" prefWidth="126.0" scaleShape="false" text="Esqueceu a senha?" textAlignment="CENTER" textFill="#333f7f" underline="true">
          <font>
-            <Font size="11.0" />
+            <Font name="Poppins Regular" size="12.0" />
          </font>
       </Hyperlink>
-      <Line endX="53.0" layoutX="905.0" layoutY="443.0" startX="-100.0" />
-      <Line endX="53.0" layoutX="1117.0" layoutY="443.0" startX="-100.0" />
-      <Label layoutX="975.0" layoutY="432.0" text="OU">
+      <Line endX="53.0" layoutX="905.0" layoutY="497.0" startX="-100.0" />
+      <Line endX="53.0" layoutX="1117.0" layoutY="497.0" startX="-100.0" />
+      <Label layoutX="975.0" layoutY="486.0" text="OU">
          <font>
             <Font name="Open Sans Bold" size="14.0" />
          </font>

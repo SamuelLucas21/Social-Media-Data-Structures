@@ -1,4 +1,6 @@
+import Body.User;
 import Screens.LoginScreen;
+import Structs.List_User;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -10,6 +12,17 @@ public class App extends Application{
 
     @Override
     public void start(Stage arg0) throws Exception {
+
+        //user marcela
+        User user = new User();
+        user.setAge(19);
+        user.setCity("Cruzeiro-SP");
+        user.setCivil("Solteiro");
+        user.setEmail("mar");
+        user.setPassword("1234");
+        user.setName("Marcela");
+        user.setPhotoProfile("\\Users\\Dell\\Desktop\\versionVS\\Social-Media-Data-Structures\\Photos\\IMG_1552.PNG");
+        List_User.getPoint(5).add(user);
         /*
         User user = new User();
         user.setAge(21);

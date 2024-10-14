@@ -101,23 +101,25 @@ public class HomeScreen{
                 new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.png")))
                 ;
 
-                imageView.setFitHeight(100);
-                imageView.setFitWidth(100);
+                imageView.setFitHeight(50);
+                imageView.setFitWidth(50);
                 imageView.setPreserveRatio(true);
 
                 Label nameUser = new Label(List_User.getPoint(0).user[post.getIduser()].getName());
-                nameUser.setStyle("-fx-font-weight: bold");
-                nameUser.setPadding(new Insets(40,0,0,10));
+                nameUser.setStyle("-fx-font-weight: bold; -fx-font-size: 20px");//nameuser
+                nameUser.setPadding(new Insets(13,0,0,10));
                 hBox.getChildren().addAll(imageView,nameUser);
 
                 vBox.setStyle("-fx-padding: 10; -fx-border-color: lightgray; -fx-border-width: 1; -fx-background-color: white;");
                 Label titlePost = new Label(post.getTitle());
-                titlePost.setStyle("-fx-font-weight: bold");
+                titlePost.setStyle("-fx-font-weight: bold; -fx-font-size: 14px");//titulo
                 titlePost.setPadding(new Insets(10,0,5,100));
                 titlePost.setWrapText(true);
 
+                //texto public
                 Text text = new Text(post.getPostTxt());
                 TextFlow txtPost = new TextFlow();
+                txtPost.setStyle("-fx-font-size: 14px");
                 txtPost.getChildren().add(text);
                 txtPost.setCache(false);
                 txtPost.setCacheShape(false);
@@ -177,7 +179,7 @@ public class HomeScreen{
                 HBox box1 = new HBox(2);
                 box1.getChildren().addAll(new HBox((double)5,like,lblQntLikes),comment);
                 box1.setPadding(new Insets(10,10,10,100));
-                box1.setSpacing(650);
+                box1.setSpacing(280);
 
                 HBox box2 = new HBox(3);
                 box2.getChildren().addAll(txtPost);
