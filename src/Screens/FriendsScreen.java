@@ -270,4 +270,21 @@ public class FriendsScreen {
         this.stage.close();
     }
     
+    @FXML
+    private void goToProfile(MouseEvent event) throws Exception {
+        new ProfileScreen(id).getStage().show();
+        this.stage.close();
+    }
+
+    @FXML
+    private void goToChat(MouseEvent event) throws Exception{
+        new ChatScreen(id).getStage().show();
+        this.stage.close();
+    }
+
+    @FXML
+    void goToProfileTop(MouseEvent event) throws Exception {
+        new ProfileScreen(id).getStage().show();
+        this.stage.close();
+    }
 }

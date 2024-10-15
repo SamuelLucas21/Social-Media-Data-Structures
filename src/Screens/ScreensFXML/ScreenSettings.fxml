@@ -7,8 +7,9 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1287.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1287.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane layoutX="-8.0" layoutY="-4.0" prefHeight="82.0" prefWidth="1302.0" style="-fx-background-color: white; -fx-border-color: rgb(123,56,255); -fx-border-width: 3;">
          <children>
@@ -44,19 +45,44 @@
          </children>
       </Pane>
       <Label layoutX="76.0" layoutY="94.0" prefHeight="108.0" prefWidth="309.0" style="-fx-font-family: Poppins; -fx-font-size: 30;" text="Alterar Dados" />
-      <TextField fx:id="txtEmail" layoutX="251.0" layoutY="218.0" prefHeight="43.0" prefWidth="419.0" promptText="user@email.com" stylesheets="@CSS/txtEmailLogin.css" />
-      <TextField fx:id="txtPass" layoutX="251.0" layoutY="270.0" prefHeight="43.0" prefWidth="419.0" promptText="Senha" stylesheets="@CSS/txtEmailLogin.css" />
-      <Button fx:id="ChangeData" layoutX="208.0" layoutY="348.0" mnemonicParsing="false" onMouseClicked="#setNewData" prefHeight="43.0" prefWidth="183.0" stylesheets="@CSS/ButtonsLogin.css" text="Alterar Dados" textFill="WHITE" />
-      <Button fx:id="DeleteAccount" layoutX="487.0" layoutY="348.0" mnemonicParsing="false" onMouseClicked="#deleteData" prefHeight="43.0" prefWidth="183.0" stylesheets="@CSS/ButtonRed.css" text="Excluir Conta" textFill="WHITE" />
-      <ImageView fitHeight="43.0" fitWidth="50.0" layoutX="208.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true">
+      <TextField fx:id="txtEmail" layoutX="197.0" layoutY="263.0" prefHeight="43.0" prefWidth="419.0" promptText="user@email.com" stylesheets="@CSS/txtEmailLogin.css" />
+      <TextField fx:id="txtPass" layoutX="197.0" layoutY="336.0" prefHeight="43.0" prefWidth="419.0" promptText="Senha" stylesheets="@CSS/txtEmailLogin.css" />
+      <Button fx:id="ChangeData" layoutX="154.0" layoutY="414.0" mnemonicParsing="false" onMouseClicked="#setNewData" prefHeight="43.0" prefWidth="183.0" stylesheets="@CSS/ButtonsLogin.css" text="Alterar Dados" textFill="WHITE" />
+      <Button fx:id="DeleteAccount" layoutX="433.0" layoutY="414.0" mnemonicParsing="false" onMouseClicked="#deleteData" prefHeight="43.0" prefWidth="183.0" stylesheets="@CSS/ButtonRed.css" text="Excluir Conta" textFill="WHITE" />
+      <ImageView fitHeight="43.0" fitWidth="50.0" layoutX="154.0" layoutY="266.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Imagens/at-sign2.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="43.0" fitWidth="40.0" layoutX="208.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="43.0" fitWidth="40.0" layoutX="154.0" layoutY="339.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Imagens/lock_to_settings.png" />
          </image>
       </ImageView>
+      <Label layoutX="760.0" layoutY="248.0" prefHeight="35.0" prefWidth="424.0" text="Atenção! Preencha somente com" textAlignment="JUSTIFY">
+         <font>
+            <Font name="Poppins Regular" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="760.0" layoutY="283.0" text="novas informações os campos em ">
+         <font>
+            <Font name="Poppins Regular" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="760.0" layoutY="318.0" prefHeight="35.0" prefWidth="424.0" text="que deseja-se alterar os dados. O" textAlignment="JUSTIFY">
+         <font>
+            <Font name="Poppins Regular" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="760.0" layoutY="355.0" prefHeight="35.0" prefWidth="419.0" text="que não for alterar, deixe-o em" textAlignment="JUSTIFY">
+         <font>
+            <Font name="Poppins Regular" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="760.0" layoutY="390.0" text="branco.">
+         <font>
+            <Font name="Poppins Regular" size="24.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

@@ -23,6 +23,16 @@ public class App extends Application{
         user.setName("Marcela");
         user.setPhotoProfile("\\Users\\Dell\\Desktop\\versionVS\\Social-Media-Data-Structures\\Photos\\IMG_1552.PNG");
         List_User.getPoint(5).add(user);
+
+        User user2 = new User();
+        user2.setAge(19);
+        user2.setCity("Cruzeiro-SP");
+        user2.setCivil("Solteiro");
+        user2.setEmail("manu");
+        user2.setPassword("1234");
+        user2.setName("Manuela");
+        user2.setPhotoProfile("\\Users\\Dell\\Desktop\\versionVS\\Social-Media-Data-Structures\\Photos\\IMG_1551.PNG");
+        List_User.getPoint(5).add(user2);
         /*
         User user = new User();
         user.setAge(21);

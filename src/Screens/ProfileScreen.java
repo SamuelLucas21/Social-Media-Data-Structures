@@ -220,4 +220,10 @@ public class ProfileScreen {
         new SettingsScreen(id).getStage().show();
         this.stage.close();
     }
+
+    @FXML
+    private void goToChat(MouseEvent event) throws Exception{
+        new ChatScreen(id).getStage().show();
+        this.stage.close();
+    }
 }

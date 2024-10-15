@@ -185,7 +185,7 @@
                         <Insets left="10.0" top="25.0" />
                      </padding>
                      <children>
-                        <HBox prefHeight="50.0" prefWidth="255.0" styleClass="hbox" stylesheets="@CSS/Hbox.css">
+                        <HBox onMouseClicked="#goToChat" prefHeight="50.0" prefWidth="255.0" styleClass="hbox" stylesheets="@CSS/Hbox.css">
                            <children>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -238,17 +238,21 @@
             </VBox>
          </children>
       </Pane>
-      <TabPane layoutX="283.0" layoutY="78.0" prefHeight="639.0" prefWidth="698.0" style="-fx-background-color: white;" styleClass="specialJFXTabPane" stylesheets="@CSS/Tab2.css" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="283.0" layoutY="78.0" prefHeight="639.0" prefWidth="1004.0" style="-fx-background-color: white;" styleClass="specialJFXTabPane" stylesheets="@CSS/Tab2.css" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab style="-fx-border-radius: 20px; -fx-background-radius: 20px;" text="Publicações">
                <content>
-                  <Pane>
+                  <Pane prefHeight="608.0" prefWidth="851.0">
                      <children>
-                        <ScrollPane prefHeight="606.0" prefWidth="1002.0" style="-fx-background-color: white;" stylesheets="@CSS/ScrollPane.css">
-                           <content>
-                              <VBox fx:id="vBoxPrincipal" prefHeight="601.0" prefWidth="986.0" style="-fx-background-color: white;" />
-                           </content>
-                        </ScrollPane>
+                        <Pane layoutX="126.0" layoutY="-2.0" prefHeight="611.0" prefWidth="753.0">
+                           <children>
+                              <ScrollPane prefHeight="616.0" prefWidth="1002.0" style="-fx-background-color: white;" stylesheets="@CSS/ScrollPane.css">
+                                 <content>
+                                    <VBox fx:id="vBoxPrincipal" prefHeight="579.0" prefWidth="697.0" style="-fx-background-color: white;" />
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </Pane>
                      </children>
                   </Pane>
                </content></Tab>

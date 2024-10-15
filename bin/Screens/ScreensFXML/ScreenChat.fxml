@@ -12,11 +12,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1287.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1287.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane layoutX="-8.0" layoutY="-4.0" prefHeight="82.0" prefWidth="1302.0" style="-fx-background-color: white; -fx-border-color: rgb(123,56,255); -fx-border-width: 3;">
          <children>
-            <ImageView fx:id="imageSetProfile" fitHeight="50.0" fitWidth="50.0" layoutX="1231.0" layoutY="15.0" nodeOrientation="INHERIT" pickOnBounds="true" style="-fx-effect: solid;">
+            <ImageView fx:id="imageSetProfile" fitHeight="50.0" fitWidth="50.0" layoutX="1231.0" layoutY="15.0" nodeOrientation="INHERIT" onMouseClicked="#goToProfileTop" pickOnBounds="true" style="-fx-effect: solid;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -63,7 +63,7 @@
                      <children>
                         <HBox fx:id="hBoxUserProfile" onMouseClicked="#goToProfile" styleClass="hbox" stylesheets="@CSS/Hbox.css">
                            <children>
-                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imageProfile" accessibleText="perfil" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@Imagens/PERFIL.png" />
                                  </image>
@@ -88,7 +88,7 @@
                      <children>
                         <HBox fx:id="Hbox_to_ScreenFriends" onMouseClicked="#goToFriends" prefHeight="57.0" prefWidth="56.0" styleClass="hbox" stylesheets="@CSS/Hbox.css">
                            <children>
-                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imageFriends" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@Imagens/friends.png" />
                                  </image>
@@ -107,7 +107,7 @@
                      <children>
                         <HBox prefHeight="56.0" prefWidth="77.0" styleClass="hbox" stylesheets="@CSS/Hbox.css">
                            <children>
-                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imageComunity" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@Imagens/community.png" />
                                  </image>
@@ -154,7 +154,7 @@
                      <children>
                         <HBox fx:id="Hbox_to_ScreenPublic" onMouseClicked="#goToPublic" prefHeight="50.0" prefWidth="255.0" styleClass="hbox" stylesheets="@CSS/Hbox.css">
                            <children>
-                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imagePublication" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@Imagens/plus.png" />
                                  </image>
@@ -175,13 +175,17 @@
       </Pane>
       <Pane layoutX="416.0" layoutY="75.0" prefHeight="648.0" prefWidth="878.0" style="-fx-background-color: white; -fx-border-color: rgb(123,56,255); -fx-border-width: 3;">
          <children>
-            <ScrollPane fx:id="ScrollViewChat" layoutX="4.0" layoutY="3.0" prefHeight="598.0" prefWidth="864.0" stylesheets="@CSS/ScrollPane.css" vvalue="1.0">
+            <ScrollPane fx:id="ScrollViewChat" layoutX="4.0" layoutY="3.0" prefHeight="591.0" prefWidth="864.0" stylesheets="@CSS/ScrollPane.css" vvalue="1.0">
                <content>
                   <VBox fx:id="vboxViewChat" prefHeight="596.0" prefWidth="847.0" style="-fx-background-color: white;" />
                </content>
             </ScrollPane>
-            <TextField fx:id="mensageToChat" layoutX="13.0" layoutY="609.0" prefHeight="29.0" prefWidth="736.0" promptText="Converse por aqui..." stylesheets="@CSS/txtEmailLogin.css" />
-            <Button layoutX="806.0" layoutY="612.0" mnemonicParsing="false" text="Button" />
+            <TextField fx:id="mensageToChat" layoutX="12.0" layoutY="597.0" prefHeight="29.0" prefWidth="736.0" promptText="Converse por aqui..." stylesheets="@CSS/txtEmailLogin.css" />
+            <Button fx:id="btnSendMessage" layoutX="756.0" layoutY="597.0" mnemonicParsing="false" onMouseClicked="#sendMessage" prefHeight="36.0" prefWidth="110.0" stylesheets="@CSS/ButtonSendMessage.css" text="Enviar" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </Pane>
       <Pane layoutX="103.0" layoutY="78.0" prefHeight="309.0" prefWidth="308.0" style="-fx-background-color: white;">

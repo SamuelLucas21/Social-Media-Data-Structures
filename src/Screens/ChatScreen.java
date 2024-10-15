@@ -15,11 +15,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
+import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.effect.MotionBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -73,6 +76,21 @@ public class ChatScreen {
     @FXML
     private ImageView viewSettings;
 
+    @FXML
+    private Button btnSendMessage;
+
+    @FXML
+    private ImageView imageComunity;
+
+    @FXML
+    private ImageView imageFriends;
+
+    @FXML
+    private ImageView imageProfile;
+
+    @FXML
+    private ImageView imagePublication;
+
         public ChatScreen(int i)throws Exception{
             id=i;
             this.chats= new LinkedListModel<>(List_User.getPoint(0).user[id].getDequeChat());
@@ -99,6 +117,17 @@ public class ChatScreen {
     
     @FXML
     private void initialize(){
+
+        Tooltip tooltipComunity = new Tooltip("Comunidade");
+        Tooltip tooltipFriends = new Tooltip("Amigos");
+        Tooltip tooltipProfile = new Tooltip("Perfil");
+        Tooltip tooltipPublication = new Tooltip("Publicação");
+        
+        Tooltip.install(imageComunity, tooltipComunity);
+        Tooltip.install(imageFriends, tooltipFriends);
+        Tooltip.install(imageProfile, tooltipProfile);
+        Tooltip.install(imagePublication, tooltipPublication);
+
         try{
             this.genarateChats();
             this.genarateNewChats();
@@ -370,4 +399,24 @@ public class ChatScreen {
         new SettingsScreen(id).getStage().show();
         this.stage.close();
     }
+
+    @FXML
+    void goToProfileTop(MouseEvent event) throws Exception {
+        new ProfileScreen(id).getStage().show();
+        this.stage.close();
+    }
+
+    @FXML
+    void sendMessage(MouseEvent event) {
+        if (this.mensageToChat.getText().length() != 0) {
+            try {
+                this.sendMessage(idFriend, this.mensageToChat.getText());
+
+                this.mensageToChat.clear();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }

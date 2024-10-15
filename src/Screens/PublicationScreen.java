@@ -95,23 +95,7 @@ public class PublicationScreen {
 
     public Stage getStage(){return this.stage;}
 
-    @FXML
-    private void backToLogin(MouseEvent event)throws Exception {
-        new HomeScreen(id).getStage().show();
-        this.stage.close();
-    }
-
-    @FXML
-    private void goToSettings(MouseEvent event)throws Exception {
-        new SettingsScreen(id).getStage().show();
-        this.stage.close();
-    }
-
-    @FXML
-    private void CancelPost(MouseEvent event)throws Exception {
-        new HomeScreen(id).getStage().show();
-        this.stage.close();
-    }
+   
     private static short i=0;
     
     @FXML
@@ -143,5 +127,47 @@ public class PublicationScreen {
         file.setInitialDirectory(new File(System.getProperty("user.dir")));
         this.photo= file.showOpenDialog(stage).toPath().toString();
         this.photoPublic.setImage(new Image(new FileInputStream(photo)));
+    }
+
+     @FXML
+    private void backToLogin(MouseEvent event)throws Exception {
+        new HomeScreen(id).getStage().show();
+        this.stage.close();
+    }
+
+    @FXML
+    private void goToSettings(MouseEvent event)throws Exception {
+        new SettingsScreen(id).getStage().show();
+        this.stage.close();
+    }
+
+    @FXML
+    private void CancelPost(MouseEvent event)throws Exception {
+        new HomeScreen(id).getStage().show();
+        this.stage.close();
+    }
+
+    @FXML
+    private void goToProfile(MouseEvent event) throws Exception {
+        new ProfileScreen(id).getStage().show();
+        this.stage.close();
+    }
+
+    @FXML
+    private void goToChat(MouseEvent event) throws Exception{
+        new ChatScreen(id).getStage().show();
+        this.stage.close();
+    }
+
+    @FXML
+    void goToProfileTop(MouseEvent event) throws Exception {
+        new ProfileScreen(id).getStage().show();
+        this.stage.close();
+    }
+
+    @FXML
+    private void goToFriends(MouseEvent event)throws Exception {
+        new FriendsScreen(id).getStage().show();
+        this.stage.close();
     }
 }

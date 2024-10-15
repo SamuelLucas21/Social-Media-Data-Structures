@@ -279,5 +279,11 @@ public class HomeScreen{
         new ChatScreen(id).getStage().show();
         this.stage.close();
     }
+
+    @FXML
+    void goToProfileTop(MouseEvent event) throws Exception {
+        new ProfileScreen(id).getStage().show();
+        this.stage.close();
+    }
             
 }
