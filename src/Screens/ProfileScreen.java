@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.effect.MotionBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -25,6 +26,10 @@ import javafx.stage.Stage;
 public class ProfileScreen {
     private Stage stage = new Stage();
     private static int id=0;
+    private Pane pane;
+
+    @FXML
+    private HBox EditProfile;
 
     @FXML
     private HBox Hbox_to_ScreenFriends;
@@ -57,7 +62,7 @@ public class ProfileScreen {
             id=i;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ScreensFXML/ScreenProfile.fxml"));
             loader.setController(this);
-            Pane pane = loader.load();
+            pane = loader.load();
             this.stage.setScene(new Scene(pane));
             this.stage.setTitle("Perfil");
             this.stage.setResizable(false);
@@ -67,6 +72,7 @@ public class ProfileScreen {
         }
 
     public Stage getStage(){return this.stage;}
+    public Pane getPane(){return this.pane;}
     
     @FXML    
     private void initialize(){
@@ -225,5 +231,16 @@ public class ProfileScreen {
     private void goToChat(MouseEvent event) throws Exception{
         new ChatScreen(id).getStage().show();
         this.stage.close();
+    }
+
+    @FXML
+    private void goToEditProfile(MouseEvent event) {
+
+        try{
+            new EditProfile(id, this, cityUser, relationShipUser, nameUser, imageSetProfile).getStage().show();
+            pane.effectProperty().set(new MotionBlur(3.0,15.0));
+            }catch(Exception ie){
+            ie.printStackTrace();   
+            }
     }
 }

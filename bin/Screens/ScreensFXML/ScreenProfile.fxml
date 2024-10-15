@@ -75,7 +75,7 @@
                                     <Insets />
                                  </VBox.margin>
                               </ImageView>
-                              <HBox prefHeight="151.0" prefWidth="215.0">
+                              <HBox fx:id="EditProfile" onMouseClicked="#goToEditProfile" prefHeight="151.0" prefWidth="215.0">
                                  <children>
                                     <Label fx:id="nameUser" prefHeight="25.0" prefWidth="151.0" style="-fx-font-family: Poppins; -fx-font-size: 20;" text="UserName" />
                                     <ImageView fitHeight="28.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">

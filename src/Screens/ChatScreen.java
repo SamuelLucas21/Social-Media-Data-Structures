@@ -153,7 +153,7 @@ public class ChatScreen {
                     MenuItem menu = new MenuItem("Delete");
                     MenuItem menu1 = new MenuItem("Edit");
                     contecContextMenu.getItems().addAll(menu1,menu);
-
+                    
                     menu1.setOnAction(event->{
                         try{
                             new EditMessage(idFriend, user.getChats().get(idFriend), chat.get(index), this).getStage().show();
@@ -401,13 +401,13 @@ public class ChatScreen {
     }
 
     @FXML
-    void goToProfileTop(MouseEvent event) throws Exception {
+    private void goToProfileTop(MouseEvent event) throws Exception {
         new ProfileScreen(id).getStage().show();
         this.stage.close();
     }
 
     @FXML
-    void sendMessage(MouseEvent event) {
+    private void sendMessage(MouseEvent event) {
         if (this.mensageToChat.getText().length() != 0) {
             try {
                 this.sendMessage(idFriend, this.mensageToChat.getText());
