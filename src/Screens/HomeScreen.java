@@ -135,8 +135,8 @@ public class HomeScreen{
 
                 if(post.getImagem()!=null){
                     ImageView image = new ImageView(new Image(new FileInputStream(post.getImagem())));
-                    image.setFitHeight(image.getFitHeight());
-                    image.setFitWidth(image.getFitWidth());
+                    image.setFitHeight(400);
+                    image.setFitWidth(400);
                     box.getChildren().add(image);
                     image.setPreserveRatio(true);
                 }

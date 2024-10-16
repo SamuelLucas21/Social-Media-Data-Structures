@@ -127,8 +127,8 @@ public class ProfileScreen {
                 ImageView image;
                 if(post.getImagem()!=null){
                     image = new ImageView(new Image(new FileInputStream(post.getImagem())));
-                    image.setFitHeight(image.getFitHeight());
-                    image.setFitWidth(image.getFitWidth());
+                    image.setFitHeight(400);//mudei aqui
+                    image.setFitWidth(400);
                     image.setPreserveRatio(true);
                     box.getChildren().add(image);
                     box.setPadding(new Insets(10,0,0,100));
@@ -163,7 +163,12 @@ public class ProfileScreen {
                 like.setOnMouseClicked(event->generateLikes(post, like,lblQntLikes,likesQnt));
 
                 comment.setOnMouseClicked(event ->{
-
+                    try {
+                        new CommentScreen(id, post, pane, comment,like,lblQntLikes).getStage().show();
+                        pane.effectProperty().set(new MotionBlur(3.0,15.0));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 });
 
                 comment.setUnderline(true);
