@@ -10,6 +10,7 @@ import java.util.List;
 public class User {
 
     private String name, password, city, civil, email , photoProfile=null;
+    private String profileVisibility = "Perfil público";//publico
     private int age;
     private ArrayList<Post> postUser = new ArrayList<>();
     private ArrayList<Integer> friends = new ArrayList<>();
@@ -103,6 +104,13 @@ public class User {
     public void setAge(int age) {
         this.age = age;
     }
+    public String getProfileVisibility() {
+        return profileVisibility;
+    }
+    public void setProfileVisibility(String profileVisibility) {
+        this.profileVisibility = profileVisibility;
+    }
+
 
     public ArrayList<Post> getPosts(){return this.postUser;}
 

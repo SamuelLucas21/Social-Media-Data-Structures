@@ -47,6 +47,9 @@ public class EditProfile {
     private ComboBox<String> comboBoxCivil;
 
     @FXML
+    private ComboBox<String> comboBoxVisibilityProfile;
+
+    @FXML
     private TextField txtIdade;
 
     @FXML
@@ -99,6 +102,17 @@ public class EditProfile {
             comboBoxCivil.setValue(userChoice); 
         } else {
             comboBoxCivil.setValue("Solteiro"); 
+        }
+        
+        //combo de visibilidade do perfil 
+        comboBoxVisibilityProfile.getItems().clear(); 
+        comboBoxVisibilityProfile.getItems().addAll("Perfil público", "Perfil privado");
+
+        String choiseVisib = user.getProfileVisibility();
+        if (comboBoxVisibilityProfile.getItems().contains(choiseVisib)) {
+            comboBoxVisibilityProfile.setValue(choiseVisib); 
+        } else {
+            comboBoxVisibilityProfile.setValue("Perfil público"); 
         }
 
         try{
@@ -164,6 +178,7 @@ public class EditProfile {
         user.setAge(Integer.parseInt(txtIdade.getText()));
         user.setCity(txtLocal.getText());
         user.setCivil(comboBoxCivil.getValue());
+        user.setProfileVisibility(comboBoxVisibilityProfile.getValue());
         user.setPhotoProfile((this.photo==null)? null: this.photo);
         _cityUser.setText(user.getCity());
         _nameUser.setText(user.getName());

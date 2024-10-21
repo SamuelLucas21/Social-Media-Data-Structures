@@ -58,6 +58,9 @@ public class ProfileScreen {
     @FXML
     private ImageView viewSettings;
 
+    @FXML
+    private Label lblVisibilidade;//teste de visibilidade
+
         public ProfileScreen(int i)throws Exception{
             id=i;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ScreensFXML/ScreenProfile.fxml"));
@@ -77,6 +80,7 @@ public class ProfileScreen {
     @FXML    
     private void initialize(){
         User user = List_User.getPoint(id).user[id];
+        lblVisibilidade.setText(user.getProfileVisibility());//label teste visibilidade perfil
         this.nameUser.setText(user.getName());
         this.cityUser.setText(user.getCity());
         this.relationShipUser.setText(user.getCivil());

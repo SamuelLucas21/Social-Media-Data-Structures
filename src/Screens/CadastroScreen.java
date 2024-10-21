@@ -196,7 +196,7 @@ public class CadastroScreen {
         user.setCity(txtLocal.getText());
         user.setCivil(comboBoxCivil.getValue());
         user.setEmail(txtEmail.getText());
-        List_User.getPoint(7).add(user);
+        List_User.getPoint(10).add(user);
         new LoginScreen().getStage().show();
         this.stage.close();
     }

@@ -11,20 +11,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1287.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane layoutX="-8.0" layoutY="-4.0" prefHeight="82.0" prefWidth="1302.0" style="-fx-background-color: white; -fx-border-color: rgb(123,56,255); -fx-border-width: 3;">
          <children>
-            <ImageView fx:id="imageSetProfile" fitHeight="50.0" fitWidth="50.0" layoutX="1231.0" layoutY="15.0" nodeOrientation="INHERIT" onMouseClicked="#goToProfileTop" pickOnBounds="true" style="-fx-effect: solid;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <image>
-                  <Image url="@Imagens/PERFIL.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="1141.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="1228.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Imagens/NOTIFICACAO.png" />
                </image>
@@ -32,7 +26,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="viewSettings" fitHeight="50.0" fitWidth="50.0" layoutX="1057.0" layoutY="16.0" onMouseClicked="#goToSettings" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="viewSettings" fitHeight="50.0" fitWidth="50.0" layoutX="1144.0" layoutY="16.0" onMouseClicked="#goToSettings" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Imagens/settings.png" />
                </image>
@@ -175,9 +169,9 @@
       </Pane>
       <Pane layoutX="416.0" layoutY="75.0" prefHeight="648.0" prefWidth="878.0" style="-fx-background-color: white; -fx-border-color: rgb(123,56,255); -fx-border-width: 3;">
          <children>
-            <ScrollPane fx:id="ScrollViewChat" layoutX="4.0" layoutY="3.0" prefHeight="591.0" prefWidth="864.0" stylesheets="@CSS/ScrollPane.css" vvalue="1.0">
+            <ScrollPane fx:id="ScrollViewChat" layoutX="4.0" layoutY="72.0" prefHeight="522.0" prefWidth="864.0" stylesheets="@CSS/ScrollPane.css" vvalue="1.0">
                <content>
-                  <VBox fx:id="vboxViewChat" prefHeight="596.0" prefWidth="847.0" style="-fx-background-color: white;" />
+                  <VBox fx:id="vboxViewChat" prefHeight="532.0" prefWidth="847.0" style="-fx-background-color: white;" />
                </content>
             </ScrollPane>
             <TextField fx:id="mensageToChat" layoutX="12.0" layoutY="597.0" prefHeight="29.0" prefWidth="736.0" promptText="Converse por aqui..." stylesheets="@CSS/txtEmailLogin.css" />
@@ -186,6 +180,20 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <ImageView fx:id="imageSetProfile" fitHeight="53.0" fitWidth="53.0" layoutX="8.0" layoutY="6.0" nodeOrientation="INHERIT" pickOnBounds="true" style="-fx-effect: solid;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <image>
+                  <Image url="@Imagens/img_chatNada.png" />
+               </image>
+            </ImageView>
+            <Line endX="755.39990234375" layoutX="110.0" layoutY="65.0" startX="-99.79998779296875" stroke="LIGHTGRAY" />
+            <Label fx:id="lblNameFriend" layoutX="71.0" layoutY="14.0" prefHeight="35.0" prefWidth="387.0" style="-fx-font-family: Poppins; -fx-font-weight: bold; -fx-font-size: 24;">
+               <font>
+                  <Font name="Poppins Regular" size="12.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Pane layoutX="103.0" layoutY="78.0" prefHeight="309.0" prefWidth="308.0" style="-fx-background-color: white;">

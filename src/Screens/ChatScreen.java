@@ -91,6 +91,9 @@ public class ChatScreen {
     @FXML
     private ImageView imagePublication;
 
+    @FXML
+    private Label lblNameFriend;
+
         public ChatScreen(int i)throws Exception{
             id=i;
             this.chats= new LinkedListModel<>(List_User.getPoint(0).user[id].getDequeChat());
@@ -139,95 +142,116 @@ public class ChatScreen {
     public Stage getStage(){return this.stage;}
     public Pane getPane(){return this.pane;}
 
-    public void genareteViewChat(int friendUserId){
-        idFriend=friendUserId;
+
+    //gerar o chat em si anterior
+    public void genareteViewChat(int friendUserId) {
+        idFriend = friendUserId;
         this.vboxViewChat.getChildren().clear();
         User user = List_User.getPoint(id).user[id];
-        if(!user.getChats().containsKey(friendUserId))return;
-            if(user.getChats().size()!=0){
-                ArrayList<Message> chat = user.getChats().get(friendUserId).getMessages();
-                for(int i=0;i<chat.size();++i){
-                    int index =i;
-                    VBox vBox = new VBox(2);
-                    ContextMenu contecContextMenu = new ContextMenu();
-                    MenuItem menu = new MenuItem("Delete");
-                    MenuItem menu1 = new MenuItem("Edit");
-                    contecContextMenu.getItems().addAll(menu1,menu);
-                    
-                    menu1.setOnAction(event->{
-                        try{
-                            new EditMessage(idFriend, user.getChats().get(idFriend), chat.get(index), this).getStage().show();
-                            this.pane.effectProperty().set(new MotionBlur(3.0,15.0));
-                        }catch(Exception ie){
-                            ie.printStackTrace();   
+    
+        if (!user.getChats().containsKey(friendUserId)) return;
+        if (user.getChats().size() != 0) {
+            ArrayList<Message> chat = user.getChats().get(friendUserId).getMessages();
+            for (int i = 0; i < chat.size(); ++i) {
+                int index = i;
+                VBox vBox = new VBox(2);
+    
+                ContextMenu contecContextMenu = new ContextMenu();
+                MenuItem menu = new MenuItem("Delete");
+                MenuItem menu1 = new MenuItem("Edit");
+                contecContextMenu.getItems().addAll(menu1, menu);
+    
+                menu1.setOnAction(event -> {
+                    try {
+                        new EditMessage(idFriend, user.getChats().get(idFriend), chat.get(index), this).getStage().show();
+                        this.pane.effectProperty().set(new MotionBlur(3.0, 15.0));
+                    } catch (Exception ie) {
+                        ie.printStackTrace();
+                    }
+                });
+    
+                menu.setOnAction(event -> {
+                    user.getChats().get(friendUserId).remove(chat.get(index).getId());
+                    this.genareteViewChat(friendUserId);
+                });
+    
+                if (chat.get(i).getSender() == id) {
+                    vBox.setOnMouseClicked(event -> {
+                        if (event.getButton().name().compareTo("SECONDARY") == 0) {
+                            contecContextMenu.show(vBox, event.getScreenX(), event.getScreenY());
                         }
                     });
-
-                    menu.setOnAction(event->{
-                        user.getChats().get(friendUserId).remove(chat.get(index).getId());
-                        this.genareteViewChat(friendUserId);
-                    });
-
-                    if(chat.get(i).getSender()==id){
-                        vBox.setOnMouseClicked(event->{
-                            if(event.getButton().name().compareTo("SECONDARY")==0){
-                                contecContextMenu.show(vBox, event.getScreenX(), event.getScreenY());
-                            }    
-                        });
-
-                        vBox.setPadding(new Insets(10,10,10,this.vboxViewChat.getPrefWidth()/2));    
-                        Text text=new Text(chat.get(i).getTxtMessage());
-                        text.setStyle("-fx-font-size: 17;");
-                        text.setFill(Paint.valueOf("rgb(255,255,255)"));
-                        TextFlow textFlow = new TextFlow(text);
-                        textFlow.setStyle(
-                            "-fx-background-radius: 20px;"+
-                            "-fx-background-color: rgb(123,56,255);"+
-                            "-fx-border-color: transparent;"+
-                            "-fx-border-radius: 20px;"
-                        );
-                        textFlow.setCursor(Cursor.HAND);
-                        textFlow.setPadding(new Insets(5,20,5,20));
+    
+                    vBox.setPadding(new Insets(10, 10, 10, this.vboxViewChat.getPrefWidth() / 2));
+                    Text text = new Text(chat.get(i).getTxtMessage());
+                    text.setStyle("-fx-font-size: 17;");
+                    text.setFill(Paint.valueOf("rgb(255,255,255)"));
+                    TextFlow textFlow = new TextFlow(text);
+                    textFlow.setStyle(
+                        "-fx-background-radius: 20px;" +
+                        "-fx-background-color: rgb(123,56,255);" +
+                        "-fx-border-color: transparent;" +
+                        "-fx-border-radius: 20px;"
+                    );
+                    textFlow.setCursor(Cursor.HAND);
+                    textFlow.setPadding(new Insets(5, 20, 5, 20));
+    
                     
-                        vBox.getChildren().add(textFlow);
-                    }else{
-                        vBox.setPadding(new Insets(10,this.vboxViewChat.getPrefWidth()/2,10,10));    
-                        Text text=new Text(chat.get(i).getTxtMessage());
-                        text.setStyle("-fx-font-size: 17;");
-                        text.setFill(Paint.valueOf("rgb(0,0,0)"));
-                        TextFlow textFlow = new TextFlow(text);
-                        textFlow.setStyle(
-                            "-fx-background-radius: 20px;"+
-                            "-fx-background-color: rgb(211,211,211);"+
-                            "-fx-border-color: transparent;"+
-                            "-fx-border-radius: 20px;"
-                        );
-
-                        textFlow.setPadding(new Insets(5,20,5,20));
+                    Text dateTimeText = new Text(chat.get(i).getFormattedDateTime());
+                    dateTimeText.setStyle("-fx-font-size: 12; -fx-fill: gray;");
+                    TextFlow dateTimeFlow = new TextFlow(dateTimeText);
+                    dateTimeFlow.setPadding(new Insets(0, 0, 0, 308));
+    
+                    vBox.getChildren().addAll(textFlow, dateTimeFlow);  
+                } else {
                     
-                        vBox.getChildren().add(textFlow);
-                    }
-                    this.vboxViewChat.getChildren().add(vBox);
+                    vBox.setPadding(new Insets(10, this.vboxViewChat.getPrefWidth() / 2, 10, 10));
+                    Text text = new Text(chat.get(i).getTxtMessage());
+                    text.setStyle("-fx-font-size: 17;");
+                    text.setFill(Paint.valueOf("rgb(0,0,0)"));
+                    TextFlow textFlow = new TextFlow(text);
+                    textFlow.setStyle(
+                        "-fx-background-radius: 20px;" +
+                        "-fx-background-color: rgb(211,211,211);" +
+                        "-fx-border-color: transparent;" +
+                        "-fx-border-radius: 20px;"
+                    );
+                    textFlow.setPadding(new Insets(5, 20, 5, 20));
+    
+                    
+                    Text dateTimeText = new Text(chat.get(i).getFormattedDateTime());
+                    dateTimeText.setStyle("-fx-font-size: 12; -fx-fill: gray;");
+                    TextFlow dateTimeFlow = new TextFlow(dateTimeText);
+                    dateTimeFlow.setPadding(new Insets(0, 0, 0, 15));
+    
+                    vBox.getChildren().addAll(textFlow, dateTimeFlow);
                 }
-                new Thread(){
-                    @SuppressWarnings("removal")
-                    public void run(){
-                        try{
-                            while(true){
-                                Thread.sleep(100);
-                                if((int)ScrollViewChat.getVvalue()!=1){
-                                    ScrollViewChat.setVvalue(1);
-                                    if((int)ScrollViewChat.getVvalue()!=0)stop();
-                                }else if((int)ScrollViewChat.getVvalue()!=0)stop();
-                            }
-                        }catch(Exception ie){
-                            ie.printStackTrace();
-                        }
-                    }
-                }.start();
+    
+                this.vboxViewChat.getChildren().add(vBox);
             }
+    
+            new Thread() {
+                @SuppressWarnings("removal")
+                public void run() {
+                    try {
+                        while (true) {
+                            Thread.sleep(100);
+                            if ((int) ScrollViewChat.getVvalue() != 1) {
+                                ScrollViewChat.setVvalue(1);
+                                if ((int) ScrollViewChat.getVvalue() != 0) stop();
+                            } else if ((int) ScrollViewChat.getVvalue() != 0) stop();
+                        }
+                    } catch (Exception ie) {
+                        ie.printStackTrace();
+                    }
+                }
+            }.start();
+        }
     }
+    
 
+
+    //gerar lista de amigos que ja se tem conversa
     private void genarateChats()throws FileNotFoundException{
         this.chats= new LinkedListModel<>(List_User.getPoint(0).user[id].getDequeChat());
         this.vboxSelectChat.getChildren().clear();
@@ -252,7 +276,22 @@ public class ChatScreen {
                               "-fx-border-width: 3;");
             });
 
-            Hbox.setOnMouseClicked(event->this.genareteViewChat(List_User.getPoint(0).getId(user.getEmail())));
+            Hbox.setOnMouseClicked(event->{
+                int idAmg = List_User.getPoint(0).getId(user.getEmail());
+                this.genareteViewChat(idAmg);
+                lblNameFriend.setText(List_User.getPoint(0).user[idAmg].getName());
+                try{
+                    if(List_User.getPoint(id).user[idAmg].getPhotoProfile()!=null){
+                        imageSetProfile.setImage(new Image(new FileInputStream(user.getPhotoProfile())));
+                        imageSetProfile.setFitHeight(53);
+                        imageSetProfile.setFitWidth(53);
+                    }
+        
+                }catch(Exception ie){
+                    ie.printStackTrace();
+                }
+
+            });
             
             ImageView img = (user.getPhotoProfile()!=null)?
             new ImageView(new Image(new FileInputStream(user.getPhotoProfile())))
@@ -283,6 +322,7 @@ public class ChatScreen {
         }
     }
 
+    //lista de amigos que nao se tem a conversa ainda
     private void genarateNewChats()throws FileNotFoundException{
         this.vboxStartChat.getChildren().clear();
         ArrayDeque<Integer> users = new ArrayDeque<>();
@@ -304,7 +344,19 @@ public class ChatScreen {
                 );
                 Hbox.setOnMouseClicked(event->{
                     this.vboxViewChat.getChildren().clear();
-                    this.genareteViewChat(List_User.getPoint(0).getId(user.getEmail()));
+                    int idAmg = List_User.getPoint(0).getId(user.getEmail());
+                    this.genareteViewChat(idAmg);
+                    lblNameFriend.setText(List_User.getPoint(0).user[idAmg].getName());
+                    try{
+                        if(List_User.getPoint(id).user[idAmg].getPhotoProfile()!=null){
+                            imageSetProfile.setImage(new Image(new FileInputStream(user.getPhotoProfile())));
+                            imageSetProfile.setFitHeight(53);
+                            imageSetProfile.setFitWidth(53);
+                        }
+            
+                    }catch(Exception ie){
+                        ie.printStackTrace();
+                    }
                 });
                 Hbox.setOnMouseEntered(event -> {
                     Hbox.setStyle("-fx-border-color: rgb(123,56,255); " +
@@ -397,12 +449,6 @@ public class ChatScreen {
     @FXML
     private void goToSettings(MouseEvent event)throws Exception {
         new SettingsScreen(id).getStage().show();
-        this.stage.close();
-    }
-
-    @FXML
-    private void goToProfileTop(MouseEvent event) throws Exception {
-        new ProfileScreen(id).getStage().show();
         this.stage.close();
     }
 

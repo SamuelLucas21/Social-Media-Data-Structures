@@ -54,7 +54,6 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Label fx:id="lblVisibilidade" layoutX="159.0" layoutY="31.0" prefHeight="18.0" prefWidth="215.0" text="Label" />
          </children>
       </Pane>
       <Pane layoutX="-9.0" layoutY="75.0" prefHeight="669.0" prefWidth="292.0" style="-fx-background-color: white; -fx-border-color: rgb(123,56,255); -fx-border-width: 3;">
@@ -79,14 +78,6 @@
                               <HBox fx:id="EditProfile" onMouseClicked="#goToEditProfile" prefHeight="151.0" prefWidth="215.0">
                                  <children>
                                     <Label fx:id="nameUser" prefHeight="25.0" prefWidth="151.0" style="-fx-font-family: Poppins; -fx-font-size: 20;" text="UserName" />
-                                    <ImageView fitHeight="28.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@Imagens/edit.png" />
-                                       </image>
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </ImageView>
                                  </children>
                               </HBox>
                            </children>
@@ -213,14 +204,14 @@
                         <Insets left="10.0" top="25.0" />
                      </padding>
                      <children>
-                        <HBox fx:id="Hbox_to_ScreenPublic" onMouseClicked="#goToPublic" prefHeight="50.0" prefWidth="255.0" styleClass="hbox" stylesheets="@CSS/Hbox.css">
+                        <HBox fx:id="Hbox_to_ScreenDepoimento" onMouseClicked="#goToPublic" prefHeight="50.0" prefWidth="255.0" styleClass="hbox" stylesheets="@CSS/Hbox.css">
                            <children>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@Imagens/plus.png" />
                                  </image>
                               </ImageView>
-                              <Label prefHeight="31.0" prefWidth="181.0" text="Publicar">
+                              <Label prefHeight="31.0" prefWidth="181.0" text="Depoimento">
                                  <padding>
                                     <Insets left="10.0" top="15.0" />
                                  </padding>
@@ -240,8 +231,8 @@
          </children>
       </Pane>
       <TabPane layoutX="283.0" layoutY="78.0" prefHeight="639.0" prefWidth="1004.0" style="-fx-background-color: white;" styleClass="specialJFXTabPane" stylesheets="@CSS/Tab2.css" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab style="-fx-border-radius: 20px; -fx-background-radius: 20px;" text="Publicações">
+         <tabs>
+            <Tab style="-fx-border-radius: 20px; -fx-background-radius: 20px;" text="Publicações">
                <content>
                   <Pane prefHeight="608.0" prefWidth="851.0">
                      <children>
@@ -256,9 +247,10 @@
                         </Pane>
                      </children>
                   </Pane>
-               </content></Tab>
-          <Tab style="-fx-border-radius: 20px; -fx-background-radius: 20px;" text="Depoimentos" />
-        </tabs>
+               </content>
+            </Tab>
+            <Tab style="-fx-border-radius: 20px; -fx-background-radius: 20px;" text="Depoimentos" />
+         </tabs>
       </TabPane>
    </children>
 </Pane>

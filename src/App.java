@@ -22,17 +22,22 @@ public class App extends Application{
         user.setPassword("1234");
         user.setName("Marcela");
         user.setPhotoProfile("\\Users\\Dell\\Desktop\\versionVS\\Social-Media-Data-Structures\\Photos\\IMG_1552.PNG");
+        List_User.getPoint(10).add(user); //inicialização da lista de usuarios
+
+        user = new User();
+        user.setAge(19);
+        user.setCity("Cruzeiro-SP");
+        user.setCivil("Solteiro");
+        user.setEmail("manu");
+        user.setPassword("1234");
+        user.setName("Manuela");
+        user.setPhotoProfile("\\Users\\Dell\\Desktop\\versionVS\\Social-Media-Data-Structures\\Photos\\IMG_1551.PNG");
         List_User.getPoint(5).add(user);
 
-        User user2 = new User();
-        user2.setAge(19);
-        user2.setCity("Cruzeiro-SP");
-        user2.setCivil("Solteiro");
-        user2.setEmail("manu");
-        user2.setPassword("1234");
-        user2.setName("Manuela");
-        user2.setPhotoProfile("\\Users\\Dell\\Desktop\\versionVS\\Social-Media-Data-Structures\\Photos\\IMG_1551.PNG");
-        List_User.getPoint(5).add(user2);
+            user.getList_Solicit().add(0);
+            List_User.getPoint(0).user[0].AddFriends(1);
+            List_User.getPoint(0).user[1].AddFriends(0);
+
         /*
         User user = new User();
         user.setAge(21);

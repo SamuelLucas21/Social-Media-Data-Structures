@@ -68,15 +68,15 @@ public class HomeScreen{
     @FXML
     private HBox Hbox_to_ScreenChat;
 
-        public HomeScreen(int i)throws Exception{
-            id=i;
+        public HomeScreen(int newId)throws Exception{
+            id=newId;
             
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ScreensFXML/ScreenHome.fxml"));
             loader.setController(this);
             pane = loader.load();
             pane.requestFocus();
             stage.setScene(new Scene(pane));
-            stage.setTitle("Home about "+ List_User.getPoint(0).user[i].getName());
+            stage.setTitle("Home about "+ List_User.getPoint(0).user[newId].getName());
             stage.setResizable(false);
         }
 
