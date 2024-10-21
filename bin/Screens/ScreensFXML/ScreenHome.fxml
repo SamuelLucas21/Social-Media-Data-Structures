@@ -41,7 +41,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fitHeight="66.0" fitWidth="248.0" layoutX="527.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="103.0" fitWidth="255.0" layoutX="524.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Imagens/home%20logoStar2.png" />
                </image>

@@ -44,9 +44,9 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fitHeight="67.0" fitWidth="200.0" layoutX="535.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="103.0" fitWidth="255.0" layoutX="524.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Imagens/template_home.png" />
+                  <Image url="@Imagens/home%20logoStar2.png" />
                </image>
             </ImageView>
             <ImageView fx:id="exitToHome" fitHeight="60.0" fitWidth="60.0" layoutX="16.0" layoutY="9.0" onMouseClicked="#backToLogin" pickOnBounds="true" preserveRatio="true">
