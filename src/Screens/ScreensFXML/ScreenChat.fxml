@@ -41,7 +41,7 @@
             </ImageView>
             <ImageView fx:id="exitToHome" fitHeight="50.0" fitWidth="50.0" layoutX="21.0" layoutY="15.0" onMouseClicked="#backToLogin" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Imagens/exit.png" />
+                  <Image url="@Imagens/backTo.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -193,6 +193,9 @@
                <font>
                   <Font name="Poppins Regular" size="12.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Label>
          </children>
       </Pane>

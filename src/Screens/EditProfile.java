@@ -190,6 +190,8 @@ public class EditProfile {
         _cityUser.setText(user.getCity());
         _nameUser.setText(user.getName());
         _relationShipUser.setText(user.getCivil());
+        
+        
         try{
             if(user.getPhotoProfile()!=null){
                 this._imageSetProfile.setImage(new Image(new FileInputStream(user.getPhotoProfile())));
@@ -200,6 +202,8 @@ public class EditProfile {
         }catch(Exception ie){
             ie.printStackTrace();
         }
+        //atualizar as minhas postagens
+        //_ProfileScreen.initialize(); 
         this.cancel(null);
 
     }

@@ -281,9 +281,11 @@ public class ChatScreen {
                               "-fx-border-radius: 7px; " +
                               "-fx-border-width: 3;");
             });
-
+            
+            
+            int idAmg = List_User.getPoint(0).getId(user.getEmail());
             Hbox.setOnMouseClicked(event->{
-                int idAmg = List_User.getPoint(0).getId(user.getEmail());
+                
                 this.genareteViewChat(idAmg);
                 lblNameFriend.setText(List_User.getPoint(0).user[idAmg].getName());
                 imageSetProfile.setVisible(true);
@@ -310,12 +312,31 @@ public class ChatScreen {
 
                         // Aplicar o círculo como um clip na ImageView
                         imageSetProfile.setClip(circle);
-                    
 
+                        
                 }catch(Exception ie){
                     ie.printStackTrace();
                 }
 
+            });
+
+            String perfilVisi = "Amigos <3";
+            imageSetProfile.setOnMouseClicked(event->{
+                try {
+                    new FriendProfile(id, idAmg, perfilVisi).getStage().show();
+                    this.stage.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+
+            lblNameFriend.setOnMouseClicked(event->{
+                try {
+                    new FriendProfile(id, idAmg, perfilVisi).getStage().show();
+                    this.stage.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             });
             
             ImageView img = (user.getPhotoProfile()!=null)?
@@ -373,9 +394,11 @@ public class ChatScreen {
                         "-fx-border-radius: 7px; " +
                         "-fx-border-width: 3;"
                 );
+
+                int idAmg = List_User.getPoint(0).getId(user.getEmail());
                 Hbox.setOnMouseClicked(event->{
                     this.vboxViewChat.getChildren().clear();
-                    int idAmg = List_User.getPoint(0).getId(user.getEmail());
+                    
                     this.genareteViewChat(idAmg);
                     lblNameFriend.setText(List_User.getPoint(0).user[idAmg].getName());
                     imageSetProfile.setVisible(true);
@@ -403,6 +426,27 @@ public class ChatScreen {
                         ie.printStackTrace();
                     }
                 });
+
+                String perfilVisi = "Amigos <3";
+                imageSetProfile.setOnMouseClicked(event->{
+                    try {
+                        new FriendProfile(id, idAmg, perfilVisi).getStage().show();
+                        this.stage.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
+    
+                lblNameFriend.setOnMouseClicked(event->{
+                    try {
+                        new FriendProfile(id, idAmg, perfilVisi).getStage().show();
+                        this.stage.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
+
+
                 Hbox.setOnMouseEntered(event -> {
                     Hbox.setStyle("-fx-border-color: rgb(123,56,255); " +
                                 "-fx-border-radius: 7px; " +

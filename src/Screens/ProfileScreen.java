@@ -63,8 +63,7 @@ public class ProfileScreen {
      @FXML
     private ScrollPane scroolPane = new ScrollPane();
 
-    @FXML
-    private Label lblVisibilidade;//teste de visibilidade
+    
 
         public ProfileScreen(int newId)throws Exception{
             id=newId;
@@ -83,15 +82,14 @@ public class ProfileScreen {
     public Pane getPane(){return this.pane;}
     
     @FXML    
-    private void initialize(){
+    public void initialize(){
 
         scroolPane.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
 
-        scroolPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Oculta a barra horizontal
-        scroolPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Oculta a barra vertical
+        scroolPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra horizontal do scroll
+        scroolPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra vertical
 
         User user = List_User.getPoint(id).user[id];
-        lblVisibilidade.setText(user.getProfileVisibility());//label teste visibilidade perfil
         this.nameUser.setText(user.getName());
         this.cityUser.setText(user.getCity());
         this.relationShipUser.setText(user.getCivil());

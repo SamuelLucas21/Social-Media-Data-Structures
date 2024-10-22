@@ -17,15 +17,7 @@
    <children>
       <Pane layoutX="-8.0" layoutY="-4.0" prefHeight="82.0" prefWidth="1302.0" style="-fx-background-color: white; -fx-border-color: rgb(123,56,255); -fx-border-width: 3;">
          <children>
-            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="1231.0" layoutY="15.0" nodeOrientation="INHERIT" pickOnBounds="true" style="-fx-effect: solid;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <image>
-                  <Image url="@Imagens/PERFIL.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="1141.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="1228.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Imagens/NOTIFICACAO.png" />
                </image>
@@ -33,7 +25,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="viewSettings" fitHeight="50.0" fitWidth="50.0" layoutX="1057.0" layoutY="16.0" onMouseClicked="#goToSettings" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="viewSettings" fitHeight="50.0" fitWidth="50.0" layoutX="1144.0" layoutY="15.0" onMouseClicked="#goToSettings" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Imagens/settings.png" />
                </image>
@@ -204,7 +196,7 @@
                         <Insets left="10.0" top="25.0" />
                      </padding>
                      <children>
-                        <HBox fx:id="Hbox_to_ScreenDepoimento" onMouseClicked="#goToPublic" prefHeight="50.0" prefWidth="255.0" styleClass="hbox" stylesheets="@CSS/Hbox.css">
+                        <HBox fx:id="Hbox_to_ScreenDepoimento" onMouseClicked="#goToDepoimento" prefHeight="50.0" prefWidth="255.0" styleClass="hbox" stylesheets="@CSS/Hbox.css">
                            <children>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -232,19 +224,42 @@
       </Pane>
       <TabPane layoutX="283.0" layoutY="78.0" prefHeight="639.0" prefWidth="1004.0" style="-fx-background-color: white;" styleClass="specialJFXTabPane" stylesheets="@CSS/Tab2.css" tabClosingPolicy="UNAVAILABLE">
          <tabs>
-            <Tab style="-fx-border-radius: 20px; -fx-background-radius: 20px; -fx-background-color: white;" text="Publicações">
+            <Tab style="-fx-border-radius: 20px; -fx-background-radius: 20px;" text="Publicações">
                <content>
-                  <Pane fx:id="paneWhite" prefHeight="608.0" prefWidth="1010.0" style="-fx-background-color: rgb(255, 255, 255);">
+                  <Pane fx:id="paneWhite" prefHeight="608.0" prefWidth="1010.0" style="-fx-background-color: rgb(245, 245, 245);">
                      <children>
-                        <Pane layoutX="126.0" layoutY="-2.0" prefHeight="613.0" prefWidth="692.0" style="-fx-background-color: white;">
-                           <children>
-                              <ScrollPane prefHeight="613.0" prefWidth="697.0" style="-fx-background-color: white;" stylesheets="@CSS/ScrollPane.css">
-                                 <content>
-                                    <VBox fx:id="vBoxPrincipal" prefHeight="612.0" prefWidth="696.0" style="-fx-background-color: white;" />
-                                 </content>
-                              </ScrollPane>
-                           </children>
-                        </Pane>
+                        <ScrollPane fx:id="scroolPane" layoutX="182.0" layoutY="-1.0" prefHeight="611.0" prefWidth="640.0" style="-fx-background-color: rgb(245, 245, 245);">
+                           <content>
+                              <VBox fx:id="vBoxPrincipal" prefHeight="603.0" prefWidth="634.0" style="-fx-background-color: rgb(245, 245, 245);">
+                                 <children>
+                                    <Pane fx:id="PanePrivProfile" prefHeight="254.0" prefWidth="634.0">
+                                       <children>
+                                          <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="81.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@Imagens/cadeado_privacidade.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label layoutX="187.0" layoutY="87.0" prefHeight="17.0" prefWidth="215.0" text="Perfil privado">
+                                             <font>
+                                                <Font name="Segoe UI" size="22.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="187.0" layoutY="115.0" prefHeight="27.0" prefWidth="366.0" text="Somente os amigos deste usuário podem ">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="187.0" layoutY="142.0" prefHeight="23.0" prefWidth="363.0" text="ver o que se é compartilhado neste perfil.">
+                                             <font>
+                                                <Font name="Segoe UI" size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
                      </children>
                   </Pane>
                </content>

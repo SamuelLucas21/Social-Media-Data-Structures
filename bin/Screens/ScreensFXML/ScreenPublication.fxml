@@ -20,15 +20,7 @@
    <children>
       <Pane layoutX="-8.0" layoutY="-4.0" prefHeight="82.0" prefWidth="1302.0" style="-fx-background-color: white; -fx-border-color: rgb(123,56,255); -fx-border-width: 3;">
          <children>
-            <ImageView fx:id="imageSetProfile" fitHeight="50.0" fitWidth="50.0" layoutX="1231.0" layoutY="15.0" nodeOrientation="INHERIT" onMouseClicked="#goToProfileTop" pickOnBounds="true" style="-fx-effect: solid;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <image>
-                  <Image url="@Imagens/PERFIL.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="1141.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="1228.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Imagens/NOTIFICACAO.png" />
                </image>
@@ -36,7 +28,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="viewSettings" fitHeight="50.0" fitWidth="50.0" layoutX="1057.0" layoutY="16.0" onMouseClicked="#goToSettings" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="viewSettings" fitHeight="50.0" fitWidth="50.0" layoutX="1144.0" layoutY="16.0" onMouseClicked="#goToSettings" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Imagens/settings.png" />
                </image>

@@ -222,7 +222,7 @@
          <children>
             <ScrollPane layoutY="6.0" prefHeight="318.0" prefWidth="649.0" stylesheets="@CSS/ScrollPane.css">
                <content>
-                  <VBox fx:id="vboxFrinds" prefHeight="310.0" prefWidth="624.0" spacing="10.0" style="-fx-background-color: white;" />
+                  <VBox fx:id="vboxFrinds" prefHeight="315.0" prefWidth="646.0" spacing="10.0" style="-fx-background-color: white;" />
                </content>
             </ScrollPane>
          </children>
@@ -236,7 +236,7 @@
          <children>
             <ScrollPane layoutY="-1.0" prefHeight="182.0" prefWidth="960.0" stylesheets="@CSS/ScrollPane.css">
                <content>
-                  <VBox fx:id="vboxOtherFriends" prefHeight="179.0" prefWidth="944.0" style="-fx-background-color: white;">
+                  <VBox fx:id="vboxOtherFriends" prefHeight="179.0" prefWidth="958.0" style="-fx-background-color: white;">
                      <padding>
                         <Insets right="5.0" />
                      </padding></VBox>
@@ -248,7 +248,7 @@
          <children>
             <ScrollPane layoutY="6.0" prefHeight="318.0" prefWidth="302.0" stylesheets="@CSS/ScrollPane.css">
                <content>
-                  <VBox fx:id="vboxNoticeFriends" prefHeight="310.0" prefWidth="282.0" spacing="10.0" style="-fx-background-color: white;" />
+                  <VBox fx:id="vboxNoticeFriends" prefHeight="315.0" prefWidth="300.0" spacing="10.0" style="-fx-background-color: white;" />
                </content>
             </ScrollPane>
          </children>

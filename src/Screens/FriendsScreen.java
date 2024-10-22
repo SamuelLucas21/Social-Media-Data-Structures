@@ -93,19 +93,20 @@ public class FriendsScreen {
                 }
             }
 
+            //amigos hbox
             for(int i =0;i<sort.size();++i){
                 HBox hBox = new HBox(4);
-                ImageView img = (user[sort.get(i)].getPhotoProfile()==null)?new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.png")))
+                ImageView imgProfileFriend = (user[sort.get(i)].getPhotoProfile()==null)?new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.png")))
                 :
                 new ImageView(new Image(new FileInputStream(user[sort.get(i)].getPhotoProfile())));
-                img.setFitHeight(50);
-                img.setFitWidth(50);
+                imgProfileFriend.setFitHeight(50);
+                imgProfileFriend.setFitWidth(50);
 
                 // Criar um círculo para o clipping
                 Circle circle = new Circle(25, 25, 25); // O raio do círculo é metade do tamanho da imagem (53 / 2)
 
                 // Aplicar o círculo como um clip na ImageView
-                img.setClip(circle);
+                imgProfileFriend.setClip(circle);
 
                 Label userName = new Label(user[sort.get(i)].getName());
                 userName.setStyle(
@@ -115,19 +116,22 @@ public class FriendsScreen {
                 userName.setPadding(new Insets(5,0,0,20));
                 userName.setPrefWidth(700);
 
-                ImageView img1 = new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/ion_person.png")));
-                ImageView img2 = new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/octicon_x.png")));
-                img1.setCursor(Cursor.HAND);
-                img2.setCursor(Cursor.HAND);
+                imgProfileFriend.setCursor(Cursor.HAND);
+                userName.setCursor(Cursor.HAND);
+
+                ImageView imgBlock = new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/mdi_user-off1.png")));
+                ImageView imgDelete = new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/octicon_x.png")));
+                imgBlock.setCursor(Cursor.HAND);
+                imgDelete.setCursor(Cursor.HAND);
 
                 Tooltip tooltipBlock = new Tooltip("Bloquear usuário");
                 Tooltip tooltipDelete = new Tooltip("Excluir usuário");
 
-                Tooltip.install(img1, tooltipBlock);
-                Tooltip.install(img2, tooltipDelete);
+                Tooltip.install(imgBlock, tooltipBlock);
+                Tooltip.install(imgDelete, tooltipDelete);
                 
                 int idFriend = List_User.getPoint(i).getId(user[sort.get(i)].getEmail());
-                img1.setOnMouseClicked(event->{
+                imgBlock.setOnMouseClicked(event->{
                         Alert alert = new Alert(AlertType.WARNING);
                         alert.setTitle("Aviso!");
                         alert.setHeaderText(null);
@@ -146,10 +150,10 @@ public class FriendsScreen {
                             List_User.getPoint(0).user[idFriend].setBlock(id, true);        
                             initialize();
                         }
-                 
-                
+ 
+                        
                 });
-                img2.setOnMouseClicked(event->{
+                imgDelete.setOnMouseClicked(event->{
                         Alert alert = new Alert(AlertType.WARNING);
                         alert.setTitle("Aviso!");
                         alert.setHeaderText(null);
@@ -169,15 +173,37 @@ public class FriendsScreen {
 
                 });
 
+                String perfilVisi = "Amigos <3";
+                
+                //ir para Screen friendsProfile
+                imgProfileFriend.setOnMouseClicked(event->{
+                    try {
+                        new FriendProfile(id, idFriend, perfilVisi).getStage().show();
+                        this.stage.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    
+                });
+
+                userName.setOnMouseClicked(event->{
+                    try {
+                        new FriendProfile(id, idFriend, perfilVisi).getStage().show();
+                        this.stage.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
+
                 HBox hBox1 = new HBox(2);
                 hBox1.setPadding(new Insets(5,0,0,30));
                 hBox1.setSpacing(15);
-                hBox1.getChildren().addAll(img1,img2);
+                hBox1.getChildren().addAll(imgBlock,imgDelete);
 
-                hBox.getChildren().addAll(img,userName,hBox1);
+                hBox.getChildren().addAll(imgProfileFriend,userName,hBox1);
                 hBox.setPadding(new Insets(5,10,5,10));
                 this.vboxFrinds.getChildren().addAll(new Separator(),hBox,new Separator());
-            }
+            }//final hbox amigo
             
             ArrayList<Integer> segs = new ArrayList<>();
             for(int i =0;i<=List_User.getPoint(i).getSizeUsers();++i){
@@ -197,6 +223,7 @@ public class FriendsScreen {
                 }
             }
 
+            //sugestao de amizade
             label:
             while(!segs.isEmpty()){ 
                 HBox hBox = new HBox(3);
@@ -206,17 +233,17 @@ public class FriendsScreen {
                     hbox1.setPadding(new Insets(10,0,0,10));
                     hbox1.setSpacing(5);
                     
-                    ImageView img = (user[segs.get(0)].getPhotoProfile()==null)?new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.png")))
+                    ImageView imgIConFriend = (user[segs.get(0)].getPhotoProfile()==null)?new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.png")))
                     :
                     new ImageView(new Image(new FileInputStream(user[segs.get(0)].getPhotoProfile()))) ;
-                    img.setFitHeight(50);
-                    img.setFitWidth(50);
+                    imgIConFriend.setFitHeight(50);
+                    imgIConFriend.setFitWidth(50);
 
                     // Criar um círculo para o clipping
                     Circle circle = new Circle(25, 25, 25); // O raio do círculo é metade do tamanho da imagem (53 / 2)
 
                     // Aplicar o círculo como um clip na ImageView
-                    img.setClip(circle);
+                    imgIConFriend.setClip(circle);
 
                     Label userName = new Label(user[segs.get(0)].getName());
                     userName.setStyle(
@@ -225,11 +252,35 @@ public class FriendsScreen {
                     );
                     userName.setPadding(new Insets(15,0,0,10));
 
-                    ImageView img1 = new ImageView(new Image(getClass().getResourceAsStream("./ScreensFXML/Imagens/add-friend.png")));
-                    img1.setCursor(Cursor.HAND);
+                    imgIConFriend.setCursor(Cursor.HAND);
+                    userName.setCursor(Cursor.HAND);
 
                     int index = segs.get(0);
-                    img1.setOnMouseClicked(event->{
+
+                    String perfilVisi = List_User.getPoint(index).user[index].getProfileVisibility();
+                    imgIConFriend.setOnMouseClicked(event->{
+                        try {
+                            new FriendProfile(id, index, perfilVisi).getStage().show();
+                            this.stage.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
+
+                    userName.setOnMouseClicked(event->{
+                        try {
+                            new FriendProfile(id, index, perfilVisi).getStage().show();
+                            this.stage.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
+
+                    ImageView imgAddFriend = new ImageView(new Image(getClass().getResourceAsStream("./ScreensFXML/Imagens/add-friend.png")));
+                    imgAddFriend.setCursor(Cursor.HAND);
+
+                    
+                    imgAddFriend.setOnMouseClicked(event->{
                         User _user = List_User.getPoint(0).user[index];
                         _user.sendSolict(id);
                         Alert alert = new Alert(AlertType.INFORMATION);
@@ -242,14 +293,14 @@ public class FriendsScreen {
                         this.initialize();
                     });
                     VBox auxToImage = new VBox();
-                    auxToImage.getChildren().add(img1);
+                    auxToImage.getChildren().add(imgAddFriend);
                     auxToImage.setPadding(new Insets(10,0,0,0));
 
                     HBox hBox2 = new HBox();
                     hBox2.getChildren().addAll(auxToImage);
                     hBox2.setPadding(new Insets(0,0,0,20));
                     
-                    hbox1.getChildren().addAll(img,userName,hBox2);
+                    hbox1.getChildren().addAll(imgIConFriend,userName,hBox2);
                     hBox.getChildren().addAll(hbox1);
                     segs.remove(0);
 
@@ -259,30 +310,54 @@ public class FriendsScreen {
                 if(segs.isEmpty())break label;
             }
         
+            //hbox solicit
             ArrayList<Integer>solicit = List_User.getPoint(id).user[id].getSolicit();
             for(int i = solicit.size()-1;i>=0;--i){
                 HBox hBoxSolict = new HBox(4);
                 hBoxSolict.setPadding(new Insets(10,0,0,3));
                 
-                ImageView imageView = (user[solicit.get(i)].getPhotoProfile()==null)?new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.png")))
+                ImageView imgIconProfile = (user[solicit.get(i)].getPhotoProfile()==null)?new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.png")))
                 :
                 new ImageView(new Image(new FileInputStream(user[solicit.get(i)].getPhotoProfile())))
                 ;
                 
-                imageView.setFitHeight(50);
-                imageView.setFitWidth(50);
+                imgIconProfile.setFitHeight(50);
+                imgIconProfile.setFitWidth(50);
 
                 // Criar um círculo para o clipping
                 Circle circle = new Circle(25, 25, 25); // O raio do círculo é metade do tamanho da imagem (53 / 2)
 
                 // Aplicar o círculo como um clip na ImageView
-                imageView.setClip(circle);
+                imgIconProfile.setClip(circle);
 
                 int string_Name =(user[solicit.get(i)].getName().indexOf(" ")==-1)? user[solicit.get(i)].getName().length():user[solicit.get(i)].getName().indexOf(" ");
 
-                Label label = new Label(user[solicit.get(i)].getName().substring(0, string_Name));
-                label.setPadding(new Insets(15,0,0,0));
-                label.setPrefWidth(80);
+                Label nameFriend = new Label(user[solicit.get(i)].getName().substring(0, string_Name));
+                nameFriend.setPadding(new Insets(15,0,0,0));
+                nameFriend.setPrefWidth(80);
+
+                imgIconProfile.setCursor(Cursor.HAND);
+                nameFriend.setCursor(Cursor.HAND);
+
+                int indexFriend = solicit.get(i);
+                String perfilVisi = List_User.getPoint(2).user[indexFriend].getProfileVisibility();
+                imgIconProfile.setOnMouseClicked(event->{
+                    try {
+                        new FriendProfile(id, indexFriend, perfilVisi).getStage().show();
+                        this.stage.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
+
+                nameFriend.setOnMouseClicked(event->{
+                    try {
+                        new FriendProfile(id, indexFriend, perfilVisi).getStage().show();
+                        this.stage.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
 
                 ImageView accept = new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/check_accept.png")));
                 ImageView deni = new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/x_deni.png"))); 
@@ -317,7 +392,7 @@ public class FriendsScreen {
                 hBoxToAux.setPadding(new Insets(10,0,0,80));
                 hBoxToAux.setSpacing(3);
                 hBoxToAux.getChildren().addAll(vBoxAuxToAccept,deni);
-                hBoxSolict.getChildren().addAll(imageView,label,hBoxToAux);
+                hBoxSolict.getChildren().addAll(imgIconProfile,nameFriend,hBoxToAux);
                 this.vboxNoticeFriends.getChildren().addAll(new Separator(),hBoxSolict,new Separator());
             }
 

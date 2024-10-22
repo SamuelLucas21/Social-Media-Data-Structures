@@ -46,7 +46,6 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Label fx:id="lblVisibilidade" layoutX="159.0" layoutY="31.0" prefHeight="18.0" prefWidth="215.0" text="Label" />
          </children>
       </Pane>
       <Pane layoutX="-9.0" layoutY="75.0" prefHeight="669.0" prefWidth="292.0" style="-fx-background-color: white; -fx-border-color: rgb(123,56,255); -fx-border-width: 3;">
