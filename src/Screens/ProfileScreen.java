@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.effect.MotionBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -19,6 +20,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
@@ -58,11 +60,14 @@ public class ProfileScreen {
     @FXML
     private ImageView viewSettings;
 
+     @FXML
+    private ScrollPane scroolPane = new ScrollPane();
+
     @FXML
     private Label lblVisibilidade;//teste de visibilidade
 
-        public ProfileScreen(int i)throws Exception{
-            id=i;
+        public ProfileScreen(int newId)throws Exception{
+            id=newId;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ScreensFXML/ScreenProfile.fxml"));
             loader.setController(this);
             pane = loader.load();
@@ -71,7 +76,7 @@ public class ProfileScreen {
             this.stage.setResizable(false);
 
             pane.requestFocus();
-            
+
         }
 
     public Stage getStage(){return this.stage;}
@@ -79,6 +84,12 @@ public class ProfileScreen {
     
     @FXML    
     private void initialize(){
+
+        scroolPane.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
+
+        scroolPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Oculta a barra horizontal
+        scroolPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Oculta a barra vertical
+
         User user = List_User.getPoint(id).user[id];
         lblVisibilidade.setText(user.getProfileVisibility());//label teste visibilidade perfil
         this.nameUser.setText(user.getName());
@@ -90,6 +101,12 @@ public class ProfileScreen {
                 this.imageSetProfile.setImage(new Image(new FileInputStream(user.getPhotoProfile())));
                 this.imageSetProfile.setFitHeight(159);
                 this.imageSetProfile.setFitWidth(159);
+
+                // Criar um círculo para o clipping
+                Circle circle = new Circle(75.5, 75.5, 75.5); // O raio do círculo é metade do tamanho da imagem (53 / 2)
+
+                // Aplicar o círculo como um clip na ImageView
+                imageSetProfile.setClip(circle);
             }
             this.vBoxPrincipal.setSpacing((double)10);
             for(int i = user.getPosts().size()-1;i>=0;--i){
@@ -105,11 +122,18 @@ public class ProfileScreen {
 
                 imageView.setFitHeight(50);
                 imageView.setFitWidth(50);
+
+                // Criar um círculo para o clipping
+                Circle circle = new Circle(25, 25, 25); // O raio do círculo é metade do tamanho da imagem (53 / 2)
+
+                // Aplicar o círculo como um clip na ImageView
+                imageView.setClip(circle);
+                
                 imageView.setPreserveRatio(true);
 
                 Label nameUser = new Label(List_User.getPoint(0).user[id].getName());
                 nameUser.setStyle("-fx-font-weight: bold; -fx-font-size: 20px");
-                nameUser.setPadding(new Insets(13,0,0,10));//user
+                nameUser.setPadding(new Insets(13,0,0,11));//user
                 hBox.getChildren().addAll(imageView,nameUser);
 
                 vBox.setStyle("-fx-padding: 10; -fx-border-color: lightgray; -fx-border-width: 1; -fx-background-color: white;");

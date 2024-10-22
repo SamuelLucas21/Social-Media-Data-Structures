@@ -16,6 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -120,6 +121,12 @@ public class EditProfile {
                 this.profileImage.setImage(new Image(new FileInputStream(user.getPhotoProfile())));
                 this.profileImage.setFitHeight(71);
                 this.profileImage.setFitWidth(71);
+
+                // Criar um círculo para o clipping
+                Circle circle = new Circle(35.5, 35.5, 35.5); // O raio do círculo é metade do tamanho da imagem (53 / 2)
+
+                // Aplicar o círculo como um clip na ImageView
+                profileImage.setClip(circle);
             }
 
         }catch(Exception ie){

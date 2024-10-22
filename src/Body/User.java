@@ -15,18 +15,23 @@ public class User {
     private ArrayList<Post> postUser = new ArrayList<>();
     private ArrayList<Integer> friends = new ArrayList<>();
     private ArrayList<Integer> solicit = new ArrayList<>();
+    private Map<Integer, Boolean> blockUser=new HashMap<>();
     private LinkedListModel<Integer> list_solicit = new LinkedListModel<>();
     private ArrayDeque<Integer> dequeChat = new ArrayDeque<>();
     private Map<Integer,Chat> chat = new HashMap<>();
     
     public List<Integer> getList_Solicit(){return this.list_solicit;}
     public ArrayDeque<Integer> getDequeChat(){return this.dequeChat;}
-
     public Map<Integer,Chat> getChats(){return this.chat;}
+
+    public Map<Integer,Boolean> getUsersBlocks(){return this.blockUser;}
+    public void setBlock(int i, boolean p){this.blockUser.put(i, p);}
+    public boolean Check_User_Blocked(int i){return this.blockUser.get((Integer)i);}
 
     public void AddFriends(int idFriend){
         this.friends.add(idFriend);
     }
+    
     public void removeFriends(int idFriend){
         for(int i =0;i<this.friends.size();++i){
             if(this.friends.get(i)==idFriend){

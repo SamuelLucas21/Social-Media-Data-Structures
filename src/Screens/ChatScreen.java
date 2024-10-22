@@ -33,6 +33,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
@@ -94,6 +95,8 @@ public class ChatScreen {
     @FXML
     private Label lblNameFriend;
 
+    private ImageView chatProfileImage;
+
         public ChatScreen(int i)throws Exception{
             id=i;
             this.chats= new LinkedListModel<>(List_User.getPoint(0).user[id].getDequeChat());
@@ -130,6 +133,9 @@ public class ChatScreen {
         Tooltip.install(imageFriends, tooltipFriends);
         Tooltip.install(imageProfile, tooltipProfile);
         Tooltip.install(imagePublication, tooltipPublication);
+
+        chatProfileImage = imageSetProfile;
+        imageSetProfile.setVisible(false);
 
         try{
             this.genarateChats();
@@ -280,13 +286,32 @@ public class ChatScreen {
                 int idAmg = List_User.getPoint(0).getId(user.getEmail());
                 this.genareteViewChat(idAmg);
                 lblNameFriend.setText(List_User.getPoint(0).user[idAmg].getName());
+                imageSetProfile.setVisible(true);
                 try{
-                    if(List_User.getPoint(id).user[idAmg].getPhotoProfile()!=null){
-                        imageSetProfile.setImage(new Image(new FileInputStream(user.getPhotoProfile())));
+                   // if(List_User.getPoint(id).user[idAmg].getPhotoProfile()!=null){
+                       /*  imageSetProfile.setImage(new Image(new FileInputStream(user.getPhotoProfile())));
+                        imageSetProfile.setFitHeight(53);
+                        imageSetProfile.setFitWidth(53);*/
+
+                        Image image = (user.getPhotoProfile()!=null)?
+                        new Image((new FileInputStream(user.getPhotoProfile())))
+                        :
+                        new Image((getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.png")))
+                        ;
+
+                        imageSetProfile.setImage(image);
+
+                        // Ajustar o tamanho da imagem
                         imageSetProfile.setFitHeight(53);
                         imageSetProfile.setFitWidth(53);
-                    }
-        
+
+                        // Criar um círculo para o clipping
+                        Circle circle = new Circle(26.5, 26.5, 26.5); // O raio do círculo é metade do tamanho da imagem (53 / 2)
+
+                        // Aplicar o círculo como um clip na ImageView
+                        imageSetProfile.setClip(circle);
+                    
+
                 }catch(Exception ie){
                     ie.printStackTrace();
                 }
@@ -301,6 +326,12 @@ public class ChatScreen {
             
             img.setFitHeight(50);
             img.setFitWidth(50);
+
+            // Criar um círculo para o clipping
+            Circle circle = new Circle(25, 25, 25); // O raio do círculo é metade do tamanho da imagem (53 / 2)
+
+            // Aplicar o círculo como um clip na ImageView
+            img.setClip(circle);
 
             VBox vBox = new VBox(1);
             Label label = new Label(user.getName());
@@ -347,12 +378,26 @@ public class ChatScreen {
                     int idAmg = List_User.getPoint(0).getId(user.getEmail());
                     this.genareteViewChat(idAmg);
                     lblNameFriend.setText(List_User.getPoint(0).user[idAmg].getName());
+                    imageSetProfile.setVisible(true);
                     try{
-                        if(List_User.getPoint(id).user[idAmg].getPhotoProfile()!=null){
-                            imageSetProfile.setImage(new Image(new FileInputStream(user.getPhotoProfile())));
-                            imageSetProfile.setFitHeight(53);
-                            imageSetProfile.setFitWidth(53);
-                        }
+                        
+                        Image image = (user.getPhotoProfile()!=null)?
+                        new Image((new FileInputStream(user.getPhotoProfile())))
+                        :
+                        new Image((getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.png")))
+                        ;
+
+                        imageSetProfile.setImage(image);
+
+                        // Ajustar o tamanho da imagem
+                        imageSetProfile.setFitHeight(53);
+                        imageSetProfile.setFitWidth(53);
+
+                        // Criar um círculo para o clipping
+                        Circle circle = new Circle(26.5, 26.5, 26.5); // O raio do círculo é metade do tamanho da imagem (53 / 2)
+
+                        // Aplicar o círculo como um clip na ImageView
+                        imageSetProfile.setClip(circle);
             
                     }catch(Exception ie){
                         ie.printStackTrace();
@@ -376,6 +421,12 @@ public class ChatScreen {
                 ;
                 img.setFitHeight(50);
                 img.setFitWidth(50);
+
+                // Criar um círculo para o clipping
+                Circle circle = new Circle(25, 25, 25); // O raio do círculo é metade do tamanho da imagem (53 / 2)
+
+                // Aplicar o círculo como um clip na ImageView
+                img.setClip(circle);
 
                 VBox vBox = new VBox(1);
                 Label label = new Label(user.getName());

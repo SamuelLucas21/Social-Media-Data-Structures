@@ -222,7 +222,7 @@
          <children>
             <ScrollPane layoutY="6.0" prefHeight="318.0" prefWidth="649.0" stylesheets="@CSS/ScrollPane.css">
                <content>
-                  <VBox fx:id="vboxFrinds" prefHeight="310.0" prefWidth="637.0" spacing="10.0" style="-fx-background-color: white;" />
+                  <VBox fx:id="vboxFrinds" prefHeight="310.0" prefWidth="624.0" spacing="10.0" style="-fx-background-color: white;" />
                </content>
             </ScrollPane>
          </children>

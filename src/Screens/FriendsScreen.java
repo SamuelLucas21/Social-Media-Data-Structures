@@ -3,6 +3,7 @@ package Screens;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Optional;
 
 import Body.User;
 import Structs.List_User;
@@ -13,15 +14,18 @@ import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 public class FriendsScreen {
@@ -97,6 +101,12 @@ public class FriendsScreen {
                 img.setFitHeight(50);
                 img.setFitWidth(50);
 
+                // Criar um círculo para o clipping
+                Circle circle = new Circle(25, 25, 25); // O raio do círculo é metade do tamanho da imagem (53 / 2)
+
+                // Aplicar o círculo como um clip na ImageView
+                img.setClip(circle);
+
                 Label userName = new Label(user[sort.get(i)].getName());
                 userName.setStyle(
                     "-fx-font-family: Poppins;"+
@@ -109,11 +119,53 @@ public class FriendsScreen {
                 ImageView img2 = new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/octicon_x.png")));
                 img1.setCursor(Cursor.HAND);
                 img2.setCursor(Cursor.HAND);
+
+                Tooltip tooltipBlock = new Tooltip("Bloquear usuário");
+                Tooltip tooltipDelete = new Tooltip("Excluir usuário");
+
+                Tooltip.install(img1, tooltipBlock);
+                Tooltip.install(img2, tooltipDelete);
                 
+                int idFriend = List_User.getPoint(i).getId(user[sort.get(i)].getEmail());
                 img1.setOnMouseClicked(event->{
-                    
+                        Alert alert = new Alert(AlertType.WARNING);
+                        alert.setTitle("Aviso!");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Gostaria de Bloquear este usuário?");
+
+                        ButtonType buttonTypeOne = new ButtonType("Sim");
+                        ButtonType buttonTypeTwo = new ButtonType("Não");
+
+                        alert.getButtonTypes().setAll(buttonTypeOne,buttonTypeTwo);
+
+                        Optional<ButtonType> result = alert.showAndWait();
+                        if (result.get() == buttonTypeOne){
+                            List_User.getPoint(idFriend).user[id].removeFriends(idFriend);
+                            List_User.getPoint(0).user[idFriend].removeFriends(id);
+                            List_User.getPoint(0).user[id].setBlock(idFriend, false);
+                            List_User.getPoint(0).user[idFriend].setBlock(id, true);        
+                            initialize();
+                        }
+                 
+                
                 });
                 img2.setOnMouseClicked(event->{
+                        Alert alert = new Alert(AlertType.WARNING);
+                        alert.setTitle("Aviso!");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Gostaria de Excluir este usuário?");
+
+                        ButtonType buttonTypeOne = new ButtonType("Sim");
+                        ButtonType buttonTypeTwo = new ButtonType("Não");
+
+                        alert.getButtonTypes().setAll(buttonTypeOne,buttonTypeTwo);
+
+                        Optional<ButtonType> result = alert.showAndWait();
+                        if (result.get() == buttonTypeOne){
+                            List_User.getPoint(idFriend).user[id].removeFriends(idFriend);
+                            List_User.getPoint(0).user[idFriend].removeFriends(id);        
+                            initialize();
+                        }
 
                 });
 
@@ -137,10 +189,14 @@ public class FriendsScreen {
                 &&
                 List_User.getPoint(i).checkExistUser(i)==0
                 &&
-                !List_User.getPoint(i).user[id].getList_Solicit().contains((Integer)i)){
-                    segs.add(i);
+                !List_User.getPoint(i).user[id].getList_Solicit().contains((Integer)i)
+                ){
+                    if(!List_User.getPoint(i).user[id].getUsersBlocks().containsKey(i)){
+                            segs.add(i);
+                    }
                 }
             }
+
             label:
             while(!segs.isEmpty()){ 
                 HBox hBox = new HBox(3);
@@ -155,6 +211,12 @@ public class FriendsScreen {
                     new ImageView(new Image(new FileInputStream(user[segs.get(0)].getPhotoProfile()))) ;
                     img.setFitHeight(50);
                     img.setFitWidth(50);
+
+                    // Criar um círculo para o clipping
+                    Circle circle = new Circle(25, 25, 25); // O raio do círculo é metade do tamanho da imagem (53 / 2)
+
+                    // Aplicar o círculo como um clip na ImageView
+                    img.setClip(circle);
 
                     Label userName = new Label(user[segs.get(0)].getName());
                     userName.setStyle(
@@ -209,6 +271,12 @@ public class FriendsScreen {
                 
                 imageView.setFitHeight(50);
                 imageView.setFitWidth(50);
+
+                // Criar um círculo para o clipping
+                Circle circle = new Circle(25, 25, 25); // O raio do círculo é metade do tamanho da imagem (53 / 2)
+
+                // Aplicar o círculo como um clip na ImageView
+                imageView.setClip(circle);
 
                 int string_Name =(user[solicit.get(i)].getName().indexOf(" ")==-1)? user[solicit.get(i)].getName().length():user[solicit.get(i)].getName().indexOf(" ");
 

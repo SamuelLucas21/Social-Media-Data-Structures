@@ -25,6 +25,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
@@ -103,6 +104,13 @@ public class HomeScreen{
 
                 imageView.setFitHeight(50);
                 imageView.setFitWidth(50);
+
+                // Criar um círculo para o clipping
+                Circle circle = new Circle(25, 25, 25); // O raio do círculo é metade do tamanho da imagem (53 / 2)
+
+                // Aplicar o círculo como um clip na ImageView
+                imageView.setClip(circle);
+                
                 imageView.setPreserveRatio(true);
 
                 Label nameUser = new Label(List_User.getPoint(0).user[post.getIduser()].getName());

@@ -22,6 +22,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -131,6 +132,13 @@ public class CommentScreen {
                 this.ImageUser.setImage(new Image(new FileInputStream(photo)));
                 this.ImageUser.setFitHeight(50);
                 this.ImageUser.setFitWidth(50);
+
+                // Criar um círculo para o clipping
+                Circle circle = new Circle(25, 25, 25); // O raio do círculo é metade do tamanho da imagem (53 / 2)
+
+                // Aplicar o círculo como um clip na ImageView
+                ImageUser.setClip(circle);
+                
             }
             organize();
         }catch(Exception ie){

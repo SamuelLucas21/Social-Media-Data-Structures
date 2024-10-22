@@ -21,7 +21,7 @@ public class App extends Application{
         user.setEmail("mar");
         user.setPassword("1234");
         user.setName("Marcela");
-        user.setPhotoProfile("\\Users\\Dell\\Desktop\\versionVS\\Social-Media-Data-Structures\\Photos\\IMG_1552.PNG");
+        user.setPhotoProfile("\\Users\\Dell\\Desktop\\versionVS\\Social-Media-Data-Structures\\Photos\\lilo.PNG");
         List_User.getPoint(10).add(user); //inicialização da lista de usuarios
 
         user = new User();
@@ -31,12 +31,24 @@ public class App extends Application{
         user.setEmail("manu");
         user.setPassword("1234");
         user.setName("Manuela");
-        user.setPhotoProfile("\\Users\\Dell\\Desktop\\versionVS\\Social-Media-Data-Structures\\Photos\\IMG_1551.PNG");
+        user.setPhotoProfile("\\Users\\Dell\\Desktop\\versionVS\\Social-Media-Data-Structures\\Photos\\Snoopy.jpg");
         List_User.getPoint(5).add(user);
 
-            user.getList_Solicit().add(0);
+       // user.getList_Solicit().add(0);
             List_User.getPoint(0).user[0].AddFriends(1);
             List_User.getPoint(0).user[1].AddFriends(0);
+
+        user = new User();
+        user.setAge(18);
+        user.setCity("Cruzeiro-SP");
+        user.setCivil("Solteiro");
+        user.setEmail("madu");
+        user.setPassword("1234");
+        user.setName("Maria Eduarda");
+        user.setPhotoProfile("\\Users\\Dell\\Desktop\\versionVS\\Social-Media-Data-Structures\\Photos\\download.jpg");
+        List_User.getPoint(5).add(user);
+
+            
 
         /*
         User user = new User();

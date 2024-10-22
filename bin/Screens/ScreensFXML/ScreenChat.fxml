@@ -185,7 +185,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <image>
-                  <Image url="@Imagens/img_chatNada.png" />
+                  <Image url="@Imagens/PERFIL.png" />
                </image>
             </ImageView>
             <Line endX="755.39990234375" layoutX="110.0" layoutY="65.0" startX="-99.79998779296875" stroke="LIGHTGRAY" />
