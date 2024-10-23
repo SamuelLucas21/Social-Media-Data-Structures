@@ -19,6 +19,7 @@ public class User {
     private LinkedListModel<Integer> list_solicit = new LinkedListModel<>();
     private ArrayDeque<Integer> dequeChat = new ArrayDeque<>();
     private Map<Integer,Chat> chat = new HashMap<>();
+    private ArrayList<Depoimento> depoimento = new ArrayList<>();
     
     public List<Integer> getList_Solicit(){return this.list_solicit;}
     public ArrayDeque<Integer> getDequeChat(){return this.dequeChat;}
@@ -118,5 +119,6 @@ public class User {
 
 
     public ArrayList<Post> getPosts(){return this.postUser;}
+    public ArrayList<Depoimento> getDepoimentos(){return depoimento;}
 
 }

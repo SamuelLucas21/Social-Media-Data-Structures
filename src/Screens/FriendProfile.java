@@ -90,6 +90,8 @@ public class FriendProfile {
     
     @FXML    
     public void initialize(){
+        
+        vBoxPrincipal.getChildren().clear();
 
         scroolPane.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
 
@@ -265,7 +267,14 @@ public class FriendProfile {
 
     @FXML
     void goToDepoimento(MouseEvent event)throws Exception {
+        
+        try{
+            new DepoimentoScreen(idFriend, this).getStage().show();
+            pane.effectProperty().set(new MotionBlur(3.0,15.0));
 
+            }catch(Exception ie){
+            ie.printStackTrace();   
+            }
     }
 
     @FXML

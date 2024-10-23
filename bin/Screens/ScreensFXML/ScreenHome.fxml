@@ -4,14 +4,11 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1287.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
@@ -186,36 +183,6 @@
                            </cursor>
                         </HBox>
                      </children>
-                  </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label text="Sua sorte do dia:">
-                           <padding>
-                              <Insets bottom="10.0" left="10.0" />
-                           </padding>
-                        </Label>
-                        <Pane prefHeight="168.0" prefWidth="247.0" style="-fx-border-style: solid; -fx-border-radius: 10px; -fx-border-color: rgb(123,56,255); -fx-border-width: 2;">
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding>
-                           <children>
-                              <TextArea fx:id="luckyDay" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="6.0" layoutY="4.0" pickOnBounds="false" prefHeight="153.0" prefWidth="241.0" scaleShape="false" style="-fx-background-color: white; -fx-border-radius: 10px; -fx-border-style: none;" stylesheets="@CSS/TxtAreaToPosts.css" wrapText="true">
-                                 <effect>
-                                    <DropShadow>
-                                       <color>
-                                          <Color red="1.0" green="1.0" blue="1.0" />
-                                       </color>
-                                    </DropShadow>
-                                 </effect></TextArea>
-                           </children>
-                        </Pane>
-                     </children>
-                     <VBox.margin>
-                        <Insets left="10.0" />
-                     </VBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
                   </VBox>
                </children>
             </VBox>

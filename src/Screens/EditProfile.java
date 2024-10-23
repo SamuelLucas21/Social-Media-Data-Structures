@@ -203,7 +203,8 @@ public class EditProfile {
             ie.printStackTrace();
         }
         //atualizar as minhas postagens
-        //_ProfileScreen.initialize(); 
+        
+        _ProfileScreen.initialize(); 
         this.cancel(null);
 
     }

@@ -1,6 +1,8 @@
 package Screens;
 
 import java.io.FileInputStream;
+
+import Body.Depoimento;
 import Body.Post;
 import Body.User;
 import Structs.List_User;
@@ -63,8 +65,13 @@ public class ProfileScreen {
      @FXML
     private ScrollPane scroolPane = new ScrollPane();
 
-    
+    @FXML
+    private ScrollPane scroolPaneDep;
 
+    @FXML
+    private VBox vBoxDepoiment;
+
+    
         public ProfileScreen(int newId)throws Exception{
             id=newId;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ScreensFXML/ScreenProfile.fxml"));
@@ -84,35 +91,48 @@ public class ProfileScreen {
     @FXML    
     public void initialize(){
 
+        vBoxPrincipal.getChildren().clear();
+
         scroolPane.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
 
         scroolPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra horizontal do scroll
         scroolPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra vertical
 
+        scroolPaneDep.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
+
+        scroolPaneDep.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra horizontal do scroll
+        scroolPaneDep.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra vertical
+
+
+        //infos do perfil
         User user = List_User.getPoint(id).user[id];
         this.nameUser.setText(user.getName());
         this.cityUser.setText(user.getCity());
         this.relationShipUser.setText(user.getCivil());
 
+
+        //imagem de perfil
         try{
             if(user.getPhotoProfile()!=null){
                 this.imageSetProfile.setImage(new Image(new FileInputStream(user.getPhotoProfile())));
                 this.imageSetProfile.setFitHeight(159);
                 this.imageSetProfile.setFitWidth(159);
 
-                // Criar um círculo para o clipping
-                Circle circle = new Circle(75.5, 75.5, 75.5); // O raio do círculo é metade do tamanho da imagem (53 / 2)
-
-                // Aplicar o círculo como um clip na ImageView
+                Circle circle = new Circle(75.5, 75.5, 75.5);
                 imageSetProfile.setClip(circle);
             }
+
+
+            //vbox postagens do Profile
             this.vBoxPrincipal.setSpacing((double)10);
             for(int i = user.getPosts().size()-1;i>=0;--i){
                 Post post = user.getPosts().get(i);   
                 VBox vBox = new VBox(5);
                 HBox hBox = new HBox(2);
-                hBox.setSpacing(3);
-                
+                hBox.setSpacing(3);// estoy aqui 
+
+
+                //imagem perfil da postagem
                 ImageView imageView = (user.getPhotoProfile()!=null)? new ImageView(new Image(new FileInputStream(user.getPhotoProfile()))) 
                 :
                 new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.PNG")))
@@ -121,25 +141,25 @@ public class ProfileScreen {
                 imageView.setFitHeight(50);
                 imageView.setFitWidth(50);
 
-                // Criar um círculo para o clipping
-                Circle circle = new Circle(25, 25, 25); // O raio do círculo é metade do tamanho da imagem (53 / 2)
-
-                // Aplicar o círculo como um clip na ImageView
+                Circle circle = new Circle(25, 25, 25);
                 imageView.setClip(circle);
                 
                 imageView.setPreserveRatio(true);
 
+                // label com nome do user
                 Label nameUser = new Label(List_User.getPoint(0).user[id].getName());
                 nameUser.setStyle("-fx-font-weight: bold; -fx-font-size: 20px");
                 nameUser.setPadding(new Insets(13,0,0,11));//user
                 hBox.getChildren().addAll(imageView,nameUser);
 
+                //titulo da publicação
                 vBox.setStyle("-fx-padding: 10; -fx-border-color: lightgray; -fx-border-width: 1; -fx-background-color: white;");
                 Label titlePost = new Label(post.getTitle());
                 titlePost.setStyle("-fx-font-weight: bold; -fx-font-size: 14px");
                 titlePost.setPadding(new Insets(10,0,5,100));
                 titlePost.setWrapText(true);
 
+                //texto da postagem em si
                 Text text = new Text(post.getPostTxt());
                 TextFlow txtPost = new TextFlow();
                 txtPost.setStyle("-fx-font-size: 14px");
@@ -149,11 +169,13 @@ public class ProfileScreen {
                 txtPost.setFocusTraversable(false);
                 txtPost.getChildren().add(text);
                 
+
+                //imagem postagem
                 HBox box = new HBox(1);
                 ImageView image;
                 if(post.getImagem()!=null){
                     image = new ImageView(new Image(new FileInputStream(post.getImagem())));
-                    image.setFitHeight(400);//mudei aqui
+                    image.setFitHeight(400);
                     image.setFitWidth(400);
                     image.setPreserveRatio(true);
                     box.getChildren().add(image);
@@ -204,14 +226,29 @@ public class ProfileScreen {
                 box1.setPadding(new Insets(10,10,10,100));
                 box1.setSpacing(280);
 
+
+                //adicionando ao box2 texto do post
                 HBox box2 = new HBox(3);
                 box2.getChildren().addAll(txtPost);
                 box2.setPadding(new Insets(0,0,0,100));
                 txtPost.setPrefWidth(800);
 
+
+                //adicionando tudo
                 vBox.getChildren().addAll(hBox,titlePost,box2,box,box1); 
                 this.vBoxPrincipal.getChildren().add(vBox);
             }
+
+
+            this.vBoxDepoiment.setSpacing((double)10);
+            for(int i = user.getPosts().size()-1;i>=0;--i){
+                Depoimento depoimento = user.getDepoimentos().get(i);   
+                VBox vBox = new VBox(5);
+                HBox hBox = new HBox(2);
+                hBox.setSpacing(3);
+
+            }
+
         }catch(Exception ie){
             ie.printStackTrace();
         }
