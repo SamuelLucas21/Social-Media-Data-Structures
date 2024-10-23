@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="513.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="582.0" prefWidth="513.0" style="-fx-background-color: rgb(255,255,255);" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TextField fx:id="txtName" layoutX="95.0" layoutY="194.0" prefHeight="40.0" prefWidth="335.0" stylesheets="@CSS/txtEmailLogin.css" />
       <ImageView fitHeight="42.0" fitWidth="40.0" layoutX="54.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true">

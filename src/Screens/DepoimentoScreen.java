@@ -6,6 +6,8 @@ import Structs.List_User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
@@ -15,6 +17,7 @@ import javafx.stage.StageStyle;
 
 public class DepoimentoScreen {
     private Stage stage = new Stage();
+    private static int id = 0;
     private static int idAmg = 0;
     private static FriendProfile _FriendProfile;
     private User user;
@@ -29,8 +32,9 @@ public class DepoimentoScreen {
     @FXML
     private TextArea textMessage;
 
-    public DepoimentoScreen(int newIdAmg, FriendProfile newFriendProfile)throws Exception{
+    public DepoimentoScreen(int newId, int newIdAmg, FriendProfile newFriendProfile)throws Exception{
 
+        id = newId;
         idAmg = newIdAmg;
         _FriendProfile = newFriendProfile;
         user = List_User.getPoint(idAmg).user[idAmg];
@@ -56,11 +60,21 @@ public class DepoimentoScreen {
     @FXML
     private void publicDepoimento(MouseEvent event) {
 
+        if(this.textMessage.getText().length()==0){
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Aviso!");
+            alert.setHeaderText(null);
+            alert.setContentText("Contém Campos Vázios");
+            alert.showAndWait();
+            return;
+        }
+
         Depoimento depoimento = new Depoimento();
         depoimento.setDepoimento(textMessage.getText());
+        depoimento.setIdAmg(id);
 
         user.getDepoimentos().add(depoimento);
-
+        _FriendProfile.clearPosts();
         _FriendProfile.initialize();
 
         cancel(null);

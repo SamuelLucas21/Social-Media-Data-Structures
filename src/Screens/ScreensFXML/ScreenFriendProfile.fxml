@@ -264,7 +264,45 @@
                   </Pane>
                </content>
             </Tab>
-            <Tab style="-fx-border-radius: 20px; -fx-background-radius: 20px;" text="Depoimentos" />
+            <Tab style="-fx-border-radius: 20px; -fx-background-radius: 20px;" text="Depoimentos">
+               <content>
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(245, 245, 245);">
+                     <children>
+                        <ScrollPane fx:id="scroolPaneDep" layoutX="182.0" layoutY="-1.0" prefHeight="611.0" prefWidth="640.0" style="-fx-background-color: rgb(245, 245, 245);">
+                           <content>
+                              <VBox fx:id="vBoxDepoiment" prefHeight="603.0" prefWidth="638.0" style="-fx-background-color: rgb(245, 245, 245);">
+                                 <children>
+                                    <Pane fx:id="PanePrivProfileDep" prefHeight="254.0" prefWidth="634.0">
+                                       <children>
+                                          <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="81.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@Imagens/cadeado_privacidade.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label layoutX="187.0" layoutY="87.0" prefHeight="17.0" prefWidth="215.0" text="Perfil privado">
+                                             <font>
+                                                <Font name="Segoe UI" size="22.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="187.0" layoutY="115.0" prefHeight="27.0" prefWidth="366.0" text="Somente os amigos deste usuário podem ">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="187.0" layoutY="142.0" prefHeight="23.0" prefWidth="363.0" text="ver o que se é compartilhado neste perfil.">
+                                             <font>
+                                                <Font name="Segoe UI" size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </Pane>
+               </content></Tab>
          </tabs>
       </TabPane>
    </children>

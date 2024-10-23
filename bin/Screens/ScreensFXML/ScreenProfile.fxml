@@ -246,7 +246,7 @@
                </content></Tab>
           <Tab style="-fx-border-radius: 20px; -fx-background-radius: 20px;" text="Depoimentos">
                <content>
-                  <Pane prefHeight="200.0" prefWidth="200.0">
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(245, 245, 245);">
                      <children>
                         <ScrollPane fx:id="scroolPaneDep" layoutX="182.0" layoutY="-1.0" prefHeight="611.0" prefWidth="640.0" style="-fx-background-color: rgb(245, 245, 245);">
                            <content>

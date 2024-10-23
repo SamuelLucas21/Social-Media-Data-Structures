@@ -174,11 +174,12 @@ public class FriendsScreen {
                 });
 
                 String perfilVisi = "Amigos <3";
+                String dep = "pode";
                 
                 //ir para Screen friendsProfile
                 imgProfileFriend.setOnMouseClicked(event->{
                     try {
-                        new FriendProfile(id, idFriend, perfilVisi).getStage().show();
+                        new FriendProfile(id, idFriend, perfilVisi, dep).getStage().show();
                         this.stage.close();
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -188,7 +189,7 @@ public class FriendsScreen {
 
                 userName.setOnMouseClicked(event->{
                     try {
-                        new FriendProfile(id, idFriend, perfilVisi).getStage().show();
+                        new FriendProfile(id, idFriend, perfilVisi, dep).getStage().show();
                         this.stage.close();
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -257,10 +258,11 @@ public class FriendsScreen {
 
                     int index = segs.get(0);
 
+                    String dep = "nao pode";
                     String perfilVisi = List_User.getPoint(index).user[index].getProfileVisibility();
                     imgIConFriend.setOnMouseClicked(event->{
                         try {
-                            new FriendProfile(id, index, perfilVisi).getStage().show();
+                            new FriendProfile(id, index, perfilVisi, dep).getStage().show();
                             this.stage.close();
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -269,7 +271,7 @@ public class FriendsScreen {
 
                     userName.setOnMouseClicked(event->{
                         try {
-                            new FriendProfile(id, index, perfilVisi).getStage().show();
+                            new FriendProfile(id, index, perfilVisi, dep).getStage().show();
                             this.stage.close();
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -340,10 +342,11 @@ public class FriendsScreen {
                 nameFriend.setCursor(Cursor.HAND);
 
                 int indexFriend = solicit.get(i);
+                String dep = "nao pode";
                 String perfilVisi = List_User.getPoint(2).user[indexFriend].getProfileVisibility();
                 imgIconProfile.setOnMouseClicked(event->{
                     try {
-                        new FriendProfile(id, indexFriend, perfilVisi).getStage().show();
+                        new FriendProfile(id, indexFriend, perfilVisi, dep).getStage().show();
                         this.stage.close();
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -352,7 +355,7 @@ public class FriendsScreen {
 
                 nameFriend.setOnMouseClicked(event->{
                     try {
-                        new FriendProfile(id, indexFriend, perfilVisi).getStage().show();
+                        new FriendProfile(id, indexFriend, perfilVisi, dep).getStage().show();
                         this.stage.close();
                     } catch (Exception e) {
                         e.printStackTrace();

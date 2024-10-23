@@ -21,6 +21,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
@@ -73,6 +75,7 @@ public class ProfileScreen {
 
     
         public ProfileScreen(int newId)throws Exception{
+
             id=newId;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ScreensFXML/ScreenProfile.fxml"));
             loader.setController(this);
@@ -92,6 +95,7 @@ public class ProfileScreen {
     public void initialize(){
 
         vBoxPrincipal.getChildren().clear();
+        vBoxDepoiment.getChildren().clear();
 
         scroolPane.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
 
@@ -146,7 +150,7 @@ public class ProfileScreen {
                 
                 imageView.setPreserveRatio(true);
 
-                // label com nome do user
+                // label com nameUser
                 Label nameUser = new Label(List_User.getPoint(0).user[id].getName());
                 nameUser.setStyle("-fx-font-weight: bold; -fx-font-size: 20px");
                 nameUser.setPadding(new Insets(13,0,0,11));//user
@@ -238,16 +242,94 @@ public class ProfileScreen {
                 vBox.getChildren().addAll(hBox,titlePost,box2,box,box1); 
                 this.vBoxPrincipal.getChildren().add(vBox);
             }
+ 
 
+        }catch(Exception ie){
+            ie.printStackTrace();
+        }
 
+        try{
+            
+            //depoimentos do profile
             this.vBoxDepoiment.setSpacing((double)10);
-            for(int i = user.getPosts().size()-1;i>=0;--i){
+            for(int i = user.getDepoimentos().size()-1;i>=0;--i){
                 Depoimento depoimento = user.getDepoimentos().get(i);   
-                VBox vBox = new VBox(5);
-                HBox hBox = new HBox(2);
-                hBox.setSpacing(3);
+                VBox vBox = new VBox(5);//conjunto do depoimento
+                HBox hBoxProfile = new HBox(2); //icon perfil, nome, lixeira
+                hBoxProfile.setSpacing(3);
+
+                int idepAMG = depoimento.getIdAmg();
+
+                // Imagem do perfil da postagem
+                ImageView imageIcon = (List_User.getPoint(id).user[idepAMG].getPhotoProfile() != null) 
+                    ? new ImageView(new Image(new FileInputStream(List_User.getPoint(id).user[idepAMG].getPhotoProfile()))) 
+                    : new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.PNG")));
+
+                imageIcon.setFitHeight(50);
+                imageIcon.setFitWidth(50);
+                Circle circle = new Circle(25, 25, 25);
+                imageIcon.setClip(circle);
+                imageIcon.setPreserveRatio(true);
+
+                // label nome
+                Label nameUser = new Label(List_User.getPoint(0).user[idepAMG].getName());
+                nameUser.setStyle("-fx-font-weight: bold; -fx-font-size: 20px");
+                nameUser.setPadding(new Insets(13, 0, 0, 11)); 
+
+                // Lixeira
+                ImageView imageTrash = new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/deletar_dep.PNG")));
+
+                imageTrash.setFitHeight(30);
+                imageTrash.setFitWidth(30);
+                imageTrash.setPreserveRatio(true);
+
+                imageTrash.setCursor(Cursor.HAND);
+
+                imageTrash.setOnMouseClicked(event->{
+
+                    user.getDepoimentos().remove(depoimento);
+                    initialize();
+                });
+
+                HBox hBoxLeft = new HBox(10); 
+                hBoxLeft.getChildren().addAll(imageIcon, nameUser);
+
+                Region spacer = new Region();
+                HBox.setHgrow(spacer, Priority.ALWAYS); 
+
+                hBoxProfile = new HBox();
+                hBoxProfile.getChildren().addAll(hBoxLeft, spacer, imageTrash);
+                hBoxProfile.setPadding(new Insets(10, 15, 10, 10)); 
+
+
+                //texto depoimento
+                Text text = new Text(depoimento.getDepoimento());
+                TextFlow txtDep = new TextFlow();
+                txtDep.setStyle("-fx-font-size: 14px");
+                txtDep.setCache(false);
+                txtDep.setCacheShape(false);
+                txtDep.setCenterShape(false);
+                txtDep.setFocusTraversable(false);
+                txtDep.getChildren().add(text);
+
+                HBox box2 = new HBox(3);
+                box2.getChildren().addAll(txtDep);
+                box2.setPadding(new Insets(0,0,0,90));
+                txtDep.setPrefWidth(800);
+
+                //data e hora depoimento
+                Text dateTimeText = new Text(depoimento.getFormattedDateTime());
+                dateTimeText.setStyle("-fx-font-size: 12; -fx-fill: gray;");
+                TextFlow dateTimeFlow = new TextFlow(dateTimeText);
+                dateTimeFlow.setPadding(new Insets(0, 0, 0, 500));
+
+                //adicionando tudo
+                vBox.setStyle("-fx-padding: 10; -fx-border-color: lightgray; -fx-border-width: 1; -fx-background-color: white;");
+                vBox.getChildren().addAll(hBoxProfile,box2,dateTimeFlow); 
+                this.vBoxDepoiment.getChildren().add(vBox);
 
             }
+
 
         }catch(Exception ie){
             ie.printStackTrace();

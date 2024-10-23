@@ -320,10 +320,11 @@ public class ChatScreen {
 
             });
 
+            String dep = "pode";
             String perfilVisi = "Amigos <3";
             imageSetProfile.setOnMouseClicked(event->{
                 try {
-                    new FriendProfile(id, idAmg, perfilVisi).getStage().show();
+                    new FriendProfile(id, idAmg, perfilVisi, dep).getStage().show();
                     this.stage.close();
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -332,7 +333,7 @@ public class ChatScreen {
 
             lblNameFriend.setOnMouseClicked(event->{
                 try {
-                    new FriendProfile(id, idAmg, perfilVisi).getStage().show();
+                    new FriendProfile(id, idAmg, perfilVisi, dep).getStage().show();
                     this.stage.close();
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -427,10 +428,11 @@ public class ChatScreen {
                     }
                 });
 
+                String dep = "pode";
                 String perfilVisi = "Amigos <3";
                 imageSetProfile.setOnMouseClicked(event->{
                     try {
-                        new FriendProfile(id, idAmg, perfilVisi).getStage().show();
+                        new FriendProfile(id, idAmg, perfilVisi, dep).getStage().show();
                         this.stage.close();
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -439,7 +441,7 @@ public class ChatScreen {
     
                 lblNameFriend.setOnMouseClicked(event->{
                     try {
-                        new FriendProfile(id, idAmg, perfilVisi).getStage().show();
+                        new FriendProfile(id, idAmg, perfilVisi, dep).getStage().show();
                         this.stage.close();
                     } catch (Exception e) {
                         e.printStackTrace();

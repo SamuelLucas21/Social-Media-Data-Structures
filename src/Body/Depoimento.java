@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 public class Depoimento {
     
     private String depoimento;
+    private int idFriend;
     private LocalDateTime dateTimeSent;
 
 
@@ -13,6 +14,14 @@ public class Depoimento {
         this.dateTimeSent = LocalDateTime.now();
     }
 
+    public int getIdAmg() {
+        return idFriend;
+    }
+
+
+    public void setIdAmg(int idAmg) {
+        this.idFriend = idAmg;
+    }
 
     public String getDepoimento() {
             return depoimento;

@@ -1,3 +1,4 @@
+import Body.Depoimento;
 import Body.User;
 import Screens.LoginScreen;
 import Structs.List_User;
@@ -24,6 +25,10 @@ public class App extends Application{
         user.setPhotoProfile("\\Users\\Dell\\Desktop\\versionVS\\Social-Media-Data-Structures\\Photos\\lilo.PNG");
         List_User.getPoint(10).add(user); //inicialização da lista de usuarios
 
+        Depoimento dep = new Depoimento();
+        dep.setDepoimento("Somos amigos, amigos do peito amigos pra valer...");
+        dep.setIdAmg(1);
+
         user = new User();
         user.setAge(19);
         user.setCity("Cruzeiro-SP");
@@ -37,6 +42,8 @@ public class App extends Application{
        // user.getList_Solicit().add(0);
             List_User.getPoint(0).user[0].AddFriends(1);
             List_User.getPoint(0).user[1].AddFriends(0);
+
+        List_User.getPoint(2).user[0].getDepoimentos().add(dep);
 
         user = new User();
         user.setAge(18);

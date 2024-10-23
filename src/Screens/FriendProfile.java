@@ -1,6 +1,8 @@
 package Screens;
 
 import java.io.FileInputStream;
+
+import Body.Depoimento;
 import Body.Post;
 import Body.User;
 import Structs.List_User;
@@ -19,6 +21,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
@@ -30,6 +34,7 @@ public class FriendProfile {
     private static int id=0;
     private int idFriend = 0;
     private String visibilidadeProfile = null;
+    private String noDepoim = null;//button depoimento
     private Pane pane;
 
     @FXML
@@ -68,11 +73,21 @@ public class FriendProfile {
     @FXML
     private Pane PanePrivProfile;
 
-    public FriendProfile(int newId, int newIdFriend, String newVisibilidadeProfile)throws Exception{
+    @FXML
+    private ScrollPane scroolPaneDep;
+
+    @FXML
+    private VBox vBoxDepoiment;
+
+    @FXML
+    private Pane PanePrivProfileDep;
+
+    public FriendProfile(int newId, int newIdFriend, String newVisibilidadeProfile, String newnoDep)throws Exception{
 
             id = newId;
             idFriend = newIdFriend;
             visibilidadeProfile = newVisibilidadeProfile;
+            noDepoim = newnoDep;
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ScreensFXML/ScreenFriendProfile.fxml"));
             loader.setController(this);
@@ -90,13 +105,26 @@ public class FriendProfile {
     
     @FXML    
     public void initialize(){
-        
-        vBoxPrincipal.getChildren().clear();
+
+        Hbox_to_ScreenDepoimento.setVisible(false);
+        Hbox_to_ScreenDepoimento.setManaged(false);
+
+        if(noDepoim == "nao pode"){
+
+            Hbox_to_ScreenDepoimento.setVisible(true);
+            Hbox_to_ScreenDepoimento.setManaged(true);
+        }
 
         scroolPane.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
 
         scroolPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra horizontal do scroll
         scroolPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra vertical
+
+        scroolPaneDep.setStyle("-fx-background-color: transparent; -fx-border-color: transparent;");
+
+        scroolPaneDep.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra horizontal do scroll
+        scroolPaneDep.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // oculta a barra vertical
+
 
         User user = List_User.getPoint(idFriend).user[idFriend];
         this.nameUser.setText(user.getName());
@@ -116,10 +144,14 @@ public class FriendProfile {
                 imageSetProfile.setClip(circle);
             }
 
+            
             //mexendo aquiiiiiiiiiiii
             if(visibilidadeProfile != "Perfil privado"){
             PanePrivProfile.setVisible(false);
             PanePrivProfile.setManaged(false);
+
+            Hbox_to_ScreenDepoimento.setVisible(true);
+            Hbox_to_ScreenDepoimento.setManaged(true);
             
 
             this.vBoxPrincipal.setSpacing((double)10);
@@ -234,6 +266,85 @@ public class FriendProfile {
         }catch(Exception ie){
             ie.printStackTrace();
         }
+
+        if(visibilidadeProfile != "Perfil privado"){
+            PanePrivProfileDep.setVisible(false);
+            PanePrivProfileDep.setManaged(false);
+
+        try{
+            
+            //depoimentos do profile
+            this.vBoxDepoiment.setSpacing((double)10);
+            for(int i = user.getDepoimentos().size()-1;i>=0;--i){
+                Depoimento depoimento = user.getDepoimentos().get(i);   
+                VBox vBox = new VBox(5);//conjunto do depoimento
+                HBox hBoxProfile = new HBox(2); //icon perfil, nome, lixeira
+                hBoxProfile.setSpacing(3);
+
+                
+                int idepAMG = depoimento.getIdAmg();
+
+                // Imagem do perfil da postagem
+                ImageView imageIcon = (List_User.getPoint(id).user[idepAMG].getPhotoProfile() != null) 
+                    ? new ImageView(new Image(new FileInputStream(List_User.getPoint(id).user[idepAMG].getPhotoProfile()))) 
+                    : new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.PNG")));
+
+                imageIcon.setFitHeight(50);
+                imageIcon.setFitWidth(50);
+                Circle circle = new Circle(25, 25, 25);
+                imageIcon.setClip(circle);
+                imageIcon.setPreserveRatio(true);
+
+                // label nome
+                Label nameUser = new Label(List_User.getPoint(0).user[idepAMG].getName());
+                nameUser.setStyle("-fx-font-weight: bold; -fx-font-size: 20px");
+                nameUser.setPadding(new Insets(13, 0, 0, 11)); 
+
+                hBoxProfile = new HBox();
+                hBoxProfile.getChildren().addAll(imageIcon, nameUser);
+                hBoxProfile.setPadding(new Insets(10, 15, 10, 10)); 
+
+
+                //texto depoimento
+                Text text = new Text(depoimento.getDepoimento());
+                TextFlow txtDep = new TextFlow();
+                txtDep.setStyle("-fx-font-size: 14px");
+                txtDep.setCache(false);
+                txtDep.setCacheShape(false);
+                txtDep.setCenterShape(false);
+                txtDep.setFocusTraversable(false);
+                txtDep.getChildren().add(text);
+
+                HBox box2 = new HBox(3);
+                box2.getChildren().addAll(txtDep);
+                box2.setPadding(new Insets(0,0,0,90));
+                txtDep.setPrefWidth(800);
+
+                //data e hora depoimento
+                Text dateTimeText = new Text(depoimento.getFormattedDateTime());
+                dateTimeText.setStyle("-fx-font-size: 12; -fx-fill: gray;");
+                TextFlow dateTimeFlow = new TextFlow(dateTimeText);
+                dateTimeFlow.setPadding(new Insets(0, 0, 0, 500));
+
+                //adicionando tudo
+                vBox.setStyle("-fx-padding: 10; -fx-border-color: lightgray; -fx-border-width: 1; -fx-background-color: white;");
+                vBox.getChildren().addAll(hBoxProfile,box2,dateTimeFlow); 
+                this.vBoxDepoiment.getChildren().add(vBox);
+
+            }
+
+
+        }catch(Exception ie){
+            ie.printStackTrace();
+        }
+
+    }
+
+    }
+
+    public void clearPosts(){
+        vBoxDepoiment.getChildren().clear();
+        vBoxPrincipal.getChildren().clear();
     }
 
     private void generateLikes(Post post, Button like, Label showLike, int likesQnt) {
@@ -269,7 +380,7 @@ public class FriendProfile {
     void goToDepoimento(MouseEvent event)throws Exception {
         
         try{
-            new DepoimentoScreen(idFriend, this).getStage().show();
+            new DepoimentoScreen(id, idFriend, this).getStage().show();
             pane.effectProperty().set(new MotionBlur(3.0,15.0));
 
             }catch(Exception ie){
