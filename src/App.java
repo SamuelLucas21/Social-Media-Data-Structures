@@ -25,9 +25,12 @@ public class App extends Application{
         user.setPhotoProfile("\\Users\\Dell\\Desktop\\versionVS\\Social-Media-Data-Structures\\Photos\\lilo.PNG");
         List_User.getPoint(10).add(user); //inicialização da lista de usuarios
 
-        Depoimento dep = new Depoimento();
-        dep.setDepoimento("Somos amigos, amigos do peito amigos pra valer...");
-        dep.setIdAmg(1);
+        Depoimento dep1 = new Depoimento();
+        dep1.setDepoimento("Amigo onde esta?");
+        dep1.setIdAmg(1);
+        Depoimento dep2 = new Depoimento();
+        dep2.setDepoimento("Amigo estou aqui...");
+        dep2.setIdAmg(0);
 
         user = new User();
         user.setAge(19);
@@ -43,7 +46,8 @@ public class App extends Application{
             List_User.getPoint(0).user[0].AddFriends(1);
             List_User.getPoint(0).user[1].AddFriends(0);
 
-        List_User.getPoint(2).user[0].getDepoimentos().add(dep);
+        List_User.getPoint(2).user[0].getDepoimentos().add(dep1);
+        List_User.getPoint(2).user[1].getDepoimentos().add(dep2);
 
         user = new User();
         user.setAge(18);

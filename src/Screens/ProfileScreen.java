@@ -301,7 +301,7 @@ public class ProfileScreen {
                 hBoxProfile.getChildren().addAll(hBoxLeft, spacer, imageTrash);
                 hBoxProfile.setPadding(new Insets(10, 15, 10, 10)); 
 
-
+                
                 //texto depoimento
                 Text text = new Text(depoimento.getDepoimento());
                 TextFlow txtDep = new TextFlow();

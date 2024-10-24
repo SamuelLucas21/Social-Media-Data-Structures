@@ -206,6 +206,8 @@ public class FriendsScreen {
                 this.vboxFrinds.getChildren().addAll(new Separator(),hBox,new Separator());
             }//final hbox amigo
             
+
+            //parte da sugestao
             ArrayList<Integer> segs = new ArrayList<>();
             for(int i =0;i<=List_User.getPoint(i).getSizeUsers();++i){
                 if(List_User.getPoint(i).user[id].checkFriend(i)!=0
@@ -311,6 +313,7 @@ public class FriendsScreen {
                 this.vboxOtherFriends.getChildren().addAll(hBox);
                 if(segs.isEmpty())break label;
             }
+            
         
             //hbox solicit
             ArrayList<Integer>solicit = List_User.getPoint(id).user[id].getSolicit();

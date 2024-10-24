@@ -184,14 +184,55 @@
                         </HBox>
                      </children>
                   </VBox>
+                  <VBox prefHeight="100.0" prefWidth="242.0">
+                     <padding>
+                        <Insets left="10.0" top="25.0" />
+                     </padding>
+                     <children>
+                        <HBox fx:id="Hbox_to_ScreenGames" onMouseClicked="#goToGames" prefHeight="50.0" prefWidth="255.0" styleClass="hbox" stylesheets="@CSS/Hbox.css">
+                           <children>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Imagens/jogos_retro.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="31.0" prefWidth="181.0" text="Jogos ">
+                                 <padding>
+                                    <Insets left="10.0" top="15.0" />
+                                 </padding>
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </HBox>
+                     </children>
+                  </VBox>
                </children>
             </VBox>
          </children>
       </Pane>
-      <ScrollPane fx:id="scrollPosts" layoutX="286.0" layoutY="78.0" prefHeight="659.0" prefWidth="680.0" scaleShape="false" stylesheets="@CSS/ScrollPane.css">
+      <ScrollPane fx:id="scrollPosts" layoutX="286.0" layoutY="78.0" prefHeight="659.0" prefWidth="661.0" scaleShape="false" stylesheets="@CSS/ScrollPane.css">
          <content>
-            <VBox fx:id="vboxPost" prefHeight="636.0" prefWidth="978.0" style="-fx-background-color: white;" />
+            <VBox fx:id="vboxPost" prefHeight="636.0" prefWidth="660.0" style="-fx-background-color: white;" />
          </content>
       </ScrollPane>
+      <Pane layoutX="951.0" layoutY="75.0" prefHeight="669.0" prefWidth="353.0" style="-fx-border-color: rgb(123,56,255); -fx-border-width: 3; -fx-background-color: white;">
+         <children>
+            <ScrollPane fx:id="scrollSugest" layoutX="5.0" layoutY="42.0" prefHeight="622.0" prefWidth="335.0" scaleShape="false" stylesheets="@CSS/ScrollPane.css">
+               <content>
+                  <VBox fx:id="vboxSugest" prefHeight="606.0" prefWidth="334.0" style="-fx-background-color: white;" />
+               </content>
+            </ScrollPane>
+            <Label layoutX="14.0" layoutY="14.0" text="Sugestões de amizade para você">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </Pane>

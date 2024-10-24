@@ -1,14 +1,18 @@
 package Screens;
 
 import java.io.FileInputStream;
+import java.util.ArrayList;
 import java.util.Optional;
 
 import Body.ManagerPosts;
 import Body.Post;
+import Body.User;
 import Structs.List_User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -24,6 +28,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
@@ -69,6 +75,15 @@ public class HomeScreen{
     @FXML
     private HBox Hbox_to_ScreenChat;
 
+    @FXML
+    private HBox Hbox_to_ScreenGames;
+
+    @FXML
+    private VBox vboxSugest;
+
+    @FXML
+    private ScrollPane scrollSugest;
+
         public HomeScreen(int newId)throws Exception{
             id=newId;
             
@@ -85,6 +100,11 @@ public class HomeScreen{
 
     @FXML
     private void initialize(){
+
+        vboxPost.getChildren().clear();
+        vboxSugest.getChildren().clear();
+
+
         this.userName.setText(List_User.getPoint(0).user[id].getName());
         try{
             this.vboxPost.setSpacing((double)10);
@@ -200,6 +220,121 @@ public class HomeScreen{
         }catch(Exception ie){
             ie.printStackTrace();
         }
+
+        try{
+
+        ArrayList<Integer> segs = new ArrayList<>();
+            for(int i =0;i<=List_User.getPoint(i).getSizeUsers();++i){
+                if(List_User.getPoint(i).user[id].checkFriend(i)!=0
+                &&
+                !List_User.getPoint(i).user[id].getSolicit().contains((Integer)i)
+                &&
+                i!=id
+                &&
+                List_User.getPoint(i).checkExistUser(i)==0
+                &&
+                !List_User.getPoint(i).user[id].getList_Solicit().contains((Integer)i)
+                ){
+                    if(!List_User.getPoint(i).user[id].getUsersBlocks().containsKey(i)){
+                            segs.add(i);
+                    }
+                }
+            }
+
+            //sugestao de amizade
+            User[] user = List_User.getPoint(id).user;
+
+            for(int i = segs.size()-1;i>=0;--i){
+                HBox hBoxSugest = new HBox(2);
+                hBoxSugest.setSpacing(3);//conjunto da sugestao de amizade
+
+                //imagem de perfil amigo
+                ImageView imgIConFriend = (user[segs.get(0)].getPhotoProfile()==null)?new ImageView(new Image(getClass().getResourceAsStream("ScreensFXML/Imagens/PERFIL.png")))
+                :
+                new ImageView(new Image(new FileInputStream(user[segs.get(0)].getPhotoProfile()))) ;
+                imgIConFriend.setFitHeight(50);
+                imgIConFriend.setFitWidth(50);
+
+                Circle circle = new Circle(25, 25, 25);
+                imgIConFriend.setClip(circle);
+
+                //nome do amigo
+                Label userName = new Label(user[segs.get(0)].getName());
+                userName.setStyle("-fx-font-family: Poppins; -fx-font-size: 16px");
+                userName.setPadding(new Insets(15,0,0,10));
+
+                imgIConFriend.setCursor(Cursor.HAND);
+                userName.setCursor(Cursor.HAND);
+
+                int index = segs.get(0);
+
+                String dep = "nao pode";
+                String perfilVisi = List_User.getPoint(index).user[index].getProfileVisibility();
+                imgIConFriend.setOnMouseClicked(event->{
+                    try {
+                        new FriendProfile(id, index, perfilVisi, dep).getStage().show();
+                        this.stage.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
+
+                userName.setOnMouseClicked(event->{
+                    try {
+                        new FriendProfile(id, index, perfilVisi, dep).getStage().show();
+                        this.stage.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
+
+                //icone de enviar solicitação de amizade
+                ImageView imgAddFriend = new ImageView(new Image(getClass().getResourceAsStream("./ScreensFXML/Imagens/add-friend.png")));
+                imgAddFriend.setFitHeight(30);
+                imgAddFriend.setFitWidth(30);
+                imgAddFriend.setPreserveRatio(true);
+
+                imgAddFriend.setCursor(Cursor.HAND);
+
+                imgAddFriend.setOnMouseClicked(event->{
+                    User _user = List_User.getPoint(0).user[index];
+                    _user.sendSolict(id);
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setTitle("Aviso!");
+                    alert.setContentText("Solicitação enviada com sucesso para: \n\t"+_user.getName());
+                    alert.showAndWait();
+                    _user=List_User.getPoint(index).user[id];
+                    _user.getList_Solicit().add(index);
+                    this.initialize();
+                });
+
+                VBox auxToImage = new VBox();
+                auxToImage.getChildren().add(imgAddFriend);
+
+                auxToImage.setPadding(new Insets(20, 0, 0, 0));
+                auxToImage.setAlignment(Pos.CENTER);
+
+                HBox hBoxLeft = new HBox(10); 
+                hBoxLeft.getChildren().addAll(imgIConFriend, userName);
+
+                Region spacer = new Region();
+                HBox.setHgrow(spacer, Priority.ALWAYS); 
+
+                hBoxSugest = new HBox();
+                hBoxSugest.getChildren().addAll(hBoxLeft, spacer, auxToImage);
+                hBoxSugest.setPadding(new Insets(10, 15, 10, 10)); 
+                segs.remove(0);
+                
+                this.vboxSugest.getChildren().addAll(hBoxSugest);
+            }
+
+
+        }catch(Exception ie){
+            ie.printStackTrace();
+        }
+
+
         new Thread(){
            @SuppressWarnings("removal")
             public void run(){
@@ -256,6 +391,11 @@ public class HomeScreen{
         }else {
             pane.effectProperty().set(null);
         }
+    }
+
+    @FXML
+    void goToGames(MouseEvent event) {
+
     }
 
     @FXML
