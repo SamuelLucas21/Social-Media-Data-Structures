@@ -539,8 +539,21 @@ public class ChatScreen {
 
     @FXML
     private void goToPublic(MouseEvent event)throws Exception {
-        new PublicationScreen(id).getStage().show();
-        this.stage.close();
+        try {
+            // Crie a tela de publicação e passe a HomeScreen como parâmetro
+            PublicationScreen publicationScreen = new PublicationScreen(id, this.getStage(), null);
+            publicationScreen.getStage().show();
+    
+            // Efeito de MotionBlur
+            pane.effectProperty().set(new MotionBlur(3.0, 15.0));
+    
+            publicationScreen.getStage().setOnHidden(event1 -> {
+                pane.effectProperty().set(null);  // Remove o efeito após fechar
+            });
+    
+        } catch (Exception ie) {
+            ie.printStackTrace();
+        }
     }
 
     @FXML

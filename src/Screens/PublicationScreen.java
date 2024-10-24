@@ -27,6 +27,7 @@ public class PublicationScreen {
     private Stage stage = new Stage();
     private static int id =0;
     private String photo = null;
+    private Uptable _uptableScreen;  // Usar a interface
 
     @FXML
     private ImageView photoPublic;
@@ -38,22 +39,10 @@ public class PublicationScreen {
     private Button btnCancel;
 
     @FXML
-    private Label btnCommunity;
-
-    @FXML
     private Button btnPublic;
 
     @FXML
-    private Label btnToChat;
-
-    @FXML
-    private ImageView exitToHome;
-
-    @FXML
     private ImageView imageSetProfile;
-
-    @FXML
-    private TextArea luckyDay;
 
     @FXML
     private TextArea txtPublic;
@@ -61,13 +50,7 @@ public class PublicationScreen {
     @FXML
     private TextField txtTitlePost;
 
-    @FXML
-    private Label userName;
-
-    @FXML
-    private ImageView viewSettings;
-
-        public PublicationScreen(int i) throws Exception{
+        public PublicationScreen(int i, Stage ownerStage, Uptable uptableScreen) throws Exception{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ScreensFXML/ScreenPublication.fxml"));
             loader.setController(this);
             Pane pane = loader.load();
@@ -79,8 +62,16 @@ public class PublicationScreen {
                 pane.requestFocus();
             });
 
+            // Definir o stage principal como "dono" da nova janela
+            stage.initOwner(ownerStage);  // Aqui a janela é "filha" da tela que a chamou
+            stage.initModality(javafx.stage.Modality.WINDOW_MODAL);  // Faz com que a janela seja modal
+            pane.requestFocus();
+            pane.setOnMouseClicked(event -> {
+                pane.requestFocus();
+            });
+
             id=i;
-            this.userName.setText(List_User.getPoint(i).user[id].getName());
+            this._uptableScreen = uptableScreen;  // Inicializar com a tela que chamou
     
             this.photoPublic.setOnDragOver(event -> {
                 System.out.println(event.getDragboard().getString());
@@ -117,8 +108,12 @@ public class PublicationScreen {
             post.setPostTxt(this.txtPublic.getText());
             List_User.getPoint(0).user[id].getPosts().add(post);
             ManagerPosts.geralPosts.add(post);
-            new HomeScreen(id).getStage().show();
             this.stage.close();
+
+            // Chamar o método de atualização na tela que chamou
+        if (_uptableScreen != null) {
+            _uptableScreen.update();  // Atualiza a tela que chamou
+        }
     }
 
     @FXML

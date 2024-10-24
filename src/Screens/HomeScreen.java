@@ -36,7 +36,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
-public class HomeScreen{
+public class HomeScreen implements Uptable{
 
     private Stage stage = new Stage();
     private Pane pane;
@@ -412,8 +412,21 @@ public class HomeScreen{
 
     @FXML
     private void goToPublic(MouseEvent event) throws Exception {
-        new PublicationScreen(id).getStage().show();
-        this.stage.close();
+        try {
+            // Crie a tela de publicação e passe a HomeScreen como parâmetro
+            PublicationScreen publicationScreen = new PublicationScreen(id, this.getStage(), this);
+            publicationScreen.getStage().show();
+    
+            // Efeito de MotionBlur
+            pane.effectProperty().set(new MotionBlur(3.0, 15.0));
+    
+            publicationScreen.getStage().setOnHidden(event1 -> {
+                pane.effectProperty().set(null);  // Remove o efeito após fechar
+            });
+    
+        } catch (Exception ie) {
+            ie.printStackTrace();
+        }
     }
 
     @FXML
@@ -432,6 +445,11 @@ public class HomeScreen{
     void goToProfileTop(MouseEvent event) throws Exception {
         new ProfileScreen(id).getStage().show();
         this.stage.close();
+    }
+
+    @Override
+    public void update() {
+        initialize();
     }
             
 }
