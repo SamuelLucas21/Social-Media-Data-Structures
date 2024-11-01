@@ -142,5 +142,6 @@ public class App extends Application{
         //new Examples();
         */
         new LoginScreen().getStage().show();
+
     }
 }

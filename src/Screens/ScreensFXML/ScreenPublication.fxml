@@ -243,7 +243,11 @@
             <String fx:value="thumb" />
             <String fx:value="track" />
             <String fx:value="viewport" />
+            <String fx:value="text-area" />
          </styleClass>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
       </TextArea>
       <ImageView fx:id="photoPublic" fitHeight="325.0" fitWidth="350.0" layoutX="348.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
          <image>
